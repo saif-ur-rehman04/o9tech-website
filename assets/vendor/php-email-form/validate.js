@@ -101,7 +101,8 @@
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
+    console.error(error);
+    thisForm.querySelector('.error-message').innerHTML = 'We could not submit your request automatically. Please reach us directly at <strong>+92 345 6259449</strong> or <a href="mailto:info@o9tech.com">info@o9tech.com</a>.';
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
