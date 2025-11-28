@@ -57,18 +57,41 @@
     })
     .then(response => {
       if( response.ok ) {
-        return response.text();
+        // Try to parse as JSON first, fallback to text
+        return response.text().then(text => {
+          try {
+            return JSON.parse(text);
+          } catch {
+            return text;
+          }
+        });
       } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
+        return response.text().then(text => {
+          try {
+            const err = JSON.parse(text);
+            throw new Error(err.error || err.message || `${response.status} ${response.statusText}`);
+          } catch {
+            throw new Error(`${response.status} ${response.statusText} ${response.url}`);
+          }
+        });
       }
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      // Handle Formspree response (JSON with ok:true or next property) or legacy PHP response (text "OK")
+      const isSuccess = (
+        (typeof data === 'object' && data !== null && (data.ok === true || data.success === true || data.next)) ||
+        (typeof data === 'string' && data.trim() === 'OK')
+      );
+      
+      if (isSuccess) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        const errorMsg = (typeof data === 'object' && data.error) ? data.error : 
+                        (typeof data === 'object' && data.message) ? data.message :
+                        'Form submission failed and no error message returned from: ' + action;
+        throw new Error(errorMsg); 
       }
     })
     .catch((error) => {
