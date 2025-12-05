@@ -168,6 +168,7 @@ h6 {
   color: var(--heading-color);
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-family: var(--heading-font);
 }
 
 .header .btn-getstarted,
@@ -753,6 +754,7 @@ h6 {
   font-size: 28px;
   font-weight: 700;
   margin: 0;
+  font-family: var(--heading-font);
 }
 
 .page-title .breadcrumbs ol {
