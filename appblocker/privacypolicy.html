@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — AppBlocker</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0f1520;
+      --border: rgba(255, 255, 255, 0.07);
+      --accent: #4f8eff;
+      --accent-glow: rgba(79, 142, 255, 0.15);
+      --text: #e8edf5;
+      --muted: #7a8599;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(79, 142, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #4f8eff, #1a4fd6);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, #7aabff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 5px 0;
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      color: var(--accent);
+      opacity: 0.7;
+      min-width: 22px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toc ol li a:hover {
+      color: var(--text);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+      scroll-margin-top: 24px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-num {
+      font-size: 13px;
+      color: var(--accent);
+      font-family: var(--body-font);
+      font-weight: 500;
+      background: var(--accent-glow);
+      border: 1px solid rgba(79, 142, 255, 0.25);
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+
+    section p {
+      color: #b0bac9;
+      margin-bottom: 14px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Data table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: rgba(79, 142, 255, 0.08);
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #b0bac9;
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* ── Highlight box ── */
+    .highlight {
+      background: var(--accent-glow);
+      border: 1px solid rgba(79, 142, 255, 0.2);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: #c8d8f0;
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .data-table {
+        font-size: 13px;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 10px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">🛡</div>
+      <span class="logo-name">AppBlocker</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective: April 30, 2026</span>
+      <span>Last Updated: April 30, 2026</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Information We Collect</a></li>
+        <li><a href="#s2">How We Use Your Information</a></li>
+        <li><a href="#s3">Screen Time & Device Data</a></li>
+        <li><a href="#s4">Third-Party Services</a></li>
+        <li><a href="#s5">Data Storage & Security</a></li>
+        <li><a href="#s6">Data Retention</a></li>
+        <li><a href="#s7">Your Rights</a></li>
+        <li><a href="#s8">Children's Privacy</a></li>
+        <li><a href="#s9">Changes to This Policy</a></li>
+        <li><a href="#s10">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <div class="highlight">
+      Your privacy matters to us. AppBlocker is designed to help you manage your screen time — not to monetize your
+      personal data. We do not sell your data to third parties, ever.
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> Information We Collect</h2>
+      <p>When you use AppBlocker, we may collect the following categories of information depending on how you choose to
+        use the app:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Required?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account Information</td>
+            <td>Email address, name, Apple/Google user ID</td>
+            <td>Only if you sign in</td>
+          </tr>
+          <tr>
+            <td>Usage Data</td>
+            <td>App open counts, feature interactions, onboarding step progress</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Screen Time Data</td>
+            <td>Estimated daily screen time, app blocking schedules you create</td>
+            <td>Yes (stored locally)</td>
+          </tr>
+          <tr>
+            <td>Purchase Information</td>
+            <td>Subscription status, purchase history via RevenueCat</td>
+            <td>If you subscribe</td>
+          </tr>
+          <tr>
+            <td>Device Information</td>
+            <td>iOS version, device model, app version</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td>Crash & Diagnostic Data</td>
+            <td>Crash logs, error reports</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>If you use the app as a guest, no account information is collected and your data stays entirely on your device.
+      </p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> How We Use Your Information</h2>
+      <p>We use the information we collect solely to operate and improve AppBlocker:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Purpose</th>
+            <th>Data Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Provide and personalise the app experience</td>
+            <td>Account info, usage data, screen time data</td>
+          </tr>
+          <tr>
+            <td>Sync your data across devices</td>
+            <td>Account info, blocking schedules</td>
+          </tr>
+          <tr>
+            <td>Process subscriptions and restore purchases</td>
+            <td>Purchase information via RevenueCat</td>
+          </tr>
+          <tr>
+            <td>Send notifications you request</td>
+            <td>Device push token</td>
+          </tr>
+          <tr>
+            <td>Fix bugs and improve performance</td>
+            <td>Crash & diagnostic data</td>
+          </tr>
+          <tr>
+            <td>Comply with legal obligations</td>
+            <td>As required by applicable law</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>We do <strong>not</strong> use your data for advertising, profiling, or sale to third parties.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Screen Time & Device Data</h2>
+      <p>AppBlocker uses Apple's <strong>Screen Time / Family Controls framework</strong> to help you block apps and set
+        usage limits. This requires the Screen Time permission on your device.</p>
+      <p>Screen Time data (which apps you block, time ranges, schedules) is processed <strong>locally on your
+          device</strong> using Apple's ScreenTime API. This data is <strong>never transmitted to our servers</strong>.
+        We do not have access to which specific apps you block.</p>
+      <p>Your estimated screen time guess entered during onboarding is stored locally and optionally synced to your
+        account solely to personalise your experience.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> Third-Party Services</h2>
+      <p>AppBlocker integrates with the following third-party services, each with their own privacy practices:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Purpose</th>
+            <th>Privacy Policy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supabase</td>
+            <td>Authentication & cloud database</td>
+            <td><a href="https://supabase.com/privacy" style="color:#4f8eff">supabase.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>RevenueCat</td>
+            <td>In-app purchase & subscription management</td>
+            <td><a href="https://www.revenuecat.com/privacy" style="color:#4f8eff">revenuecat.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Google Sign-In</td>
+            <td>Optional OAuth authentication</td>
+            <td><a href="https://policies.google.com/privacy" style="color:#4f8eff">policies.google.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td>Sign in with Apple</td>
+            <td>Optional OAuth authentication</td>
+            <td><a href="https://www.apple.com/legal/privacy" style="color:#4f8eff">apple.com/legal/privacy</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>These services may collect information as described in their own privacy policies. We recommend reviewing them.
+        We do not control these third parties and are not responsible for their data practices.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> Data Storage & Security</h2>
+      <p>Your account data is stored securely on Supabase infrastructure, which uses industry-standard encryption in
+        transit (TLS) and at rest (AES-256). Blocking schedules and screen time data are stored locally on your device
+        and protected by iOS's built-in sandboxing.</p>
+      <p>We implement reasonable technical and organisational measures to protect your data. However, no method of
+        electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
+      <p>If you use <strong>Sign in with Apple</strong> with the Hide My Email option, Apple provides a private relay
+        address. We store and use that relay address as your email — we never receive or store your real Apple ID email
+        in that case.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> Data Retention</h2>
+      <p>We retain your account data for as long as your account is active. If you delete your account, we will delete
+        your personal data within <strong>30 days</strong>, except where retention is required by law.</p>
+      <p>Anonymised, aggregated usage analytics (which cannot identify you) may be retained indefinitely to help us
+        improve the app.</p>
+      <p>Local data (blocking schedules, screen time) is deleted when you uninstall the app or reset the app's data
+        through iOS Settings.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Your Rights</h2>
+      <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Right</th>
+            <th>What It Means</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Access</td>
+            <td>Request a copy of the data we hold about you</td>
+          </tr>
+          <tr>
+            <td>Correction</td>
+            <td>Ask us to correct inaccurate data</td>
+          </tr>
+          <tr>
+            <td>Deletion</td>
+            <td>Request deletion of your account and personal data</td>
+          </tr>
+          <tr>
+            <td>Portability</td>
+            <td>Receive your data in a machine-readable format</td>
+          </tr>
+          <tr>
+            <td>Objection</td>
+            <td>Object to certain processing of your data</td>
+          </tr>
+          <tr>
+            <td>Withdrawal of Consent</td>
+            <td>Withdraw consent where processing is based on consent</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>To exercise any of these rights, contact us at the email below. We will respond within 30 days.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Children's Privacy</h2>
+      <p>AppBlocker is not directed at children under the age of 13. We do not knowingly collect personal information
+        from children under 13. If you believe a child has provided us with personal data, please contact us immediately
+        and we will delete that information.</p>
+      <p>If you are between 13 and 18, please review this policy with a parent or guardian before using the app.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">09</span> Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal,
+        operational, or regulatory reasons. When we make material changes, we will update the "Last Updated" date at the
+        top of this page and notify you through the app or via email.</p>
+      <p>Your continued use of AppBlocker after any changes constitutes your acceptance of the updated policy.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span> Contact Us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please
+        reach out to us:</p>
+      <div class="contact-card">
+        <p><strong>o9tech</strong></p>
+        <p>Email: <a href="mailto:support@o9tech.com">privacy@o9tech.com</a></p>
+        <p>Website: <a href="https://o9tech.com">o9tech.com</a></p>
+        <p>App: AppBlocker — Available on the Apple App Store</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="terms-conditions.html">Terms & Conditions / Refund Policy</a></p>
+  </footer>
+
+</body>
+
+</html>

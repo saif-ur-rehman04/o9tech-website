@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — AppBlocker</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0f1520;
+      --border: rgba(255, 255, 255, 0.07);
+      --accent: #4f8eff;
+      --accent-glow: rgba(79, 142, 255, 0.15);
+      --amber: #f5a623;
+      --amber-glow: rgba(245, 166, 35, 0.12);
+      --text: #e8edf5;
+      --muted: #7a8599;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245, 166, 35, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #4f8eff, #1a4fd6);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, #ffc96b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Key facts strip ── */
+    .key-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+
+    .fact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .fact-card .fact-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .fact-card .fact-title {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .fact-card .fact-value {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      color: var(--text);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--amber);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 5px 0;
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toc ol li::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      color: var(--amber);
+      opacity: 0.7;
+      min-width: 22px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toc ol li a:hover {
+      color: var(--text);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+      scroll-margin-top: 24px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-num {
+      font-size: 13px;
+      color: var(--amber);
+      font-family: var(--body-font);
+      font-weight: 500;
+      background: var(--amber-glow);
+      border: 1px solid rgba(245, 166, 35, 0.25);
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+
+    section p {
+      color: #b0bac9;
+      margin-bottom: 14px;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Highlight boxes ── */
+    .highlight {
+      background: var(--accent-glow);
+      border: 1px solid rgba(79, 142, 255, 0.2);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: #c8d8f0;
+    }
+
+    .highlight-warn {
+      background: var(--amber-glow);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      border-left: 3px solid var(--amber);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: #e8d5b0;
+    }
+
+    /* ── Steps ── */
+    .steps {
+      margin: 24px 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: var(--amber-glow);
+      border: 1px solid rgba(245, 166, 35, 0.3);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--amber);
+      margin-top: 2px;
+    }
+
+    .step-body {
+      flex: 1;
+    }
+
+    .step-body strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .step-body p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* ── Eligibility table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: rgba(245, 166, 35, 0.08);
+      color: var(--amber);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      color: #b0bac9;
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .yes {
+      color: #4caf7d;
+      font-weight: 500;
+    }
+
+    .no {
+      color: #e05c5c;
+    }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 20px;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .key-facts {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">🛡</div>
+      <span class="logo-name">AppBlocker</span>
+    </div>
+    <h1>Refund Policy</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective: April 30, 2026</span>
+      <span>Last Updated: April 30, 2026</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-icon">📅</div>
+        <div class="fact-title">Refund Window</div>
+        <div class="fact-value">Via Apple</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🔄</div>
+        <div class="fact-title">Free Trial</div>
+        <div class="fact-value">Cancel Anytime</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">⚡</div>
+        <div class="fact-title">Response Time</div>
+        <div class="fact-value">48 Hours</div>
+      </div>
+    </div>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">How Subscriptions Work</a></li>
+        <li><a href="#s2">Free Trials</a></li>
+        <li><a href="#s3">Refund Eligibility</a></li>
+        <li><a href="#s4">How to Request a Refund</a></li>
+        <li><a href="#s5">Apple's Refund Process</a></li>
+        <li><a href="#s6">What Happens After a Refund</a></li>
+        <li><a href="#s7">Exceptional Circumstances</a></li>
+        <li><a href="#s8">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <div class="highlight-warn">
+      Important: All AppBlocker purchases are processed exclusively through the Apple App Store. o9tech does not
+      directly process payments or issue refunds — all refund requests must go through Apple.
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> How Subscriptions Work</h2>
+      <p>AppBlocker offers auto-renewing subscriptions (monthly and annual) managed entirely through the Apple App Store
+        and RevenueCat. By subscribing, you agree to the following:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Billing Cycle</th>
+            <th>Auto-Renews</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly Premium</td>
+            <td>Every 30 days</td>
+            <td>Yes, unless cancelled</td>
+          </tr>
+          <tr>
+            <td>Annual Premium</td>
+            <td>Every 365 days</td>
+            <td>Yes, unless cancelled</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Your subscription will automatically renew at the end of each billing period and your Apple ID will be charged
+        unless you cancel at least <strong>24 hours before</strong> the renewal date. You can manage and cancel your
+        subscription at any time through your iPhone Settings → Apple ID → Subscriptions.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> Free Trials</h2>
+      <p>AppBlocker may offer free trial periods for new subscribers. During a free trial:</p>
+      <p>You will not be charged until the trial period ends. If you cancel before the trial ends, you will not be
+        charged at all. If you do not cancel before the trial ends, your subscription will automatically begin and your
+        Apple ID will be charged the applicable subscription price.</p>
+      <div class="highlight-warn">
+        Free trials are available to new subscribers only. If you have previously subscribed to AppBlocker Premium, you
+        may not be eligible for a free trial.
+      </div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Refund Eligibility</h2>
+      <p>Because all purchases are processed by Apple, refund eligibility is governed by Apple's Media Services Terms
+        and Conditions. As a general guide:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Situation</th>
+            <th>Likely Eligible?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Accidental purchase or duplicate charge</td>
+            <td class="yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Charged after forgetting to cancel free trial</td>
+            <td class="yes">Possibly</td>
+          </tr>
+          <tr>
+            <td>App did not work as described / technical issue we cannot resolve</td>
+            <td class="yes">Possibly</td>
+          </tr>
+          <tr>
+            <td>Changed your mind after using the subscription</td>
+            <td class="no">Generally No</td>
+          </tr>
+          <tr>
+            <td>Partial period refund (cancelled mid-cycle)</td>
+            <td class="no">Generally No</td>
+          </tr>
+          <tr>
+            <td>Annual plan after significant time has passed</td>
+            <td class="no">Generally No</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Final refund decisions rest with Apple. We are unable to override Apple's decisions regarding App Store
+        purchases.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> How to Request a Refund</h2>
+      <p>Follow these steps to request a refund directly through Apple:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <strong>Go to reportaproblem.apple.com</strong>
+            <p>Sign in with the Apple ID used to purchase AppBlocker.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <strong>Find your AppBlocker purchase</strong>
+            <p>Locate the subscription or in-app purchase you want refunded.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <strong>Select "Request a Refund"</strong>
+            <p>Choose the reason that best describes your situation and submit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <strong>Wait for Apple's decision</strong>
+            <p>Apple typically responds within a few days. You'll receive an email confirmation.</p>
+          </div>
+        </div>
+      </div>
+      <p>Alternatively, on your iPhone go to <strong>Settings → Your Name → Purchase History</strong>, tap the purchase,
+        and select "Report a Problem."</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> Apple's Refund Process</h2>
+      <p>Apple handles all payment processing and refund decisions independently. o9tech has no ability to access your
+        payment details, initiate refunds on Apple's behalf, or guarantee refund approval.</p>
+      <p>For more information on Apple's refund policies visit: <a href="https://support.apple.com/en-us/118223"
+          style="color:#4f8eff">support.apple.com/en-us/118223</a></p>
+      <div class="highlight">
+        If Apple approves a refund, the amount will be returned to your original payment method. Timing depends on your
+        bank or card issuer and typically takes 5–10 business days.
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> What Happens After a Refund</h2>
+      <p>If a refund is granted by Apple:</p>
+      <p>Your AppBlocker Premium access will be revoked and your account will revert to the free/guest tier. Any Premium
+        features — including advanced blocking schedules and sync — will no longer be accessible. Your blocking data and
+        settings remain on your device but will not be synced across devices.</p>
+      <p>You are welcome to re-subscribe at any time after a refund.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Exceptional Circumstances</h2>
+      <p>If you experienced a significant technical issue that prevented you from using AppBlocker Premium and Apple did
+        not resolve your refund request, please contact us directly. While we cannot process refunds ourselves, we may
+        be able to:</p>
+      <p>Provide complimentary Premium access for a period to compensate for downtime, escalate documented technical
+        issues with Apple on your behalf, or offer account credits toward future purchases where applicable.</p>
+      <p>These remedies are offered at o9tech's sole discretion and are not guaranteed.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Contact Us</h2>
+      <p>If you have questions about your subscription, need help before requesting a refund, or experienced a technical
+        issue, please reach out to us first — we're happy to help:</p>
+      <div class="contact-card">
+        <p><strong>o9tech — AppBlocker Support</strong></p>
+        <p>Email: <a href="mailto:support@o9tech.com">support@o9tech.com</a></p>
+        <p>Website: <a href="https://o9tech.com">o9tech.com</a></p>
+        <p>Response Time: Within 48 hours on business days</p>
+      </div>
+      <p style="margin-top:20px">For urgent billing issues, always contact Apple directly via <a
+          href="https://reportaproblem.apple.com" style="color:#4f8eff">reportaproblem.apple.com</a> as they are the
+        fastest path to resolution.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="privacypolicy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+
+</html>
