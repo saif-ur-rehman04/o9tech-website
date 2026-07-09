@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — SyncDrop</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #040814;
+      --surface: #0b1122;
+      --border: rgba(0, 242, 254, 0.08);
+      --accent: #00f2fe;
+      --accent-glow: rgba(0, 242, 254, 0.15);
+      --secondary: #4f8eff;
+      --amber: #ffc96b;
+      --text: #f0f4f8;
+      --muted: #808fa6;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Key Facts ── */
+    .key-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .fact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .fact-card .fact-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .fact-card .fact-title {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .fact-card .fact-value {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── Warning Box ── */
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 201, 107, 0.03), rgba(255, 201, 107, 0.05));
+      border: 1px solid rgba(255, 201, 107, 0.15);
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin-bottom: 56px;
+      font-size: 15px;
+      color: #ffd899;
+      border-left: 4px solid var(--amber);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .section-num {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    section p {
+      margin-bottom: 18px;
+      color: #cbd5e1;
+    }
+
+    section ul,
+    section ol {
+      margin: 0 0 24px 24px;
+      color: #cbd5e1;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    section strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ── Cards ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="42" stroke="rgba(79, 142, 255, 0.15)" stroke-width="2" />
+          <circle cx="50" cy="50" r="30" stroke="rgba(79, 142, 255, 0.25)" stroke-width="2" />
+          <path d="M50 33V67 M36 53L50 67L64 53" stroke="#00f2fe" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <span class="logo-name">SyncDrop</span>
+    </div>
+    <h1>Terms & Conditions</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective Date: 9 July 2026</span>
+      <span>App: SyncDrop — Local File Transfer</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-icon">💳</div>
+        <div class="fact-title">Payments</div>
+        <div class="fact-value">App Store</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🔄</div>
+        <div class="fact-title">Billing</div>
+        <div class="fact-value">One-time</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">⚖️</div>
+        <div class="fact-title">License</div>
+        <div class="fact-value">Personal</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🛡️</div>
+        <div class="fact-title">P2P File Sync</div>
+        <div class="fact-value">Secure</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Important Architect Notice:</strong> Because SyncDrop transfers files directly between devices with no server in between, we have no technical ability to view, monitor, filter, or remove content transferred through the App. You are solely responsible for the content you send and receive.
+    </div>
+
+    <p>By downloading, installing, or using SyncDrop (the "App"), you agree to these Terms and Conditions ("Terms"). If you do not agree, do not use the App.</p>
+    <br>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Description of Service</a></li>
+        <li><a href="#s2">License to Use the App</a></li>
+        <li><a href="#s3">Eligibility</a></li>
+        <li><a href="#s4">Acceptable Use</a></li>
+        <li><a href="#s5">In-App Purchases</a></li>
+        <li><a href="#s6">Intellectual Property</a></li>
+        <li><a href="#s7">Third-Party Services</a></li>
+        <li><a href="#s8">Disclaimer of Warranties</a></li>
+        <li><a href="#s9">Limitation of Liability</a></li>
+        <li><a href="#s10">Indemnification</a></li>
+        <li><a href="#s11">Termination</a></li>
+        <li><a href="#s12">Changes to These Terms</a></li>
+        <li><a href="#s13">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> Description of Service</h2>
+      <p>SyncDrop is a utility app that allows users to transfer files directly between devices over a shared local Wi-Fi network, using local network discovery (mDNS/Bonjour) and a temporary on-device connection. The App does not route, store, or process files through any server operated by us — transfers occur solely between the sending and receiving devices.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> License to Use the App</h2>
+      <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to download and use SyncDrop on devices you own or control, for your personal, non-commercial use, in accordance with the applicable App Store or Google Play terms of service.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Eligibility</h2>
+      <p>You must be at least 13 years old (or the minimum age of digital consent in your country) to use SyncDrop. By using the App, you represent that you meet this requirement.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> Acceptable Use</h2>
+      <p>You agree not to use SyncDrop to send, receive, or store:</p>
+      <ul>
+        <li>Content that infringes any third party's intellectual property, privacy, or other legal rights;</li>
+        <li>Malware, viruses, or any code designed to damage or disrupt a device or network;</li>
+        <li>Content that is illegal in your jurisdiction, including child sexual abuse material, which we have zero tolerance for;</li>
+        <li>Content intended to harass, defraud, or harm another person.</li>
+      </ul>
+      <p><strong>Important:</strong> Because SyncDrop transfers files directly between devices with no server in between, we have no technical ability to view, monitor, filter, or remove content transferred through the App. You are solely responsible for the content you send and receive, and for ensuring you have the right to share it. We may cooperate with law enforcement where legally required, to the extent technically possible given this architecture.</p>
+      <p>You also agree not to reverse-engineer, decompile, or attempt to extract the source code of the App, except where applicable law expressly permits it.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> In-App Purchases</h2>
+      <p>SyncDrop offers optional one-time, non-subscription purchases ("SyncDrop Pro — Lifetime Access" and "Remove Ads Only") to remove advertising and/or unlock additional features.</p>
+      <ul>
+        <li>All purchases are processed by Apple's App Store or Google Play, not by us directly. Payment terms, billing, and refunds are governed by the respective platform's policies (see Apple's reportaproblem.apple.com or Google Play's refund policy).</li>
+        <li>Purchases are one-time and non-recurring — SyncDrop does not use auto-renewing subscriptions.</li>
+        <li>Purchases can be restored on a new device via the "Restore Purchases" option in the App, subject to the platform's account rules.</li>
+        <li>We do not directly issue refunds; refund requests must go through Apple or Google.</li>
+      </ul>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> Intellectual Property</h2>
+      <p>The App, including its design, branding, icons, and code (excluding open-source components used under their own licenses), is owned by o9Tech and protected by applicable intellectual property laws. These Terms do not grant you any rights to our trademarks or branding beyond what's necessary to use the App as intended.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Third-Party Services</h2>
+      <p>The App uses Google AdMob to display advertising and relies on Apple/Google platform services for distribution and in-app purchases. Your use of those integrated services is also subject to their respective terms:</p>
+      <ul>
+        <li><a href="https://policies.google.com/privacy" style="color:var(--accent)" target="_blank">Google AdMob Terms</a></li>
+        <li><a href="https://www.apple.com/legal/internet-services/itunes/" style="color:var(--accent)" target="_blank">Apple Media Services Terms</a></li>
+        <li><a href="https://play.google.com/intl/en_US/gplay-terms/" style="color:var(--accent)" target="_blank">Google Play Terms of Service</a></li>
+      </ul>
+      <p>See our Privacy Policy for details on data handled by these services.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Disclaimer of Warranties</h2>
+      <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT FILE TRANSFERS WILL BE UNINTERRUPTED, ERROR-FREE, OR THAT DISCOVERY WILL SUCCEED ON EVERY NETWORK CONFIGURATION (INCLUDING NETWORKS WITH CLIENT ISOLATION OR RESTRICTIVE FIREWALLS).</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">09</span> Limitation of Liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, O9TECH SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOSS OF DATA, LOSS OF FILES DURING TRANSFER, OR LOSS OF PROFITS, ARISING FROM YOUR USE OF THE APP. OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE APP SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE 12 MONTHS PRECEDING THE CLAIM (OR $10 USD IF YOU MADE NO PURCHASES).</p>
+      <p>Some jurisdictions do not allow the exclusion or limitation of certain damages, so some of the above limitations may not apply to you.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span> Indemnification</h2>
+      <p>You agree to indemnify and hold harmless o9Tech from any claims, damages, or expenses (including reasonable legal fees) arising from your violation of these Terms or your misuse of the App, including content you transfer through it.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="section-num">11</span> Termination</h2>
+      <p>We may suspend or discontinue the App, or your access to it, at any time, including for violation of these Terms. You may stop using the App and uninstall it at any time. Sections 4, 6, 8, 9, and 10 survive termination.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="section-num">12</span> Changes to These Terms</h2>
+      <p>We may update these Terms as the App evolves. Material changes will be reflected by updating the "Effective Date" above. Continued use of the App after changes constitutes acceptance of the revised Terms.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="section-num">13</span> Contact Us</h2>
+      <p>If you have questions about these Terms, please contact us:</p>
+      <div class="contact-card">
+        <p><strong>o9Tech</strong></p>
+        <p>Email: <a href="mailto:support@o9tech.com">support@o9tech.com</a></p>
+        <p>App: SyncDrop — Local File Transfer</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+
+</html>

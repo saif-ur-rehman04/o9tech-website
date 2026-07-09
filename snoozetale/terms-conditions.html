@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — SnoozeTale</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #060518;
+      --surface: #0f0e26;
+      --border: rgba(187, 134, 252, 0.08);
+      --accent: #bb86fc;
+      --accent-glow: rgba(187, 134, 252, 0.15);
+      --secondary: #7c4dff;
+      --amber: #ffd899;
+      --text: #e9e3f8;
+      --muted: #7a729e;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(187, 134, 252, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px rgba(187, 134, 252, 0.15);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Key Facts ── */
+    .key-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .fact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .fact-card .fact-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .fact-card .fact-title {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .fact-card .fact-value {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── Warning Box ── */
+    .warning-box {
+      background: linear-gradient(135deg, rgba(255, 216, 153, 0.03), rgba(255, 216, 153, 0.05));
+      border: 1px solid rgba(255, 216, 153, 0.15);
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin-bottom: 56px;
+      font-size: 15px;
+      color: var(--amber);
+      border-left: 4px solid #f5a623;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .section-num {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(187, 134, 252, 0.2);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    section p {
+      margin-bottom: 18px;
+      color: #c9c3e6;
+    }
+
+    section ul,
+    section ol {
+      margin: 0 0 24px 24px;
+      color: #c9c3e6;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    section strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ── Cards ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+      color: #c9c3e6;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="moon-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+            <linearGradient id="cloud-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#b39ddb" />
+              <stop offset="100%" stop-color="#7e57c2" />
+            </linearGradient>
+          </defs>
+          <circle cx="55" cy="18" r="1.5" fill="#fffde7" />
+          <circle cx="75" cy="26" r="2" fill="#fff" opacity="0.8" />
+          <circle cx="20" cy="60" r="1.5" fill="#e8eaf6" />
+          <circle cx="80" cy="62" r="2" fill="#ffe082" />
+          <path d="M 28 32 Q 30 34 30 37 Q 30 34 32 32 Q 30 30 30 27 Q 30 30 28 32 Z" fill="#fff" />
+          <path d="M 46 25 A 25 25 0 1 0 74 65 A 20 20 0 1 1 46 25 Z" fill="#ffe082" filter="url(#moon-glow)" />
+          <path d="M 28 75 A 12 12 0 0 1 38 60 A 15 15 0 0 1 64 58 A 12 12 0 0 1 74 75 Z" fill="url(#cloud-grad)" />
+          <path d="M 34 75 A 10 10 0 0 1 48 64 A 12 12 0 0 1 68 75 Z" fill="#9575cd" opacity="0.4" />
+        </svg>
+      </div>
+      <span class="logo-name">SnoozeTale</span>
+    </div>
+    <h1>Terms of Service</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Last Updated: July 9, 2026</span>
+      <span>App: SnoozeTale — AI Bedtime Stories</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-icon">💳</div>
+        <div class="fact-title">Payments</div>
+        <div class="fact-value">App Store</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🔄</div>
+        <div class="fact-title">Billing</div>
+        <div class="fact-value">Auto-renew</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🎧</div>
+        <div class="fact-title">Content</div>
+        <div class="fact-value">Bedtime Audio</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">👨‍👩‍👦</div>
+        <div class="fact-title">Age Limit</div>
+        <div class="fact-value">Parent Led</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>Gently Reminded:</strong> Stories are generated automatically by an AI system. While we apply content-safety checks intended to keep stories gentle and age-appropriate (no scary, violent, or unsettling content), we cannot guarantee that every generated story will be perfect for every child every time.
+    </div>
+
+    <p>Welcome to SnoozeTale. These Terms of Service ("Terms") govern your use of the SnoozeTale mobile app ("the app," "SnoozeTale," "we," "us"). By downloading, installing, or using the app, you agree to these Terms. If you don't agree, please don't use the app.</p>
+    <br>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Who This App Is For</a></li>
+        <li><a href="#s2">The Service</a></li>
+        <li><a href="#s3">Subscriptions & Billing</a></li>
+        <li><a href="#s4">Your Content</a></li>
+        <li><a href="#s5">Acceptable Use</a></li>
+        <li><a href="#s6">Intellectual Property</a></li>
+        <li><a href="#s7">No Warranty</a></li>
+        <li><a href="#s8">Limitation of Liability</a></li>
+        <li><a href="#s9">Changes to the App or These Terms</a></li>
+        <li><a href="#s10">Termination</a></li>
+        <li><a href="#s11">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> Who This App Is For</h2>
+      <p>SnoozeTale generates personalized bedtime stories for children ages 2–10. It's intended to be downloaded, set up, and operated by a parent or legal guardian on behalf of their child. If you are a parent or guardian setting this app up for a child, you are the one agreeing to these Terms, and you're responsible for how the app is used on your device.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> The Service</h2>
+      <p>SnoozeTale lets you create a story for your child by choosing a theme, moral, mood, length, and narrator voice; the app generates a unique story using AI, and, for Premium subscribers, professionally-styled narrated audio. One story per day is available for free, narrated by your device's built-in voice. A Premium subscription unlocks unlimited stories, two additional cinematic narrator voices, and a permanently saved story library.</p>
+      <p>Stories are generated automatically by an AI system. While we apply content-safety checks intended to keep stories gentle and age-appropriate (no scary, violent, or otherwise unsettling content), we cannot guarantee that every generated story will be perfect for every child every time. Please review a story yourself if you have any concern before sharing it with your child, and stop using a story or theme that doesn't feel right for your family.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Subscriptions & Billing</h2>
+      <p>SnoozeTale Premium is offered as a monthly or annual auto-renewing subscription, billed through the Apple App Store or Google Play, at the price shown in the app at the time of purchase.</p>
+      <ul>
+        <li>Subscriptions renew automatically at the end of each billing period unless cancelled at least 24 hours before the current period ends.</li>
+        <li>You can manage or cancel your subscription anytime through your Apple App Store or Google Play account settings, or via Settings → Manage Subscription in the app.</li>
+        <li>Refunds are handled according to Apple's or Google's standard refund policies for their respective stores — we do not process refunds directly.</li>
+        <li>Prices may change; we'll do our best to give you notice before any change affects an active subscription.</li>
+      </ul>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> Your Content</h2>
+      <p>Any details you or your child provide to personalize a story (like a theme, occasion, or your child's name) remain yours. You're free to save, print, or share the stories generated for your family for your own personal, non-commercial use. Please don't use the app to generate or attempt to generate content that is unsafe for children, abusive, or that violates the rights of others.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> Acceptable Use</h2>
+      <p>Please use SnoozeTale as intended — to create bedtime stories for your own children or the children in your care. Don't attempt to interfere with the app's operation, circumvent its free-tier limits or purchase requirements, extract or misuse the underlying story-generation service outside the app, or use the app in any way that could harm us, our service providers, or other users.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> Intellectual Property</h2>
+      <p>The SnoozeTale app, its design, branding, and underlying software are owned by us and our licensors and are protected by applicable intellectual property laws. These Terms don't grant you any rights to our trademarks, logos, or app design beyond what's needed to use the app normally on your own device.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> No Warranty</h2>
+      <p>SnoozeTale is provided "as is." We work to keep the app reliable and its content gentle and age-appropriate, but we don't guarantee the app will be uninterrupted, error-free, or perfectly suited to every child, and we don't guarantee any particular story's content, accuracy, or quality.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Limitation of Liability</h2>
+      <p>To the fullest extent permitted, we are not liable for any indirect, incidental, or consequential damages arising from your use of the app. Our total liability for any claim relating to the app is limited to the amount you paid us, if any, in the twelve months before the claim arose.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">09</span> Changes to the App or These Terms</h2>
+      <p>We may update the app or these Terms from time to time as we improve SnoozeTale. If we make material changes to these Terms, we'll update the "Last updated" date above. Continuing to use the app after changes take effect means you accept the updated Terms.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span> Termination</h2>
+      <p>You may stop using the app and delete it, along with all locally stored data, at any time. We may suspend or discontinue the service, or particular features, at our discretion — for example, if we discover misuse of the app or need to retire a feature.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="section-num">11</span> Contact Us</h2>
+      <p>Questions about these Terms? Email us at support@o9tech.com.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+
+</html>
