@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — Color Fluid Sort</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080e18;
+      --surface: #0f192b;
+      --border: rgba(0, 242, 254, 0.08);
+      --accent: #00f2fe;
+      --accent-glow: rgba(0, 242, 254, 0.15);
+      --secondary: #ff007f;
+      --text: #e2ebf5;
+      --muted: #7b8c9d;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Key Facts ── */
+    .key-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .fact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .fact-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .fact-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .fact-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .section-num {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    section p {
+      margin-bottom: 18px;
+      color: #b0c0d2;
+    }
+
+    section ul,
+    section ol {
+      margin: 0 0 24px 24px;
+      color: #b0c0d2;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    section strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ── Cards ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+      color: #b0c0d2;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="35" y="15" width="30" height="60" rx="15" stroke="#00f2fe" stroke-width="5.5" fill="none" />
+          <line x1="30" y1="15" x2="70" y2="15" stroke="#00f2fe" stroke-width="5.5" stroke-linecap="round" />
+          <rect x="38" y="32" width="24" height="12" fill="#ffd600" opacity="0.8" />
+          <rect x="38" y="44" width="24" height="12" fill="#ff007f" opacity="0.8" />
+          <path d="M 38 56 H 62 V 60 A 12 12 0 0 1 38 60 Z" fill="#00d2ff" opacity="0.8" />
+        </svg>
+      </div>
+      <span class="logo-name">Color Fluid Sort</span>
+    </div>
+    <h1>Terms & Conditions</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective Date: 13 July 2026</span>
+      <span>App: Color Fluid Sort</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="key-facts">
+      <div class="fact-card">
+        <div class="fact-icon">💳</div>
+        <div class="fact-title">Payments</div>
+        <div class="fact-value">App Store / Play Store</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🔄</div>
+        <div class="fact-title">Billing</div>
+        <div class="fact-value">One-time / Ads</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">⚖️</div>
+        <div class="fact-title">License</div>
+        <div class="fact-value">Personal Use Only</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-icon">🧪</div>
+        <div class="fact-title">Gameplay</div>
+        <div class="fact-value">Fluid Sorting</div>
+      </div>
+    </div>
+
+    <p>By downloading, installing, or playing Color Fluid Sort (the "Game", "the App"), you agree to these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use or play the Game.</p>
+    <br>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Description of Service</a></li>
+        <li><a href="#s2">License to Use the Game</a></li>
+        <li><a href="#s3">Eligibility</a></li>
+        <li><a href="#s4">Acceptable Use & Fair Play</a></li>
+        <li><a href="#s5">In-App Purchases & Advertising</a></li>
+        <li><a href="#s6">Intellectual Property Rights</a></li>
+        <li><a href="#s7">Third-Party Services</a></li>
+        <li><a href="#s8">Disclaimer of Warranties</a></li>
+        <li><a href="#s9">Limitation of Liability</a></li>
+        <li><a href="#s10">Indemnification</a></li>
+        <li><a href="#s11">Termination</a></li>
+        <li><a href="#s12">Changes to These Terms</a></li>
+        <li><a href="#s13">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> Description of Service</h2>
+      <p>Color Fluid Sort is a mobile game designed for entertainment, allowing users to sort colored liquids in test tubes to solve chemical puzzles. The Game is distributed through the Apple App Store and Google Play. All gameplay progress, settings, and levels completed are saved locally on your device, and we do not store your game files or level status on our own servers.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> License to Use the Game</h2>
+      <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to download, install, and play the Game on devices you own or control, solely for your personal, non-commercial entertainment. This license is subject to the usage rules set forth by Apple's App Store Terms of Service and Google Play's Terms of Service.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Eligibility</h2>
+      <p>You must be at least 13 years old (or the minimum age of digital consent in your country) to play this Game. If you are under 18 years old, you represent that your parent or legal guardian has reviewed and agreed to these Terms on your behalf.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> Acceptable Use & Fair Play</h2>
+      <p>You agree to play the Game in a fair and respectful manner. You must not:</p>
+      <ul>
+        <li>Modify, hack, cheat, bypass, or exploit any game mechanics, values, or completed levels to gain an unfair advantage or manipulate high scores;</li>
+        <li>Decompile, disassemble, reverse-engineer, or attempt to extract the source code or assets of the Game;</li>
+        <li>Distribute modified or unauthorized versions of the Game;</li>
+        <li>Use bots, scripts, or automated software to operate the Game;</li>
+        <li>Interfere with the security features of the Game or the delivery of advertisements.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> In-App Purchases & Advertising</h2>
+      <p>The Game is free to play and is supported by advertising. It may offer optional, one-time in-app purchases (such as "Remove Ads" or level packs) to enhance your gameplay experience.</p>
+      <p>All in-app purchases are handled securely through Apple's App Store or Google Play's billing engine. These transactions are subject to the platform's terms of service and billing rules. All purchases are final and non-refundable, except where required by law or local platform rules. Deleting the Game may result in the loss of local progress; however, purchases can generally be restored through the settings screen in the Game.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> Intellectual Property Rights</h2>
+      <p>All intellectual property rights in the Game, including but not limited to source code, algorithms, game designs, visual artwork, UI elements, audio tracks, and o9tech branding, are owned by us or our licensors. These materials are protected by international copyright, trademark, and other intellectual property laws. Except for the limited play license granted in Section 2, no ownership rights are transferred to you.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Third-Party Services</h2>
+      <p>The Game integrates third-party services to display advertising (Google AdMob) and manage local platform features (like Apple Game Center or Google Play Games). These third-party services operate under their own terms of service and privacy policies, and we are not responsible for their availability, content, or practices.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Disclaimer of Warranties</h2>
+      <p>THE GAME IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE GAME WILL RUN UNINTERRUPTED, BUG-FREE, SECURE, OR FREE OF VIRUSES OR HARMFUL COMPONENTS.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">09</span> Limitation of Liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL O9TECH, ITS DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, REVENUE, DATA, OR USE, INCURRED BY YOU OR ANY THIRD PARTY, ARISING OUT OF OR IN CONNECTION WITH YOUR ACCESS TO, USE OF, OR INABILITY TO PLAY THE GAME, WHETHER IN CONTRACT, TORT, OR OTHERWISE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING UNDER THESE TERMS SHALL NOT EXCEED THE TOTAL AMOUNT PAID BY YOU, IF ANY, FOR IN-APP PURCHASES IN THE GAME DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span> Indemnification</h2>
+      <p>You agree to defend, indemnify, and hold harmless o9tech and its affiliates, directors, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable legal fees, arising out of or in connection with your breach of these Terms, your misuse of the Game, or your violation of any third-party rights.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="section-num">11</span> Termination</h2>
+      <p>We reserve the right to modify, suspend, or terminate your license to use the Game, or discontinue the Game entirely, at any time without notice. Upon termination, you must stop playing the Game and delete it from all your devices.</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="section-num">12</span> Changes to These Terms</h2>
+      <p>We may update these Terms from time to time. When we make updates, we will update the "Effective Date" at the top of this page. Your continued use of the Game after any changes constitutes your acceptance of the updated Terms.</p>
+    </section>
+
+    <section id="s13">
+      <h2><span class="section-num">13</span> Contact Us</h2>
+      <p>If you have any questions or concerns regarding these Terms, you can contact us at:</p>
+      <div class="contact-card">
+        <p><strong>o9tech</strong></p>
+        <p>Email: <a href="mailto:support@o9tech.com">support@o9tech.com</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="privacy-policy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+
+</html>
