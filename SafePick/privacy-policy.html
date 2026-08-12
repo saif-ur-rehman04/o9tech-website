@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — SafePick</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #030806;
+      --surface: #09130f;
+      --border: rgba(16, 185, 129, 0.08);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.15);
+      --secondary: #3b82f6;
+      --text: #ecfdf5;
+      --muted: #7fa396;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── Highlight Box ── */
+    .highlight {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(59, 130, 246, 0.05));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin-bottom: 56px;
+      font-size: 17px;
+      color: #e2e8f0;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .section-num {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    section p {
+      margin-bottom: 18px;
+      color: #cbd5e1;
+    }
+
+    section ul,
+    section ol {
+      margin: 0 0 24px 24px;
+      color: #cbd5e1;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    section strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ── Cards ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#34d399" />
+              <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+          <circle cx="50" cy="50" r="42" stroke="rgba(16, 185, 129, 0.15)" stroke-width="2" />
+          <circle cx="50" cy="50" r="30" stroke="rgba(16, 185, 129, 0.25)" stroke-width="2" />
+          <path d="M50 22 C62 22 72 25 72 25 C72 25 72 50 68 64 C64 78 50 83 50 83 C50 83 36 78 32 64 C28 50 28 25 28 25 C28 25 38 22 50 22 Z" stroke="url(#shield-grad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+          <path d="M40 50 L47 57 L60 42" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <span class="logo-name">SafePick</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective Date: 10 August 2026</span>
+      <span>App: SafePick — Food Allergy Scanner</span>
+    </p>
+  </header>
+
+  <main>
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Who We Are</a></li>
+        <li><a href="#s2">Data Stored on Your Device</a></li>
+        <li><a href="#s3">Data Leaving Your Device</a></li>
+        <li><a href="#s4">What We Never Do</a></li>
+        <li><a href="#s5">Children's Privacy</a></li>
+        <li><a href="#s6">Your Choices and Rights</a></li>
+        <li><a href="#s7">Changes to This Policy</a></li>
+        <li><a href="#s8">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <div class="highlight">
+      <strong>The short version:</strong> SafePick has no accounts and no server of its own. Your family's allergy profiles and your scan history live only on your phone. We cannot see them, and we could not hand them over even if asked, because we never have them.<br><br>
+      A few narrow things do leave your device, because the app cannot work without them: barcode lookups go to the Open Food Facts database, purchases are processed by Apple or Google together with RevenueCat, and the free version shows ads through Google AdMob. Each is described below, in plain words.
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">01</span> Who we are</h2>
+      <p>SafePick is built and operated by Saif Ur Rehman, an independent developer.</p>
+      <p>Questions about this policy: <a href="mailto:support@safepick.app">support@safepick.app</a>.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">02</span> Data that stays on your device</h2>
+      <p>The following is stored only in the app on your phone. It is never uploaded to us or anyone else by SafePick:</p>
+      <ul>
+        <li><strong>Family profiles:</strong> names or nicknames you enter, chosen colors, allergens, severity settings, and diet preferences. We treat allergy information as sensitive, which is exactly why the app is designed so it never leaves your device.</li>
+        <li><strong>Scan history and saved verdicts.</strong></li>
+        <li><strong>App settings.</strong></li>
+        <li><strong>Label photos:</strong> when you photograph an ingredients label, the text is read by on-device software (Google ML Kit running locally). The photo is processed on your phone, is not uploaded, and is not kept by the app after the text has been read.</li>
+      </ul>
+      <p><strong>Note on phone backups:</strong> if you use iCloud or Android device backup, your device may include SafePick's local data in your own backup. That backup belongs to you and is governed by Apple's or Google's terms, not ours.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">03</span> Data that leaves your device, and why</h2>
+      <p><strong>Product lookups (Open Food Facts).</strong> When you scan a barcode, the app sends that barcode number to the free, non-profit Open Food Facts database to fetch the product's ingredients. The request contains the barcode and ordinary technical request data (such as an IP address, which any internet request includes). It contains nothing about who you are and nothing from your profiles. Open Food Facts privacy policy: <a href="https://world.openfoodfacts.org/privacy" target="_blank">https://world.openfoodfacts.org/privacy</a></p>
+      <p><strong>Purchases (Apple, Google, RevenueCat).</strong> If you buy SafePick Premium, the payment is handled entirely by the App Store or Google Play. We never see your card details. To know that your purchase is active, the app uses RevenueCat, which processes your purchase receipt and an anonymous app-generated identifier. RevenueCat privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank">https://www.revenuecat.com/privacy</a></p>
+      <p><strong>Ads (free version only).</strong> The free version shows a small number of ads through Google AdMob, configured to serve non-personalized ads. Google may process device identifiers and coarse technical data to deliver ads and prevent fraud, under its own policy: <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>. Ads never appear on scanning or verdict screens, ad providers receive nothing from your profiles or scans, and Premium removes ads entirely.</p>
+      <p><strong>Support email.</strong> If you email us or use the report-a-problem form, we receive what you choose to send and use it only to help you and improve the app's data. Reports are sent anonymously unless you include your contact details.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">04</span> What we never do</h2>
+      <ul>
+        <li>We never upload, sell, rent, or share your profiles, allergy information, or scan history. We never have them.</li>
+        <li>We do not track you across other apps or websites, and the app does not ask for tracking permission because nothing in it tracks.</li>
+        <li>We do not show ads near safety information, and advertisers get nothing about your allergies.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">05</span> Children</h2>
+      <p>SafePick is a general-audience app. Parents often create profiles for their children; that information stays on the family's own device like everything else. We do not knowingly collect personal information from anyone, including children.</p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">06</span> Your choices and rights</h2>
+      <p>Because your data lives on your device, you are already in control of it:</p>
+      <ul>
+        <li>Delete your scan history in the app at any time, or delete everything by uninstalling the app.</li>
+        <li>Export your history (Premium) whenever you want a copy.</li>
+        <li>Depending on where you live (for example under GDPR or CCPA), you may have rights of access, correction, and deletion. In our case there is normally nothing held about you on any server to access or delete, but you can always contact us at <a href="mailto:support@safepick.app">support@safepick.app</a> and we will help.</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Changes to this policy</h2>
+      <p>If we change this policy, we will update this page and the effective date, and for meaningful changes we will say so in the app's release notes. We will never quietly change the core promise: profiles stay on your phone.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Contact</h2>
+      <p>Questions, requests, or queries regarding your privacy can be sent to our support email:</p>
+      <div class="contact-card">
+        <p><strong>o9Tech</strong></p>
+        <p>Email: <a href="mailto:support@o9tech.com">support@o9tech.com</a></p>
+        <p>App: SafePick — Food Allergy Scanner</p>
+      </div>
+      <p style="margin-top: 24px; font-size: 14px; color: var(--muted);">Product data in SafePick comes from Open Food Facts, made available under the Open Database License (ODbL).</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+    <p style="margin-top:8px"><a href="terms-conditions.html">Terms & Conditions</a></p>
+  </footer>
+
+</body>
+
+</html>
