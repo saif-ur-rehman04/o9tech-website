@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support & Help Center — Nestora</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080a0f;
+      --surface: #10141e;
+      --surface-elevated: #161b28;
+      --border: rgba(226, 177, 112, 0.12);
+      --border-light: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(226, 177, 112, 0.28);
+      --accent: #e2b170;
+      --accent-hover: #edd19c;
+      --accent-glow: rgba(226, 177, 112, 0.15);
+      --secondary: #c98a4b;
+      --emerald: #10b981;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --muted: #7b889b;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+      background-image: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(226, 177, 112, 0.1) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(16, 20, 30, 0.4) 0%, transparent 100%);
+      background-attachment: fixed;
+    }
+
+    /* ── Top Navigation ── */
+    .top-nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      background: rgba(226, 177, 112, 0.08);
+      border-color: var(--border);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 60px 24px 44px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 28px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 56px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Quick Help Channels ── */
+    .channels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .channel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .channel-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .channel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: var(--accent-glow);
+      padding: 4px 10px;
+      border-radius: 20px;
+      width: fit-content;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .channel-title {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .channel-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .channel-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--surface-elevated);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .channel-btn:hover {
+      background: var(--accent);
+      color: #080a0f;
+      border-color: var(--accent);
+    }
+
+    /* ── Section Titles ── */
+    .section-header {
+      text-align: center;
+      margin: 48px 0 32px;
+    }
+
+    .section-header h2 {
+      font-family: var(--heading-font);
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* ── Tips Callout ── */
+    .tips-box {
+      background: linear-gradient(135deg, rgba(226, 177, 112, 0.08), rgba(201, 138, 75, 0.04));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .tips-box h3 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .tip-item {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .tip-item strong {
+      display: block;
+      color: #ffffff;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .tip-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    /* ── FAQ Accordion ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+
+    details.faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    details.faq-item[open] {
+      border-color: var(--border);
+      background: var(--surface-elevated);
+    }
+
+    summary.faq-question {
+      padding: 18px 24px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+      list-style: none;
+    }
+
+    summary.faq-question::-webkit-details-marker {
+      display: none;
+    }
+
+    summary.faq-question::after {
+      content: '+';
+      font-family: monospace;
+      font-size: 20px;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary.faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 16px;
+    }
+
+    .faq-answer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .faq-answer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Interactive Mailto Generator ── */
+    .contact-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    }
+
+    .contact-container h3 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .contact-container p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #e2e8f0;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #0b0d14;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #ffffff;
+      font-family: var(--body-font);
+      font-size: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(226, 177, 112, 0.12);
+    }
+
+    select.form-control option {
+      background: #10141e;
+      color: #ffffff;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--secondary));
+      color: #080a0f;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(226, 177, 112, 0.2);
+    }
+
+    .submit-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(226, 177, 112, 0.3);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 48px 24px 80px;
+      border-top: 1px solid var(--border-light);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        padding: 40px 20px 30px;
+      }
+      .contact-container {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="top-nav">
+    <a href="support.html" class="brand-link">
+      <span class="logo-name" style="font-size: 22px;">Nestora</span>
+    </a>
+    <div class="nav-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-conditions.html">Terms & Conditions</a>
+      <a href="support.html" class="active">Support</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#edd19c" />
+              <stop offset="50%" stop-color="#e2b170" />
+              <stop offset="100%" stop-color="#c98a4b" />
+            </linearGradient>
+            <filter id="gold-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+          <path d="M50 18 L82 38 V82 H18 V38 Z" stroke="url(#gold-grad)" stroke-width="4.5" stroke-linejoin="round" />
+          <path d="M50 18 V82" stroke="url(#gold-grad)" stroke-width="2" stroke-dasharray="3 3" opacity="0.6" />
+          <path d="M34 56 C34 50 66 50 66 56 V72 H34 Z" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" />
+          <path d="M30 72 H70" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" />
+          <path d="M50 30 L52 35 L57 37 L52 39 L50 44 L48 39 L43 37 L48 35 Z" fill="url(#gold-grad)" filter="url(#gold-glow)" />
+        </svg>
+      </div>
+      <span class="logo-name">Nestora</span>
+    </div>
+    <h1>Support & Help Center</h1>
+    <p class="subtitle">
+      Have a question about redesigning your space, managing your Nestora Pro subscription, or exploring new decor styles? We're here to help.
+    </p>
+  </header>
+
+  <main>
+
+    <!-- Quick Help Channels -->
+    <div class="channels-grid">
+      <div class="channel-card">
+        <div>
+          <div class="channel-badge">Direct Contact</div>
+          <h3 class="channel-title">Email Our Team</h3>
+          <p class="channel-desc">Reach out directly to our dedicated support inbox. A real human reviews every inquiry, typically within 24 hours.</p>
+        </div>
+        <a href="mailto:support@o9tech.com?subject=Nestora%20App%20Support" class="channel-btn">
+          ✉️ support@o9tech.com
+        </a>
+      </div>
+
+      <div class="channel-card">
+        <div>
+          <div class="channel-badge">Apple ID</div>
+          <h3 class="channel-title">Manage Subscriptions</h3>
+          <p class="channel-desc">View your active plan, switch billing intervals, or cancel auto-renewal directly via your Apple ID settings.</p>
+        </div>
+        <a href="https://apps.apple.com/account/subscriptions" target="_blank" rel="noopener" class="channel-btn">
+          Manage Subscriptions ↗
+        </a>
+      </div>
+
+      <div class="channel-card">
+        <div>
+          <div class="channel-badge">Billing & Refunds</div>
+          <h3 class="channel-title">App Store Refunds</h3>
+          <p class="channel-desc">All payment transactions are governed by Apple. Submit refund inquiries through Apple's official portal.</p>
+        </div>
+        <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener" class="channel-btn">
+          Apple Report a Problem ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Tips for Best Results -->
+    <div class="tips-box">
+      <h3>💡 Tips for the Best AI Decor Results</h3>
+      <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 8px;">
+        To get stunning, magazine-quality interior redesigns from Nestora, follow these quick photography recommendations:
+      </p>
+      <div class="tips-grid">
+        <div class="tip-item">
+          <strong>📐 Shoot from the Corner</strong>
+          <p>Stand in a corner to capture two walls, the floor, and ceiling in one shot. This helps the AI understand room depth and volume.</p>
+        </div>
+        <div class="tip-item">
+          <strong>☀️ Maximize Natural Light</strong>
+          <p>Open curtains and turn on room lights. Even illumination yields richer textures, realistic shadows, and accurate wall paint tones.</p>
+        </div>
+        <div class="tip-item">
+          <strong>🧹 Clear Temporary Clutter</strong>
+          <p>Move laundry, small boxes, and temporary items out of the camera frame so the AI focuses on core architectural features and furniture.</p>
+        </div>
+        <div class="tip-item">
+          <strong>🎨 Try Contrasting Styles</strong>
+          <p>Experiment! Try Japandi for serene minimalism, Mid-Century Modern for warmth, or Industrial for raw textures.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers to common questions about Nestora</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-question">How does Nestora redesign rooms?</summary>
+        <div class="faq-answer">
+          Nestora uses advanced vision-based artificial intelligence. When you photograph or select a room image, the app identifies architectural boundaries (walls, floor planes, windows, ceiling) and synthesizes new furniture layouts, paint schemes, textiles, lighting fixtures, and decor accents according to your selected style.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Are my home and room photos kept private?</summary>
+        <div class="faq-answer">
+          Yes, absolutely. Your home is private. Your photos are transmitted over encrypted TLS connections solely to generate the requested design output and are discarded once rendering is complete. We do not use your private room photographs to train public AI models, and we never sell your data to advertisers or brokers. See our <a href="privacy-policy.html">Privacy Policy</a> for complete details.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How do I restore my Nestora Pro subscription on a new device?</summary>
+        <div class="faq-answer">
+          If you upgrade your iPhone or install Nestora on an iPad using the same Apple ID, open Nestora, navigate to <strong>Settings</strong> (or the upgrade paywall screen), and tap <strong>"Restore Purchases"</strong>. The app connects to Apple's StoreKit and RevenueCat to seamlessly verify your receipt and reactivate your Pro entitlements.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How do I cancel my subscription or disable auto-renewal?</summary>
+        <div class="faq-answer">
+          You can cancel auto-renewal at any time through Apple:
+          <ol style="margin: 10px 0 10px 20px;">
+            <li>Open the <strong>Settings</strong> app on your iPhone or iPad.</li>
+            <li>Tap your <strong>Name / Apple ID</strong> at the very top.</li>
+            <li>Tap <strong>Subscriptions</strong>.</li>
+            <li>Select <strong>Nestora</strong> and tap <strong>Cancel Subscription</strong>.</li>
+          </ol>
+          You will retain full access to Pro features until the conclusion of your current billing cycle.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">How do I request a refund?</summary>
+        <div class="faq-answer">
+          Because Apple manages all billing and transaction processing for iOS apps, developers cannot issue direct refunds. To request a refund, visit Apple's official portal at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>, log in with your Apple ID, find Nestora, and choose "Request a refund".
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Can I use generated designs for client presentations or commercial work?</summary>
+        <div class="faq-answer">
+          Yes! If you are an interior designer, home stager, real estate agent, or contractor, you are welcome to use generated renders in client moodboards, staging pitch decks, and commercial proposals. Please remember that renders are conceptual visualizations and must be validated with physical measurements before construction.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">The AI generation failed or gave an unexpected result. What can I do?</summary>
+        <div class="faq-answer">
+          Generation errors can occasionally happen if there is an unstable internet connection or if the image is too blurry. We recommend checking your Wi-Fi or cellular data, taking the photo from a slightly wider angle, and retrying. If credits were lost due to a server error, please contact us at <a href="mailto:support@o9tech.com">support@o9tech.com</a> and we will gladly make it right.
+        </div>
+      </details>
+    </div>
+
+    <!-- Contact & Pre-filled Email Generator -->
+    <div class="contact-container">
+      <h3>Contact Support Directly</h3>
+      <p>Fill in details below to generate a pre-formatted support email directly to our engineering and support desk:</p>
+
+      <form id="supportForm" onsubmit="handleSupportSubmit(event)">
+        <div class="form-group">
+          <label for="category">Inquiry Topic</label>
+          <select id="category" class="form-control" required>
+            <option value="Subscription or Billing Issue">Subscription or Billing Issue</option>
+            <option value="Restore Purchases Assistance">Restore Purchases Assistance</option>
+            <option value="AI Generation Quality or Issue">AI Generation Quality or Issue</option>
+            <option value="Bug or Technical Glitch">Bug or Technical Glitch</option>
+            <option value="Design Style or Feature Request">Design Style or Feature Request</option>
+            <option value="General Question">General Question</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="device">Device & iOS Version (e.g., iPhone 15 Pro, iOS 18.0)</label>
+          <input type="text" id="device" class="form-control" placeholder="Optional, e.g. iPhone 15 Pro, iOS 18" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Describe the Issue or Feedback</label>
+          <textarea id="message" class="form-control" placeholder="Please provide details about what happened or what you'd love to see..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Compose Email in Mail App ✉️
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9Tech. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="terms-conditions.html">Terms & Conditions</a>
+      <span>•</span>
+      <a href="support.html">Support & Help Center</a>
+    </div>
+  </footer>
+
+  <script>
+    function handleSupportSubmit(e) {
+      e.preventDefault();
+      const category = document.getElementById('category').value;
+      const device = document.getElementById('device').value || 'Not specified';
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent(`[Nestora Support] ${category}`);
+      const bodyText = `Hi Nestora Support Team,\n\nCategory: ${category}\nDevice / OS: ${device}\n\nDetails:\n${message}\n\n---\nSent via Nestora Support Portal`;
+      const body = encodeURIComponent(bodyText);
+
+      window.location.href = `mailto:support@o9tech.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+</body>
+
+</html>
