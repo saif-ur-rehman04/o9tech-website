@@ -232,6 +232,101 @@
 
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+    /* ── Store badges ── */
+    .stores {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .store {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px 12px 18px;
+      border-radius: 14px;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, .22);
+      color: #fff;
+      text-decoration: none;
+      min-width: 208px;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+
+    .store:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .5);
+    }
+
+    .store svg { flex: none; }
+
+    .store span {
+      display: block;
+      line-height: 1.15;
+      text-align: left;
+    }
+
+    .store .store-sm {
+      font-size: 11px;
+      letter-spacing: .04em;
+      color: #cfd6e2;
+    }
+
+    .store .store-lg {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+
+    /* ── Coming-soon dialog ── */
+    dialog.soon {
+      margin: auto;              /* the global reset zeroes it, which un-centres the modal */
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface-elevated);
+      color: var(--text);
+      padding: 0;
+      max-width: 420px;
+      width: calc(100% - 40px);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, .7);
+    }
+
+    dialog.soon::backdrop {
+      background: rgba(4, 6, 10, .72);
+      backdrop-filter: blur(4px);
+    }
+
+    dialog.soon .soon-body { padding: 34px 30px 26px; text-align: center; }
+
+    dialog.soon h3 {
+      font-family: var(--heading-font);
+      font-weight: 400;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    dialog.soon p { color: var(--text-muted); font-size: 15px; margin-bottom: 22px; }
+
+    dialog.soon .soon-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 18px;
+      border-radius: 18px;
+      background: rgba(226, 177, 112, .1);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 26px;
+    }
+
+    dialog.soon .soon-actions { display: flex; flex-direction: column; gap: 10px; }
+
+    dialog.soon .btn { justify-content: center; }
+
     .micro {
       font-size: 14px;
       color: var(--muted);
@@ -671,24 +766,37 @@
       <a href="#gallery">Gallery</a>
       <a href="#pricing">Pricing</a>
       <a href="/nestora/support">Support</a>
-      <!-- LAUNCH: swap href for the App Store URL and the label for "Download" -->
       <a class="cta" href="#get">Get the app</a>
     </div>
   </nav>
 
   <header class="hero wrap">
-    <span class="eyebrow"><span class="dot"></span> Coming soon to iPhone &amp; iPad</span>
+    <span class="eyebrow"><span class="dot"></span> AI interior, exterior &amp; garden design</span>
     <h1>Redesign any space<br /><span class="gold">from one photo</span></h1>
     <p class="lede">
       Snap a room, a house, a garden or a single wall. Nestora restyles it in seconds — keeping your
       real layout, windows and structure — then shows the result beside the original so you can see
       exactly what changed.
     </p>
-    <div class="cta-row">
-      <!-- LAUNCH: replace this mailto with the App Store link and change the label to "Download on the App Store" -->
-      <a class="btn btn-primary" id="get" href="mailto:support@o9tech.com?subject=Notify%20me%20when%20Nestora%20launches">
-        Get notified at launch
+    <div class="stores" id="get">
+      <!-- LAUNCH: paste the store URLs into STORE_LINKS at the bottom of this file;
+           the badges then link straight through and the dialog stops appearing. -->
+      <a class="store" href="#" data-store="apple">
+        <svg width="26" height="30" viewBox="0 0 24 28" fill="#fff" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M19.9 14.9c0-3 2.4-4.4 2.5-4.5-1.4-2-3.5-2.3-4.3-2.3-1.8-.2-3.5 1.1-4.5 1.1-.9 0-2.3-1-3.9-1-2 0-3.8 1.2-4.8 3C2.8 14.8 4.3 20 6.3 22.9c1 1.4 2.1 3 3.7 2.9 1.5-.1 2-.9 3.8-.9s2.3.9 3.9.9c1.6 0 2.6-1.4 3.6-2.8 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3-1.2-3-4.8zM16.9 5.9c.8-1 1.4-2.4 1.2-3.9-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.4-1.3 3.8 1.4.1 2.8-.7 3.7-1.7z"/></svg>
+        <span>
+          <span class="store-sm">Download on the</span>
+          <span class="store-lg">App Store</span>
+        </span>
       </a>
+      <a class="store" href="#" data-store="google">
+        <svg width="26" height="28" viewBox="0 0 24 26" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M2.4 1.3C2.1 1.6 2 2.1 2 2.8v20.4c0 .7.1 1.2.4 1.5l.1.1 11.4-11.4v-.3L2.5 1.2l-.1.1z" fill="#00d3ff"/><path d="M17.7 17.2l-3.8-3.8v-.3l3.8-3.8.1.1 4.5 2.6c1.3.7 1.3 1.9 0 2.7l-4.6 2.5z" fill="#ffce00"/><path d="M17.8 17.1L13.9 13.2 2.4 24.7c.4.5 1.1.5 1.9.1l13.5-7.7" fill="#ff3a44"/><path d="M17.8 9.4L4.3 1.7C3.5 1.3 2.8 1.3 2.4 1.8l11.5 11.4 3.9-3.8z" fill="#00f076"/></svg>
+        <span>
+          <span class="store-sm">GET IT ON</span>
+          <span class="store-lg">Google Play</span>
+        </span>
+      </a>
+    </div>
+    <div class="cta-row">
       <a class="btn btn-ghost" href="#how">See how it works</a>
     </div>
     <p class="micro">
@@ -983,11 +1091,38 @@
   <section class="wrap">
     <div class="band">
       <h2>See it before you spend a cent on it</h2>
-      <p>Three designs free, no account, no card. Be first to know the moment Nestora hits the App Store.</p>
-      <!-- LAUNCH: replace with the App Store link -->
-      <a class="btn btn-primary" href="mailto:support@o9tech.com?subject=Notify%20me%20when%20Nestora%20launches">Get notified at launch</a>
+      <p>Three designs free, no account, no card. One photo is all it takes.</p>
+    <div class="stores">
+      <a class="store" href="#" data-store="apple">
+        <svg width="26" height="30" viewBox="0 0 24 28" fill="#fff" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M19.9 14.9c0-3 2.4-4.4 2.5-4.5-1.4-2-3.5-2.3-4.3-2.3-1.8-.2-3.5 1.1-4.5 1.1-.9 0-2.3-1-3.9-1-2 0-3.8 1.2-4.8 3C2.8 14.8 4.3 20 6.3 22.9c1 1.4 2.1 3 3.7 2.9 1.5-.1 2-.9 3.8-.9s2.3.9 3.9.9c1.6 0 2.6-1.4 3.6-2.8 1.1-1.6 1.6-3.2 1.6-3.3-.1 0-3-1.2-3-4.8zM16.9 5.9c.8-1 1.4-2.4 1.2-3.9-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.4-1.3 3.8 1.4.1 2.8-.7 3.7-1.7z"/></svg>
+        <span>
+          <span class="store-sm">Download on the</span>
+          <span class="store-lg">App Store</span>
+        </span>
+      </a>
+      <a class="store" href="#" data-store="google">
+        <svg width="26" height="28" viewBox="0 0 24 26" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M2.4 1.3C2.1 1.6 2 2.1 2 2.8v20.4c0 .7.1 1.2.4 1.5l.1.1 11.4-11.4v-.3L2.5 1.2l-.1.1z" fill="#00d3ff"/><path d="M17.7 17.2l-3.8-3.8v-.3l3.8-3.8.1.1 4.5 2.6c1.3.7 1.3 1.9 0 2.7l-4.6 2.5z" fill="#ffce00"/><path d="M17.8 17.1L13.9 13.2 2.4 24.7c.4.5 1.1.5 1.9.1l13.5-7.7" fill="#ff3a44"/><path d="M17.8 9.4L4.3 1.7C3.5 1.3 2.8 1.3 2.4 1.8l11.5 11.4 3.9-3.8z" fill="#00f076"/></svg>
+        <span>
+          <span class="store-sm">GET IT ON</span>
+          <span class="store-lg">Google Play</span>
+        </span>
+      </a>
+    </div>
+
     </div>
   </section>
+
+  <dialog class="soon" id="soonDialog" aria-labelledby="soonTitle">
+    <div class="soon-body">
+      <div class="soon-icon" aria-hidden="true">✦</div>
+      <h3 id="soonTitle">Coming soon</h3>
+      <p id="soonText">Nestora is in the final stage of App Store review. This button turns into the download link the day it goes live.</p>
+      <div class="soon-actions">
+        <a class="btn btn-primary" href="mailto:support@o9tech.com?subject=Tell%20me%20when%20Nestora%20is%20live">Tell me when it's live</a>
+        <button class="btn btn-ghost" type="button" data-close>Close</button>
+      </div>
+    </div>
+  </dialog>
 
   <footer>
     <p>© 2026 o9Tech. All rights reserved.</p>
@@ -1003,6 +1138,48 @@
   </footer>
 
   <script>
+    /* LAUNCH: paste the live store URLs here. A badge with a URL links straight
+       to the store; a badge left empty opens the "almost there" dialog. */
+    var STORE_LINKS = {
+      apple: '',
+      google: ''
+    };
+
+    var SOON_TEXT = {
+      apple: 'Nestora is in the final stage of App Store review. This button turns into the download link the day it goes live.',
+      google: 'Nestora is on iPhone and iPad first. The Android version is on its way — leave us a line and we will tell you when it lands.'
+    };
+
+    (function () {
+      var dialog = document.getElementById('soonDialog');
+      var text = document.getElementById('soonText');
+
+      document.querySelectorAll('.store').forEach(function (a) {
+        var store = a.dataset.store;
+        var url = STORE_LINKS[store];
+        if (url) {
+          a.href = url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          return;
+        }
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (text && SOON_TEXT[store]) text.textContent = SOON_TEXT[store];
+          if (dialog && dialog.showModal) {
+            dialog.showModal();
+          } else {
+            window.location.href = 'mailto:support@o9tech.com?subject=Tell%20me%20when%20Nestora%20is%20live';
+          }
+        });
+      });
+
+      if (!dialog) return;
+      dialog.addEventListener('click', function (e) {
+        if (e.target === dialog || e.target.hasAttribute('data-close')) dialog.close();
+      });
+    })();
+
     document.querySelectorAll('.ba').forEach(function (ba) {
       var input = ba.querySelector('input[type=range]');
       if (!input) return;
