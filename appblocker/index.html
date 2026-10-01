@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>AppBlock — Block Distracting Apps & Reclaim Your Focus</title>
+  <meta name="description" content="AppBlock helps you block distracting apps, set screen time schedules, and build better digital habits. Download free on the App Store.">
+  <meta name="keywords" content="app blocker, screen time, focus app, digital detox, block apps, distraction blocker, ios app blocker">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AppBlock — Block Distracting Apps & Reclaim Your Focus">
+  <meta property="og:description" content="Set time schedules, location-based blocking, open limits, and more. Take back control of your screen time.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://o9tech.com/appblocker/">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #080c14;
+      --bg-secondary: #0f1422;
+      --bg-card: #141927;
+      --bg-card-hover: #1a2030;
+      --accent: #7C5CFC;
+      --accent-light: #9b7dff;
+      --accent-glow: rgba(124, 92, 252, 0.25);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.65);
+      --text-muted: rgba(255, 255, 255, 0.38);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(124, 92, 252, 0.35);
+      --gradient: linear-gradient(135deg, #7C5CFC 0%, #5a3fd8 100%);
+      --gradient-hero: linear-gradient(135deg, #1a0a3d 0%, #0d1530 50%, #080c14 100%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* ─── Header ─── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      background: rgba(8, 12, 20, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .site-header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .site-header .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--gradient);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .site-header .logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .site-header .logo-text span {
+      color: var(--accent-light);
+    }
+
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient);
+      color: white !important;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      border: none;
+    }
+
+    .btn-appstore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--accent-glow);
+      color: white !important;
+    }
+
+    .btn-appstore i { font-size: 16px; }
+
+    /* ─── Hero ─── */
+    .hero-section {
+      min-height: 100vh;
+      background: var(--gradient-hero);
+      display: flex;
+      align-items: center;
+      padding: 130px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(90, 63, 216, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(124, 92, 252, 0.15);
+      border: 1px solid var(--border-accent);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent-light);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge i { font-size: 14px; }
+
+    .hero-section h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .hero-section h1 .highlight {
+      background: linear-gradient(135deg, #a78bfa, #7C5CFC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p.lead {
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 500px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-download-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gradient);
+      color: white !important;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+
+    .btn-download-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px var(--accent-glow);
+      color: white !important;
+    }
+
+    .btn-download-hero i { font-size: 20px; }
+
+    .hero-free-tag {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .hero-free-tag strong {
+      color: var(--text-secondary);
+    }
+
+    /* Phone mockup */
+    .hero-phone-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-glow {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .phone-mockup {
+      position: relative;
+      z-index: 2;
+      width: 260px;
+      background: #0f1422;
+      border-radius: 44px;
+      padding: 12px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 40px 80px rgba(0,0,0,0.6),
+        0 0 60px rgba(124, 92, 252, 0.2);
+    }
+
+    .phone-screen {
+      background: #080c14;
+      border-radius: 34px;
+      overflow: hidden;
+      aspect-ratio: 9/19;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px 16px;
+    }
+
+    .phone-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .phone-status span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 600;
+    }
+
+    .mock-block-card {
+      background: linear-gradient(135deg, #1e1145, #130d30);
+      border: 1px solid rgba(124, 92, 252, 0.3);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .mock-block-title {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mock-block-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .mock-block-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5dde8b;
+      box-shadow: 0 0 8px rgba(93, 222, 139, 0.6);
+    }
+
+    .mock-block-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .mock-block-apps {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mock-app-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .mock-schedule-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #141927;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+    }
+
+    .mock-schedule-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mock-schedule-icon {
+      width: 30px;
+      height: 30px;
+      background: rgba(124, 92, 252, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .mock-schedule-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+    }
+
+    .mock-schedule-time {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .mock-toggle {
+      width: 32px;
+      height: 18px;
+      background: #7C5CFC;
+      border-radius: 9px;
+      position: relative;
+    }
+
+    .mock-toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 3px;
+      width: 14px;
+      height: 14px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    /* ─── Stats strip ─── */
+    .stats-strip {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-number span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ─── Section shared ─── */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: rgba(124, 92, 252, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .section-heading {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .section-subheading {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ─── Features ─── */
+    .features-section {
+      background: var(--bg-primary);
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      height: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(124, 92, 252, 0.15);
+      border: 1px solid rgba(124, 92, 252, 0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--accent-light);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      background: rgba(124, 92, 252, 0.25);
+    }
+
+    .feature-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ─── How it works ─── */
+    .how-section {
+      background: var(--bg-secondary);
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .step-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .step-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 50px;
+      right: -30px;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), transparent);
+      opacity: 0.4;
+    }
+
+    /* ─── Blocking types ─── */
+    .types-section {
+      background: var(--bg-primary);
+    }
+
+    .type-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .type-pill:hover {
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+      background: rgba(124, 92, 252, 0.1);
+    }
+
+    .type-pill i {
+      color: var(--accent-light);
+      font-size: 16px;
+    }
+
+    .comparison-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .comparison-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .comparison-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      gap: 12px;
+    }
+
+    .comparison-row:last-child { border-bottom: none; }
+
+    .comparison-row i.bi-check-circle-fill { color: #5dde8b; font-size: 16px; }
+    .comparison-row i.bi-x-circle-fill { color: #ff5c5c; font-size: 16px; }
+
+    /* ─── Free vs Premium ─── */
+    .pricing-section {
+      background: var(--bg-secondary);
+    }
+
+    .plan-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 32px;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card.premium {
+      background: linear-gradient(145deg, #1e1145, #130d30);
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 60px rgba(124, 92, 252, 0.2);
+      position: relative;
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .plan-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .plan-price sup {
+      font-size: 20px;
+      font-weight: 600;
+      vertical-align: super;
+    }
+
+    .plan-period {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-features li:last-child { border-bottom: none; }
+
+    .plan-features li i {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .plan-features li .bi-check2 { color: #5dde8b; }
+    .plan-features li .bi-dash { color: var(--text-muted); }
+
+    /* ─── Download CTA ─── */
+    .cta-section {
+      background: var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(124, 92, 252, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #1a0a3d 0%, #0d1530 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 28px;
+      padding: 70px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-box h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .appstore-badge {
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .appstore-badge:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
+    }
+
+    .appstore-btn-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: white;
+      color: #000 !important;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .appstore-btn-large:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      color: #000 !important;
+    }
+
+    .appstore-btn-large i {
+      font-size: 26px;
+    }
+
+    .appstore-btn-large .btn-text-small {
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0.7;
+      display: block;
+      line-height: 1;
+      margin-bottom: 1px;
+      text-align: left;
+    }
+
+    .appstore-btn-large .btn-text-large {
+      font-size: 17px;
+      font-weight: 800;
+      display: block;
+      line-height: 1;
+      text-align: left;
+    }
+
+    /* ─── Footer ─── */
+    .site-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--gradient);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      color: white;
+    }
+
+    .footer-logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+    }
+
+    .footer-links a {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent-light); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 110px 0 60px;
+        text-align: center;
+      }
+
+      .hero-section p.lead { margin-left: auto; margin-right: auto; }
+
+      .hero-cta { justify-content: center; }
+
+      .hero-phone-wrap { margin-top: 48px; }
+
+      .phone-mockup { width: 220px; }
+
+      .step-connector { display: none; }
+
+      .cta-box { padding: 50px 24px; }
+
+      .site-header .d-none { display: none !important; }
+    }
+
+    @media (max-width: 576px) {
+      section { padding: 60px 0; }
+      .hero-section { padding: 100px 0 50px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Header ─── -->
+  <header class="site-header">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="#" class="logo">
+          <div class="logo-icon">A</div>
+          <span class="logo-text">App<span>Block</span></span>
+        </a>
+        <nav class="d-none d-md-flex align-items-center gap-4">
+          <a href="#features" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Features</a>
+          <a href="#how-it-works" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">How It Works</a>
+          <a href="#pricing" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Plans</a>
+          <a href="https://o9tech.com" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s" target="_blank" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">o9Tech</a>
+        </nav>
+        <a href="https://apps.apple.com/app/id6752846663" target="_blank" class="btn-appstore">
+          <i class="bi bi-apple"></i>
+          Download Free
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero-section" id="hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <div class="hero-badge">
+            <i class="bi bi-shield-check-fill"></i>
+            Now live on the App Store
+          </div>
+          <h1>
+            Block Distracting Apps &amp;<br>
+            <span class="highlight">Reclaim Your Focus</span>
+          </h1>
+          <p class="lead">
+            Set smart blocking schedules, location-based rules, and open limits.
+            AppBlock puts you back in control of your screen time — without willpower.
+          </p>
+          <div class="hero-cta">
+            <a href="https://apps.apple.com/app/id6752846663" target="_blank" class="btn-download-hero">
+              <i class="bi bi-apple"></i>
+              Download on App Store
+            </a>
+            <span class="hero-free-tag"><strong>Free</strong> to download</span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-phone-wrap">
+            <div class="phone-glow"></div>
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <div class="phone-status">
+                  <span>9:41</span>
+                  <span>
+                    <i class="bi bi-wifi" style="font-size:12px;margin-right:4px;"></i>
+                    <i class="bi bi-battery-half" style="font-size:12px;"></i>
+                  </span>
+                </div>
+                <!-- Quick Block card -->
+                <div class="mock-block-card">
+                  <div class="mock-block-title">Quick Block — Active</div>
+                  <div class="mock-block-status">
+                    <div class="mock-block-dot"></div>
+                    <span class="mock-block-name">Blocking 8 apps</span>
+                  </div>
+                  <div class="mock-block-apps">
+                    <div class="mock-app-icon" style="background:#1877f2;">f</div>
+                    <div class="mock-app-icon" style="background:#e1306c;">
+                      <i class="bi bi-instagram" style="font-size:14px;color:white;"></i>
+                    </div>
+                    <div class="mock-app-icon" style="background:#1da1f2;">
+                      <i class="bi bi-twitter-x" style="font-size:12px;color:white;"></i>
+                    </div>
+                    <div class="mock-app-icon" style="background:#ff0000;">
+                      <i class="bi bi-youtube" style="font-size:14px;color:white;"></i>
+                    </div>
+                    <div class="mock-app-icon" style="background:#333;">+4</div>
+                  </div>
+                </div>
+                <!-- Schedule rows -->
+                <div class="mock-schedule-row">
+                  <div class="mock-schedule-left">
+                    <div class="mock-schedule-icon">⏰</div>
+                    <div>
+                      <div class="mock-schedule-name">Work Hours</div>
+                      <div class="mock-schedule-time">9:00 AM – 6:00 PM</div>
+                    </div>
+                  </div>
+                  <div class="mock-toggle"></div>
+                </div>
+                <div class="mock-schedule-row">
+                  <div class="mock-schedule-left">
+                    <div class="mock-schedule-icon">📍</div>
+                    <div>
+                      <div class="mock-schedule-name">At Office</div>
+                      <div class="mock-schedule-time">Location based</div>
+                    </div>
+                  </div>
+                  <div class="mock-toggle"></div>
+                </div>
+                <div class="mock-schedule-row">
+                  <div class="mock-schedule-left">
+                    <div class="mock-schedule-icon">🔢</div>
+                    <div>
+                      <div class="mock-schedule-name">Open Limit</div>
+                      <div class="mock-schedule-time">3 opens/day left</div>
+                    </div>
+                  </div>
+                  <div class="mock-toggle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stats strip ─── -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number"><span>4</span>+</div>
+            <div class="stat-label">Blocking Modes</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number"><span>iOS</span></div>
+            <div class="stat-label">Native Screen Time API</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number"><span>0</span></div>
+            <div class="stat-label">App Data Sold</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number"><span>Free</span></div>
+            <div class="stat-label">To Get Started</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Features ─── -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-badge">Features</span>
+        <h2 class="section-heading">Everything you need to stay focused</h2>
+        <p class="section-subheading">AppBlock uses Apple's Screen Time API to block apps at the system level — no VPN, no tricks, no workarounds.</p>
+      </div>
+      <div class="row gy-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <h3>Quick Block</h3>
+            <p>Start a blocking session instantly. Pick your apps and set a timer — your focus starts in seconds. No setup needed.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-calendar3"></i></div>
+            <h3>Time Schedules</h3>
+            <p>Create recurring blocking rules for specific days and hours. Block social media during work hours, automatically, every day.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <h3>Location Blocking</h3>
+            <p>Automatically block apps when you arrive at a specific place — your office, gym, or library. Leave and they unlock.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-123"></i></div>
+            <h3>Open Limit</h3>
+            <p>Allow yourself to open Instagram only 3 times today. Once you hit the limit, it's blocked until tomorrow.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-hourglass-split"></i></div>
+            <h3>Usage Limit</h3>
+            <p>Set a daily time budget per app. Spend 30 minutes on YouTube, and it's blocked for the rest of the day.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-grid-1x2-fill"></i></div>
+            <h3>Widgets</h3>
+            <p>Add AppBlock widgets to your Home Screen. See your active blocks and remaining screen time at a glance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── How it works ─── -->
+  <section id="how-it-works" class="how-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-badge">How It Works</span>
+        <h2 class="section-heading">Up and blocking in 3 steps</h2>
+        <p class="section-subheading">No technical setup. No configuration files. Just open the app and start blocking.</p>
+      </div>
+      <div class="row gy-4 position-relative">
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Download &amp; Sign In</h3>
+            <p>Install AppBlock for free. Sign in with Apple or Google — or skip and browse as a guest. No pressure.</p>
+            <div class="step-connector d-none d-md-block"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Grant Screen Time Access</h3>
+            <p>Allow AppBlock to use Apple's Screen Time API. This is what gives it the power to actually block apps at the system level.</p>
+            <div class="step-connector d-none d-md-block"></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Set Your Rules &amp; Go</h3>
+            <p>Choose your apps, pick a blocking mode — Quick Block, Schedule, Location, or Limits — and you're done. AppBlock does the rest.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Blocking types ─── -->
+  <section id="blocking-types" class="types-section">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-5">
+          <span class="section-badge">What you can block</span>
+          <h2 class="section-heading" style="text-align:left;">Block apps, categories, or whole websites</h2>
+          <p style="font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;">AppBlock gives you granular control. Block specific apps, entire categories like Social or Games, or web domains — all from one place.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="type-pill"><i class="bi bi-app"></i> Individual Apps</span>
+            <span class="type-pill"><i class="bi bi-grid-3x3-gap-fill"></i> App Categories</span>
+            <span class="type-pill"><i class="bi bi-globe"></i> Web Domains</span>
+            <span class="type-pill"><i class="bi bi-instagram"></i> Social Media</span>
+            <span class="type-pill"><i class="bi bi-controller"></i> Games</span>
+            <span class="type-pill"><i class="bi bi-play-circle-fill"></i> Entertainment</span>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="comparison-card">
+            <div class="comparison-header" style="background:linear-gradient(135deg,#1e1145,#130d30);color:var(--accent-light);">
+              <i class="bi bi-shield-check-fill me-2"></i> AppBlock vs. Willpower
+            </div>
+            <div class="comparison-row">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Blocks apps at the iOS system level — can't be bypassed</span>
+            </div>
+            <div class="comparison-row">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Automatic rules based on time, location, or count</span>
+            </div>
+            <div class="comparison-row">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>Works even when you're distracted or tired</span>
+            </div>
+            <div class="comparison-row">
+              <i class="bi bi-check-circle-fill"></i>
+              <span>No VPN, no loopholes, no workarounds</span>
+            </div>
+            <div class="comparison-row" style="opacity:0.5">
+              <i class="bi bi-x-circle-fill"></i>
+              <span style="text-decoration:line-through;">Willpower: fails at 11pm when you're tired</span>
+            </div>
+            <div class="comparison-row" style="opacity:0.5">
+              <i class="bi bi-x-circle-fill"></i>
+              <span style="text-decoration:line-through;">"Just one more scroll" — every night</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Plans ─── -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-badge">Plans</span>
+        <h2 class="section-heading">Start free, upgrade when ready</h2>
+        <p class="section-subheading">The core blocking features are completely free. Upgrade to Premium for unlimited power.</p>
+      </div>
+      <div class="row gy-4 justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="plan-card">
+            <div class="plan-name">Free</div>
+            <div class="plan-price">$0</div>
+            <div class="plan-period">forever</div>
+            <ul class="plan-features">
+              <li><i class="bi bi-check2"></i> Quick Block (up to 4 hours)</li>
+              <li><i class="bi bi-check2"></i> 1 Time Schedule</li>
+              <li><i class="bi bi-check2"></i> 1 Location Block</li>
+              <li><i class="bi bi-check2"></i> 2 Open Limit Schedules</li>
+              <li><i class="bi bi-check2"></i> 2 Usage Limit Schedules</li>
+              <li><i class="bi bi-check2"></i> Home Screen Widget</li>
+              <li><i class="bi bi-dash"></i> Multiple schedule days</li>
+              <li><i class="bi bi-dash"></i> Pomodoro &amp; Timer modes</li>
+              <li><i class="bi bi-dash"></i> Unlimited schedules</li>
+            </ul>
+            <a href="https://apps.apple.com/app/id6752846663" target="_blank" class="btn-appstore w-100" style="justify-content:center;padding:14px;">
+              <i class="bi bi-apple"></i> Download Free
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-5">
+          <div class="plan-card premium">
+            <div class="plan-badge">Most Popular</div>
+            <div class="plan-name" style="background:linear-gradient(135deg,#a78bfa,#7C5CFC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Premium</div>
+            <div class="plan-price">Unlock All</div>
+            <div class="plan-period">inside the app</div>
+            <ul class="plan-features">
+              <li><i class="bi bi-check2"></i> Quick Block up to <strong>24 hours</strong></li>
+              <li><i class="bi bi-check2"></i> <strong>Unlimited</strong> Time Schedules</li>
+              <li><i class="bi bi-check2"></i> <strong>Unlimited</strong> Location Blocks</li>
+              <li><i class="bi bi-check2"></i> <strong>Unlimited</strong> Open Limit rules</li>
+              <li><i class="bi bi-check2"></i> <strong>Unlimited</strong> Usage Limits</li>
+              <li><i class="bi bi-check2"></i> Multi-day schedule selection</li>
+              <li><i class="bi bi-check2"></i> Pomodoro &amp; Custom Timer</li>
+              <li><i class="bi bi-check2"></i> Priority support</li>
+            </ul>
+            <a href="https://apps.apple.com/app/id6752846663" target="_blank" class="btn-appstore w-100" style="justify-content:center;padding:14px;">
+              <i class="bi bi-apple"></i> Get Premium
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Download CTA ─── -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Ready to stop doomscrolling?</h2>
+        <p>Download AppBlock for free and build a screen time habit that actually sticks.</p>
+        <a href="https://apps.apple.com/app/id6752846663" target="_blank" class="appstore-btn-large">
+          <i class="bi bi-apple"></i>
+          <div>
+            <span class="btn-text-small">Download on the</span>
+            <span class="btn-text-large">App Store</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row align-items-center gy-3">
+        <div class="col-md-4">
+          <a href="#" class="footer-logo">
+            <div class="footer-logo-icon">A</div>
+            <span class="footer-logo-text">AppBlock</span>
+          </a>
+          <p class="footer-tagline">Block distracting apps. Reclaim your focus.</p>
+        </div>
+        <div class="col-md-4 text-md-center">
+          <ul class="footer-links justify-content-md-center">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Plans</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            <li><a href="terms-conditions.html">Terms</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <p class="footer-copy">
+            Made by <a href="https://o9tech.com" target="_blank" style="color:var(--accent-light);text-decoration:none;">o9Tech</a><br>
+            <span style="font-size:12px;">© 2026 All rights reserved.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Sticky header shadow on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.site-header');
+      if (window.scrollY > 20) {
+        header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.4)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
