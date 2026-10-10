@@ -1,56 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Longdog Privacy Policy</title>
-<style>
-  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #2B2622; background: #F4ECDC; }
-  h1, h2 { line-height: 1.2; }
-  h2 { margin-top: 32px; }
-  a { color: #8F5614; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Longdog</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0a08;
+      --surface: #17130e;
+      --border: rgba(245, 166, 35, 0.1);
+      --accent: #f5a623;
+      --accent-glow: rgba(245, 166, 35, 0.18);
+      --secondary: #ff9f1c;
+      --text: #ede7df;
+      --muted: #9e9184;
+      --heading-font: 'DM Serif Display', serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── Hero ── */
+    header {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .logo-name {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(38px, 6vw, 58px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .meta span {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toc h2 {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px 24px;
+    }
+
+    .toc ol li {
+      counter-increment: toc;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .toc ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent);
+    }
+
+    .toc ol li a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    /* ── Highlight Box ── */
+    .highlight {
+      background: linear-gradient(135deg, rgba(245, 166, 35, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin-bottom: 56px;
+      font-size: 17px;
+      color: #ede7df;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: var(--heading-font);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .section-num {
+      font-family: monospace;
+      font-size: 14px;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    section p {
+      margin-bottom: 18px;
+      color: #b8aea2;
+    }
+
+    section ul,
+    section ol {
+      margin: 0 0 24px 24px;
+      color: #b8aea2;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    section strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    section a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    section a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Cards ── */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+      color: #b8aea2;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px 80px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .toc ol {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<h1>Longdog Privacy Policy</h1>
-<p>Last updated: 10 October 2026</p>
 
-<p>Longdog is a daily number path puzzle game published by o9tech. This page explains what information the app handles, why, and what choices you have. It is written to be read, not skimmed, so it is short.</p>
+  <header>
+    <div class="logo-mark">
+      <div class="logo-icon">
+        <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 62 C22 45 32 40 42 42 H72 C82 42 88 48 88 56 C88 64 80 66 74 66 H34 C26 66 22 65 22 62 Z" fill="#f5a623" />
+          <circle cx="28" cy="48" r="3.5" fill="#17130e" />
+          <path d="M24 44 C20 40 16 50 20 54 Z" fill="#d97706" />
+          <path d="M86 52 C92 46 92 40 90 38" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" />
+          <circle cx="46" cy="54" r="3" fill="#fff" opacity="0.9" />
+          <line x1="49" y1="54" x2="57" y2="54" stroke="#fff" stroke-width="2" stroke-dasharray="2 2" opacity="0.8" />
+          <circle cx="60" cy="54" r="3" fill="#fff" opacity="0.9" />
+          <line x1="30" y1="66" x2="30" y2="76" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" />
+          <line x1="40" y1="66" x2="40" y2="76" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" />
+          <line x1="68" y1="66" x2="68" y2="76" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" />
+          <line x1="78" y1="66" x2="78" y2="76" stroke="#f5a623" stroke-width="4.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <span class="logo-name">Longdog</span>
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">
+      <span>By o9tech</span>
+      <span>Effective Date: 10 October 2026</span>
+      <span>App: Longdog</span>
+    </p>
+  </header>
 
-<h2>Who we are and how to reach us</h2>
-<p>o9tech publishes Longdog on the Apple App Store and Google Play. For any question about this policy or the app, use the contact form at <a href="https://o9tech.com/#contact">o9tech.com/#contact</a>. A person reads every message.</p>
+  <main>
 
-<h2>No account, no server</h2>
-<p>Longdog has no sign-in and no account. Your puzzles, streak, settings and purchases are stored only on your device. We do not run any server that receives your game data. If you delete the app, that data is gone.</p>
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#s1">Who We Are &amp; Contact</a></li>
+        <li><a href="#s2">No Account, No Server</a></li>
+        <li><a href="#s3">Advertising</a></li>
+        <li><a href="#s4">Choices in Europe &amp; UK</a></li>
+        <li><a href="#s5">California &amp; US Choices</a></li>
+        <li><a href="#s6">In-App Purchases</a></li>
+        <li><a href="#s7">Children's Privacy</a></li>
+        <li><a href="#s8">Reporting an Ad</a></li>
+        <li><a href="#s9">Changes to This Policy</a></li>
+        <li><a href="#s10">Contact Details</a></li>
+      </ol>
+    </div>
 
-<h2>Advertising</h2>
-<p>The free version of Longdog shows ads served by Google AdMob. To serve and measure ads and to prevent fraud, the AdMob software inside the app collects:</p>
-<ul>
-  <li>your device's advertising identifier and other device identifiers,</li>
-  <li>your IP address, which gives an approximate location,</li>
-  <li>how you interact with ads and the app (product interactions),</li>
-  <li>crash and performance diagnostics.</li>
-</ul>
-<p>This data is shared with Google and is encrypted in transit. Google describes its own handling of this data in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and its <a href="https://policies.google.com/technologies/partner-sites">explanation of how it uses information from apps that use its services</a>. We do not receive this data ourselves.</p>
-<p>On iOS, Longdog asks for permission to track you across other companies' apps and websites. If you say no, ads still appear but are not personalized using your identifier, and the game works exactly the same.</p>
-<p>If you buy Remove Ads on iOS, or use a temporary ad free reward on Android, the app stops requesting ads for that period.</p>
+    <div class="highlight">
+      Longdog is a daily number path puzzle game published by o9tech. We built Longdog to be simple and privacy friendly: no account, no sign-in, and all your puzzle progress and streaks are stored only on your own device.
+    </div>
 
-<h2>Your choices in Europe and the UK</h2>
-<p>If you are in the European Economic Area, the United Kingdom or Switzerland, the app asks for your consent before requesting any ad. You can change your choice at any time from Settings, Manage consent. Declining personalized ads never blocks any part of the game.</p>
+    <section id="s1">
+      <h2><span class="section-num">01</span> Who we are and how to reach us</h2>
+      <p>o9tech publishes Longdog on the Apple App Store and Google Play. For any question about this policy or the app, use the contact form at <a href="https://o9tech.com/#contact">o9tech.com/#contact</a> or email us at <a href="mailto:support@o9tech.com">support@o9tech.com</a>. A person reads every message.</p>
+    </section>
 
-<h2>Your choices in California and other US states</h2>
-<p>We do not sell your personal information. Where a state privacy law gives you the right to opt out of the sharing of personal information for targeted advertising, you can exercise it through your device settings (on iOS, Tracking; on Android, Ads) and the app's consent settings. Google AdMob supports restricted data processing for these requests.</p>
+    <section id="s2">
+      <h2><span class="section-num">02</span> No account, no server</h2>
+      <p>Longdog has no sign-in and no account. Your puzzles, streak, settings and purchases are stored only on your device. We do not run any server that receives your game data. If you delete the app, that data is gone.</p>
+    </section>
 
-<h2>Purchases</h2>
-<p>In-app purchases are available on iOS only and are processed by Apple. We never see your payment details. Your purchases are tied to your Apple ID and can be restored from Settings, Restore Purchases.</p>
+    <section id="s3">
+      <h2><span class="section-num">03</span> Advertising</h2>
+      <p>The free version of Longdog shows ads served by Google AdMob. To serve and measure ads and to prevent fraud, the AdMob software inside the app collects:</p>
+      <ul>
+        <li>Your device's advertising identifier and other device identifiers;</li>
+        <li>Your IP address, which gives an approximate location;</li>
+        <li>How you interact with ads and the app (product interactions);</li>
+        <li>Crash and performance diagnostics.</li>
+      </ul>
+      <p>This data is shared with Google and is encrypted in transit. Google describes its own handling of this data in the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> and its <a href="https://policies.google.com/technologies/partner-sites" target="_blank">explanation of how it uses information from apps that use its services</a>. We do not receive this data ourselves.</p>
+      <p>On iOS, Longdog asks for permission to track you across other companies' apps and websites. If you say no, ads still appear but are not personalized using your identifier, and the game works exactly the same.</p>
+      <p>If you buy Remove Ads on iOS, or use a temporary ad free reward on Android, the app stops requesting ads for that period.</p>
+    </section>
 
-<h2>Children</h2>
-<p>Longdog is rated 13+ and is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has used the app in a way that concerns you, contact us and we will help.</p>
+    <section id="s4">
+      <h2><span class="section-num">04</span> Your choices in Europe and the UK</h2>
+      <p>If you are in the European Economic Area, the United Kingdom or Switzerland, the app asks for your consent before requesting any ad. You can change your choice at any time from <strong>Settings &rarr; Manage consent</strong>. Declining personalized ads never blocks any part of the game.</p>
+    </section>
 
-<h2>Reporting an ad</h2>
-<p>If an ad in Longdog seems inappropriate, tap Settings, Report an ad, or contact us with a screenshot and the approximate time. We will pass it to Google and block the category where we can.</p>
+    <section id="s5">
+      <h2><span class="section-num">05</span> Your choices in California and other US states</h2>
+      <p>We do not sell your personal information. Where a state privacy law gives you the right to opt out of the sharing of personal information for targeted advertising, you can exercise it through your device settings (on iOS, Tracking; on Android, Ads) and the app's consent settings. Google AdMob supports restricted data processing for these requests.</p>
+    </section>
 
-<h2>Changes</h2>
-<p>If this policy changes, the date at the top changes and the new version is published at this address before it takes effect.</p>
+    <section id="s6">
+      <h2><span class="section-num">06</span> Purchases</h2>
+      <p>In-app purchases are available on iOS only and are processed by Apple. We never see your payment details. Your purchases are tied to your Apple ID and can be restored from <strong>Settings &rarr; Restore Purchases</strong>.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">07</span> Children's privacy</h2>
+      <p>Longdog is rated 13+ and is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has used the app in a way that concerns you, contact us and we will help.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">08</span> Reporting an ad</h2>
+      <p>If an ad in Longdog seems inappropriate, tap <strong>Settings &rarr; Report an ad</strong>, or contact us with a screenshot and the approximate time. We will pass it to Google and block the category where we can.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">09</span> Changes to this policy</h2>
+      <p>If this policy changes, the date at the top changes and the new version is published at this address before it takes effect.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span> Contact us</h2>
+      <p>If you have any questions about this Privacy Policy or how the Game handles information, you can reach us at:</p>
+      <div class="contact-card">
+        <p><strong>o9tech</strong></p>
+        <p>Contact Form: <a href="https://o9tech.com/#contact" target="_blank">o9tech.com/#contact</a></p>
+        <p>Email: <a href="mailto:support@o9tech.com">support@o9tech.com</a></p>
+        <p>App: <strong>Longdog — Number Path Puzzle</strong></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 o9tech. All rights reserved.</p>
+  </footer>
+
 </body>
+
 </html>
