@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Longdog: Number Path Puzzle</title>
+<meta name="description" content="A daily number path puzzle. Connect the numbers in order, fill every square and stretch the dog.">
+<!-- Link preview in WhatsApp, Messages, Telegram, X. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="o9tech">
+<meta property="og:url" content="https://o9tech.com/longdog/get/">
+<meta property="og:title" content="Longdog: Number Path Puzzle">
+<meta property="og:description" content="Three new puzzles every day. Connect the numbers in order, fill every square and stretch the dog.">
+<meta property="og:image" content="https://o9tech.com/longdog/get/preview.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Safari shows Apple's own banner with Open or Get. -->
+<meta name="apple-itunes-app" content="app-id=6820971768">
+<link rel="icon" href="icon.png">
+<script>
+  // The link the game shares. Phones go straight to their own store;
+  // everything else sees the page below with both stores.
+  (function () {
+    var appStore = 'https://apps.apple.com/app/id6820971768';
+    var play = 'https://play.google.com/store/apps/details?id=com.jst.longdog' +
+      '&referrer=utm_source%3Dlongdog_share%26utm_medium%3Dshare';
+    var ua = navigator.userAgent || '';
+    // iPadOS reports a Mac user agent, so a Mac with touch is an iPad.
+    var ios = /iPhone|iPad|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    if (ios) location.replace(appStore);
+    else if (android) location.replace(play);
+  })();
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 32px 16px; background: #F4ECDC; color: #2B2622;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { width: 100%; max-width: 420px; text-align: center; }
+  img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 8px 24px rgba(90, 40, 0, 0.18); }
+  h1 { margin: 20px 0 8px; font-size: 34px; }
+  p { margin: 0 0 28px; font-size: 17px; line-height: 1.5; }
+  a.store {
+    display: block; margin: 0 0 12px; padding: 15px 20px; border-radius: 999px;
+    background: #2B2622; color: #FFF7E8; font-size: 17px; font-weight: 700; text-decoration: none;
+  }
+  a.store:hover { background: #3A2F26; }
+  small { display: block; margin-top: 20px; font-size: 14px; color: #6B5D50; }
+  small a { color: inherit; }
+</style>
+</head>
+<body>
+  <main>
+    <img src="icon.png" alt="Longdog app icon">
+    <h1>Longdog</h1>
+    <p>A daily number path puzzle. Connect the numbers in order, fill every square and stretch the dog.</p>
+    <a class="store" href="https://apps.apple.com/app/id6820971768">Get it on the App Store</a>
+    <a class="store" href="https://play.google.com/store/apps/details?id=com.jst.longdog&amp;referrer=utm_source%3Dlongdog_share%26utm_medium%3Dshare">Get it on Google Play</a>
+    <small>Made by <a href="https://o9tech.com/">o9tech</a></small>
+  </main>
+</body>
+</html>
