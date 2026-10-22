@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jst.longdog",
+      "sha256_cert_fingerprints": [
+        "E5:2C:8A:F0:E2:1B:9D:D2:AD:32:44:30:7D:A1:6B:75:2E:10:8B:23:5C:8C:E9:A2:BB:BB:1D:23:90:47:7A:EC",
+        "D9:8B:C6:0E:B9:41:97:48:24:62:22:70:86:DA:D1:89:30:4C:33:C7:17:EC:82:08:12:9B:64:DF:CF:B6:D6:99"
+      ]
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["AM8P283P5J.com.o9tech.longdog"],
+        "components": [
+          { "/": "/longdog/get", "comment": "Longdog share link" },
+          { "/": "/longdog/get/*", "comment": "Longdog share link" }
+        ]
+      }
+    ]
+  }
+}
