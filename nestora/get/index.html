@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nestora — AI Home &amp; Room Design</title>
+<meta name="description" content="Redesign any space from one photo with AI. Interiors, exteriors, gardens and walls — 11 designer styles. Free on iPhone & Android.">
+<!-- Link preview in TikTok, WhatsApp, Messages, Telegram, X. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nestora">
+<meta property="og:url" content="https://o9tech.com/nestora/get/">
+<meta property="og:title" content="Nestora — Redesign any space from one photo">
+<meta property="og:description" content="AI interior, exterior, garden and wall design. 11 designer styles, 3 free designs, no sign-up.">
+<meta property="og:image" content="https://o9tech.com/nestora/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nestora — Redesign any space from one photo">
+<meta name="twitter:description" content="AI interior, exterior, garden and wall design. 11 designer styles, 3 free designs, no sign-up.">
+<meta name="twitter:image" content="https://o9tech.com/nestora/assets/og-image.jpg">
+<!-- Safari shows Apple's own banner with Open or Get. -->
+<meta name="apple-itunes-app" content="app-id=6809705305">
+<link rel="icon" href="/nestora/assets/icon-180.png">
+<link rel="apple-touch-icon" href="/nestora/assets/icon-180.png">
+<meta name="theme-color" content="#080a0f">
+<script>
+  // The link Nestora shares. Phones go straight to their own store;
+  // everything else sees the page below with both stores.
+  (function () {
+    var appStore = 'https://apps.apple.com/us/app/nestora-ai-home-room-design/id6809705305';
+    var play = 'https://play.google.com/store/apps/details?id=com.nestora.app' +
+      '&referrer=utm_source%3Dnestora_smartlink%26utm_medium%3Dsocial';
+    var ua = navigator.userAgent || '';
+    // iPadOS reports a Mac user agent, so a Mac with touch is an iPad.
+    var ios = /iPhone|iPad|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    if (ios) location.replace(appStore);
+    else if (android) location.replace(play);
+  })();
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 32px 16px; background: #080a0f; color: #f3ede3;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { width: 100%; max-width: 420px; text-align: center; }
+  img.icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 8px 28px rgba(226, 177, 112, 0.22); }
+  h1 { margin: 20px 0 8px; font-size: 34px; color: #fff; }
+  p { margin: 0 0 28px; font-size: 17px; line-height: 1.5; color: #c9c0b2; }
+  a.store {
+    display: block; margin: 0 0 12px; padding: 15px 20px; border-radius: 999px;
+    background: #e2b170; color: #15100a; font-size: 17px; font-weight: 700; text-decoration: none;
+  }
+  a.store.alt { background: #161b28; color: #f3ede3; border: 1px solid rgba(226, 177, 112, 0.25); }
+  a.store:hover { filter: brightness(1.08); }
+  small { display: block; margin-top: 20px; font-size: 14px; color: #7d7466; }
+  small a { color: inherit; }
+</style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="/nestora/assets/icon-180.png" alt="Nestora app icon">
+    <h1>Nestora</h1>
+    <p>Redesign any space from one photo. Interiors, exteriors, gardens and walls — 11 designer styles, 3 free designs, no sign-up.</p>
+    <a class="store" href="https://apps.apple.com/us/app/nestora-ai-home-room-design/id6809705305">Get it on the App Store</a>
+    <a class="store alt" href="https://play.google.com/store/apps/details?id=com.nestora.app&amp;referrer=utm_source%3Dnestora_smartlink%26utm_medium%3Dsocial">Get it on Google Play</a>
+    <small>Made by <a href="https://o9tech.com/">o9tech</a> · <a href="https://o9tech.com/nestora/">About Nestora</a></small>
+  </main>
+</body>
+</html>
