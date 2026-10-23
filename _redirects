@@ -1,0 +1,7 @@
+# Old template pages that no longer exist
+/blog.html               /               301
+/blog-details.html       /               301
+/starter-page.html       /               301
+/portfolio-details.html  /#work          301
+/service-details.html    /#services      301
+/test-server.html        /               301

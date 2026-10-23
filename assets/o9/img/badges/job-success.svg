@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 56" role="img" aria-label="100% Job Success Score on Upwork">
+  <rect x=".5" y=".5" width="209" height="55" rx="15.5" fill="#15151a" stroke="rgba(255,255,255,.14)"/>
+  <circle cx="28" cy="28" r="14" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4"/>
+  <circle cx="28" cy="28" r="14" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+  <path d="M22.5 28.5l3.6 3.6 7.4-7.6" fill="none" stroke="#f4f4f5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="52" y="25" fill="#f4f4f5" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600" letter-spacing="-.2">100% Job Success</text>
+  <text x="52" y="41" fill="#a1a1aa" font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing=".6">UPWORK SCORE</text>
+</svg>

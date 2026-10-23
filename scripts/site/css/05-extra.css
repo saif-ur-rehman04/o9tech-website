@@ -1,0 +1,37 @@
+/* Tech emblems */
+.emblems { display: flex; flex-wrap: wrap; gap: 8px; }
+.emblem { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: var(--r-pill); background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); font-family: var(--font-mono); font-size: .75rem; color: var(--text-inv); }
+.emblem svg { width: 28px; height: 28px; }
+.band-light .emblem, .band-light-2 .emblem { background: #fff; border-color: var(--line); color: var(--text); }
+.bento-card:not(.is-dark) .emblem { background: #fff; border-color: var(--line); color: var(--text); }
+.bento-card.is-dark .emblem { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); color: var(--text-inv); }
+
+/* Light surfaces inside dark bands */
+.form-card .muted { color: var(--text-muted); }
+
+/* Figures carry a default 40px side margin in browsers */
+figure { margin: 0; }
+.review-card { margin: 0 0 16px; }
+
+/* Comfortable touch targets */
+.brand { min-height: 44px; }
+.contact-list a { display: inline-block; padding-block: 6px; }
+.footer-contact a, .footer ul a { display: inline-block; padding-block: 4px; }
+@media (max-width: 560px) { .stage-chip.c1 { left: 3%; top: 2%; } }
+
+/* Marquee clone: part of the loop, hidden when motion is reduced */
+.marquee-clone { display: contents; }
+@media (prefers-reduced-motion: reduce) { .marquee-clone { display: none; } }
+
+/* View transitions for the work filter */
+::view-transition-group(*) { animation-duration: .45s; animation-timing-function: var(--ease-out); }
+::view-transition-old(*), ::view-transition-new(*) { animation-duration: .3s; }
+
+/* Small screens: keep everything inside the viewport */
+@media (max-width: 420px) {
+  .hero-proof .badge-svg { height: 40px; }
+  .btn { padding-inline: 18px; }
+  .case-body { padding: 18px; }
+  .spotlight { padding: 22px; }
+  .spotlight::before { font-size: 9rem; }
+}
