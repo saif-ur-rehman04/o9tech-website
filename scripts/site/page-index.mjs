@@ -210,7 +210,7 @@ ${nav()}
         <span class="eyebrow" data-reveal>Client reviews</span>
         <h2 id="reviews-title" class="h-section" data-reveal>Clients say it better than we can.</h2>
         <div class="review-badges" data-reveal>${badges.verified}${badges.topRated}</div>
-        <p class="review-note" data-reveal>Every review here comes from a real Upwork contract delivered by our co-founder, Saif ur Rehman. We changed names and pronouns to refer to the o9Tech team, shown in <span class="ed">[brackets]</span>. Everything else is word for word. <a href="${site.upwork}" target="_blank" rel="noopener">See the profile on Upwork</a>.</p>
+        <p class="review-note" data-reveal>Every review here comes from a real Upwork contract delivered by our co-founder, Saif ur Rehman. We changed names and pronouns so they refer to the o9Tech team. Everything else is word for word. <a href="${site.upwork}" target="_blank" rel="noopener">See the profile on Upwork</a>.</p>
       </div>
       <div class="spotlight" data-spotlight data-reveal role="region" aria-roledescription="carousel" aria-label="Featured client reviews" tabindex="0">
         <div class="spotlight-track" aria-live="off">

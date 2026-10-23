@@ -406,7 +406,8 @@ export const projects = [
 ];
 
 // Real Upwork feedback from contracts delivered by co-founder Saif ur Rehman.
-// Words in [brackets] were changed to refer to the team; the rest is verbatim.
+// Words in [brackets] were changed to refer to the team (shown without brackets on the
+// page, disclosed in the note above the reviews); the rest is verbatim.
 export const reviews = [
   { project: 'iOS & Android discounts and bill payment app', date: 'May 2026', tags: ['ios', 'android'], text: '[o9Tech] did a great job for our app. [They were] responsive, cooperative, understood the requirements well and delivered good quality work with no major issues. Our team is happy with what [they] delivered so thanks for your hard work! We look forward to continuing work with [them].' },
   { project: 'React web app with Google Cloud, Firebase and AI', date: 'Nov 2025', tags: ['web', 'ai'], text: '[o9Tech] did excellent work and demonstrated strong expertise in AI along with solid backend knowledge. [Their] experience with Node.js ensured smooth API handling and reliable data management. Communication was clear, and [they] delivered beyond expectations. I would gladly work with [them] again.' },

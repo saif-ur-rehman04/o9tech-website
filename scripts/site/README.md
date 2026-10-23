@@ -28,4 +28,4 @@ Generated files are committed, so Netlify deploys the repo root as-is with no bu
 
 ## Reviews
 
-Reviews are real Upwork feedback. Words in `[brackets]` were changed to refer to the team and render highlighted on the page; keep everything else word for word.
+Reviews are real Upwork feedback. In `data.mjs`, words in `[brackets]` mark where a name or pronoun was changed to refer to the team. The page shows them without brackets, and the note above the reviews discloses the change, so keep everything else word for word and keep that note.

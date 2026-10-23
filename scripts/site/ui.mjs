@@ -253,5 +253,6 @@ export function footer() {
 </html>`;
 }
 
-// Turns "[o9Tech]" edits into marked spans so readers can see what changed.
-export const reviewHtml = (text) => esc(text).replace(/\[([^\]]+)\]/g, '<span class="ed">[$1]</span>');
+// Brackets in data.mjs record which words we changed; the page shows the text without them
+// and the note above the reviews discloses the change.
+export const reviewHtml = (text) => esc(text).replace(/\[([^\]]+)\]/g, '$1');

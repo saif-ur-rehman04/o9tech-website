@@ -178,7 +178,6 @@
 .review-card[hidden] { display: none; }
 .review-card blockquote { margin: 0; color: var(--text-inv); font-size: .9375rem; line-height: 1.6; }
 .review-card .review-meta { font-size: .8125rem; }
-.ed { color: var(--brand); font-weight: 600; }
 .reviews-more { display: flex; justify-content: center; margin-top: 24px; }
 
 /* Process */
