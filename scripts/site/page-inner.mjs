@@ -151,7 +151,7 @@ ${footer()}`;
 }
 
 export function notFoundPage() {
-  return `${head({ title: 'Page not found | o9Tech', description: 'This page does not exist. Head back to the o9Tech home page.', path: '404.html', base: true })}
+  return `${head({ title: 'Page not found | o9Tech', description: 'This page does not exist. Head back to the o9Tech home page.', path: '404.html' })}
 <body>
 ${nav()}
 <main id="main">

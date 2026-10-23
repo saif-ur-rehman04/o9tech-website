@@ -1,3 +1,11 @@
+# Hue Pour short link. huepour.o9tech.com must also be added as a domain alias in Netlify.
+https://huepour.o9tech.com/*  https://o9tech.com/hue-pour  301!
+http://huepour.o9tech.com/*   https://o9tech.com/hue-pour  301!
+
+# Hue Pour pages also answer with a trailing slash (a rewrite, not a redirect, so no loop)
+/hue-pour/               /hue-pour.html             200
+/privacy/hue-pour/       /privacy/hue-pour.html     200
+
 # Old template pages that no longer exist
 /blog.html               /               301
 /blog-details.html       /               301

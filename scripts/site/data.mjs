@@ -432,6 +432,25 @@ export const reviews = [
 
 export const upworkStats = { jss: '100%', badge: 'Top Rated', jobs: 33, hours: 506 };
 
+// Hue Pour, our paint mixing puzzle game. Facts come from the Hue Pour ASO brief only.
+// Flip HUE_POUR_LIVE to true on launch day, then rebuild: the greyed "Coming soon"
+// badges become real links to the two store listings below.
+export const HUE_POUR_LIVE = false;
+export const huePour = {
+  appStore: 'https://apps.apple.com/app/id6820972811',
+  googlePlay: 'https://play.google.com/store/apps/details?id=com.jst.hue_pour',
+  icon: 'assets/img/hue-pour/icon_512.png',
+  feature: 'assets/img/hue-pour/feature_1024x500.png',
+  accent: '#3355C8',
+  line: 'A paint mixing puzzle where blue and yellow make green, like real paint.',
+  shareLine: "Today's swatch is waiting in the app. Mix it before midnight to keep your streak.",
+  points: [
+    { icon: 'drop', title: 'Pigments mix like real paint', text: 'Mixing uses a Kubelka-Munk pigment model, so blue and yellow make green and red and white make pink.' },
+    { icon: 'target', title: 'Scored on true color distance', text: 'Your match is scored with CIEDE2000, the measure color scientists use for how different two colors look to a person.' },
+    { icon: 'calendar', title: 'One Daily Palette swatch a day', text: 'Every day there is one swatch to mix, the same for everyone. Match it to keep your streak going.' },
+  ],
+};
+
 export const services = [
   {
     slug: 'mobile', page: 'service-mobile.html', title: 'Native iOS & Android', short: 'Native iOS & Android',
