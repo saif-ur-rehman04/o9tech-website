@@ -2,10 +2,33 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["AM8P283P5J.com.o9tech.longdog"],
+        "appIDs": [
+          "AM8P283P5J.com.o9tech.longdog"
+        ],
         "components": [
-          { "/": "/longdog/get", "comment": "Longdog share link" },
-          { "/": "/longdog/get/*", "comment": "Longdog share link" }
+          {
+            "/": "/longdog/get",
+            "comment": "Longdog share link"
+          },
+          {
+            "/": "/longdog/get/*",
+            "comment": "Longdog share link"
+          }
+        ]
+      },
+      {
+        "appIDs": [
+          "AM8P283P5J.com.o9tech.huePour"
+        ],
+        "components": [
+          {
+            "/": "/hue-pour/get",
+            "comment": "Hue Pour share link"
+          },
+          {
+            "/": "/hue-pour/get/*",
+            "comment": "Hue Pour share link"
+          }
         ]
       }
     ]
