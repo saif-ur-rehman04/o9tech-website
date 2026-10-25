@@ -26,5 +26,19 @@
         "8D:2C:30:B1:73:0E:AB:91:88:B6:EC:38:C5:BA:7B:F7:A1:FC:22:1E:93:B0:17:2D:5D:00:B1:B5:06:7B:C5:F4"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jst.pigeon_post",
+      "sha256_cert_fingerprints": [
+        "8D:0A:1B:46:15:FD:F5:F4:46:96:F9:9C:16:FA:6A:23:8B:35:B4:11:21:D9:7A:69:5A:4C:D2:12:CB:4C:68:8C",
+        "DE:7E:BE:44:D8:7F:D7:4A:17:B6:E0:3E:F4:D2:E0:35:27:09:11:FC:0B:77:B9:77:9F:15:FD:FD:DD:23:C9:67",
+        "88:FC:8C:6B:9A:AD:FD:D1:1C:C7:41:95:C8:61:20:82:0E:C5:16:3A:62:D5:CF:79:F2:0C:5D:BC:DD:CA:77:3C"
+      ]
+    }
   }
 ]

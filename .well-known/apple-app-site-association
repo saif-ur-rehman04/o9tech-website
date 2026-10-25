@@ -30,6 +30,21 @@
             "comment": "Hue Pour share link"
           }
         ]
+      },
+      {
+        "appIDs": [
+          "AM8P283P5J.com.o9tech.pigeonPost"
+        ],
+        "components": [
+          {
+            "/": "/pigeon-post/get",
+            "comment": "Pigeon Post share link"
+          },
+          {
+            "/": "/pigeon-post/get/*",
+            "comment": "Pigeon Post share link"
+          }
+        ]
       }
     ]
   }
