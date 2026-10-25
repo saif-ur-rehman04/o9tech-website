@@ -5,12 +5,13 @@ import { site, huePour, HUE_POUR_LIVE } from './data.mjs';
 import { ROOT, esc, img, icons, head, nav, footer } from './ui.mjs';
 
 // Official store badges, used unmodified. Greyed out with no link until launch.
-function storeBadges() {
+// Shared by every game page; the badge files live in the Hue Pour folder.
+export function storeBadges(game = huePour, live = HUE_POUR_LIVE) {
   const badges = [
-    { href: huePour.appStore, store: 'App Store', html: '<img src="assets/img/hue-pour/app-store-badge.svg" width="144" height="48" alt="Download on the App Store">' },
-    { href: huePour.googlePlay, store: 'Google Play', html: '<img src="assets/img/hue-pour/google-play-badge.png" width="145" height="56" alt="Get it on Google Play">' },
+    { href: game.appStore, store: 'App Store', html: '<img src="assets/img/hue-pour/app-store-badge.svg" width="144" height="48" alt="Download on the App Store">' },
+    { href: game.googlePlay, store: 'Google Play', html: '<img src="assets/img/hue-pour/google-play-badge.png" width="145" height="56" alt="Get it on Google Play">' },
   ];
-  if (HUE_POUR_LIVE) {
+  if (live) {
     return `<div class="store-badges">${badges.map((b) => `<a class="store-badge" href="${b.href}" target="_blank" rel="noopener">${b.html}</a>`).join('')}</div>`;
   }
   return `<div class="store-badges is-soon">${badges.map((b) => `<span class="store-badge" aria-label="${b.store}, coming soon">${b.html}<span class="soon-label" aria-hidden="true">Coming soon</span></span>`).join('')}</div>`;
@@ -68,8 +69,9 @@ ${footer()}`;
 }
 
 // The policy text is copied word for word from the game repo (scripts/site/content).
-export const policySource = () => readFileSync(join(ROOT, 'scripts/site/content/hue-pour-privacy.html'), 'utf8');
-export const policyMain = (html) => html.match(/<main>([\s\S]*?)<\/main>/)[1].trim();
+export const policySource = (file = 'hue-pour-privacy.html') => readFileSync(join(ROOT, 'scripts/site/content', file), 'utf8');
+// Some policies wrap their text in <main>, others put it straight in <body>.
+export const policyMain = (html) => (html.match(/<main>([\s\S]*?)<\/main>/) || html.match(/<body>([\s\S]*?)<\/body>/))[1].trim();
 
 export function huePrivacyPage() {
   const src = policySource();

@@ -8,6 +8,7 @@ import { ROOT, badges } from './ui.mjs';
 import { indexPage } from './page-index.mjs';
 import { casePage, servicePage, notFoundPage } from './page-inner.mjs';
 import { huePourPage, huePrivacyPage, policySource, policyMain } from './page-hue.mjs';
+import { pigeonPostPage, pigeonPrivacyPage, pigeonPolicySource } from './page-pigeon.mjs';
 
 const here = dirname(new URL(import.meta.url).pathname);
 // Cloudflare Pages serves page.html at /page and redirects any URL ending in .html,
@@ -38,6 +39,8 @@ services.forEach((s) => written.push(out(s.page, servicePage(s))));
 written.push(out('404.html', absolutize(notFoundPage())));
 written.push(out('hue-pour.html', absolutize(huePourPage())));
 written.push(out('privacy/hue-pour.html', absolutize(huePrivacyPage())));
+written.push(out('pigeon-post.html', absolutize(pigeonPostPage())));
+written.push(out('privacy/pigeon-post.html', absolutize(pigeonPrivacyPage())));
 
 // Standalone copies of the badges for decks, proposals and profiles
 for (const [name, markup] of Object.entries(badges)) {
@@ -47,7 +50,7 @@ for (const [name, markup] of Object.entries(badges)) {
 
 // Sitemap, robots, redirects
 const today = new Date().toISOString().slice(0, 10);
-const urls = ['', 'hue-pour', 'privacy/hue-pour', ...[...services, ...projects].map((x) => x.page.replace(/\.html$/, ''))];
+const urls = ['', 'hue-pour', 'privacy/hue-pour', 'pigeon-post', 'privacy/pigeon-post', ...[...services, ...projects].map((x) => x.page.replace(/\.html$/, ''))];
 out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${site.url}/${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
@@ -65,6 +68,10 @@ out('_redirects', `# Cloudflare Pages reads this file. It can only match paths, 
 /portfolio-details.html  /#work          301
 /service-details.html    /#services      301
 /test-server.html        /               301
+
+# The first Pigeon Post build linked here. Pages applies these rules before files,
+# so Netlify's "301!" is not needed (and Pages would skip a line that has it).
+/pigeon-post/privacy-policy.html   /privacy/pigeon-post   301
 `);
 
 console.log(`Built ${written.length} files (${projects.length} case studies, ${services.length} services).`);
@@ -92,14 +99,16 @@ if (process.argv.includes('--check')) {
     }
     const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
     if (text.includes('—')) { console.error(`  ${page}: contains an em dash`); problems++; }
-    if (/hue-pour/.test(page) && text.includes('–')) { console.error(`  ${page}: contains an en dash`); problems++; }
+    if (/hue-pour|pigeon-post/.test(page) && text.includes('–')) { console.error(`  ${page}: contains an en dash`); problems++; }
     if (/lorem|ipsum|Cras fermentum/i.test(text)) { console.error(`  ${page}: contains placeholder text`); problems++; }
   }
-  // The Hue Pour policy must match the source file word for word
+  // Each game policy must match its source file word for word
   const words = (h) => h.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
-  const live = readFileSync(join(ROOT, 'privacy/hue-pour.html'), 'utf8').match(/<article class="policy">([\s\S]*?)<\/article>/)[1];
-  if (words(live) !== words(policyMain(policySource()))) { console.error('  privacy/hue-pour.html: policy text differs from the source'); problems++; }
-  else console.log('Hue Pour policy text matches the source word for word.');
+  for (const [name, page, source] of [['Hue Pour', 'privacy/hue-pour.html', policySource()], ['Pigeon Post', 'privacy/pigeon-post.html', pigeonPolicySource()]]) {
+    const live = readFileSync(join(ROOT, page), 'utf8').match(/<article class="policy">([\s\S]*?)<\/article>/)[1];
+    if (words(live) !== words(policyMain(source))) { console.error(`  ${page}: policy text differs from the source`); problems++; }
+    else console.log(`${name} policy text matches the source word for word.`);
+  }
   if (problems) { console.error(`Check failed with ${problems} problem(s).`); process.exit(1); }
   console.log(`Checked ${pages.length} pages: all local links, images and anchors resolve, no em dashes or placeholder text.`);
 }

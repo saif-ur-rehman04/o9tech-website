@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pigeon Post: Idle Travel Pet</title>
+<meta name="description" content="A cozy idle pet game. Your pigeons fly to real cities while you're away and come home with postcards.">
+<!-- Link preview in WhatsApp, Messages, Telegram, X. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="o9tech">
+<meta property="og:url" content="https://o9tech.com/pigeon-post/get/">
+<meta property="og:title" content="Pigeon Post: Idle Travel Pet">
+<meta property="og:description" content="Send your pigeons to twelve cities. They fly on real time and come home with postcards.">
+<meta property="og:image" content="https://o9tech.com/pigeon-post/get/preview.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Safari shows Apple's own banner with Open or Get. -->
+<meta name="apple-itunes-app" content="app-id=6820972418">
+<link rel="icon" href="icon.png">
+<script>
+  // The link the game shares. Phones go straight to their own store;
+  // everything else sees the page below with both stores. When the game
+  // is installed, the phone opens it before this page loads (Universal
+  // Link on iOS, App Link on Android).
+  (function () {
+    var appStore = 'https://apps.apple.com/app/id6820972418';
+    var play = 'https://play.google.com/store/apps/details?id=com.jst.pigeon_post' +
+      '&referrer=utm_source%3Dpigeon_post_share%26utm_medium%3Dshare';
+    var ua = navigator.userAgent || '';
+    // iPadOS reports a Mac user agent, so a Mac with touch is an iPad.
+    var ios = /iPhone|iPad|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    if (ios) location.replace(appStore);
+    else if (android) location.replace(play);
+  })();
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 32px 16px; background: #2B2F36; color: #F1E9D8;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { width: 100%; max-width: 420px; text-align: center; }
+  img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
+  h1 { margin: 20px 0 8px; font-size: 34px; font-family: Georgia, "Times New Roman", serif; }
+  p { margin: 0 0 28px; font-size: 17px; line-height: 1.5; color: #C9C4BA; }
+  a.store {
+    display: block; margin: 0 0 12px; padding: 15px 20px; border-radius: 999px;
+    background: #A44A28; color: #F1E9D8; font-size: 17px; font-weight: 700; text-decoration: none;
+  }
+  a.store:hover { background: #8E3F22; }
+  small { display: block; margin-top: 20px; font-size: 14px; color: #C9C4BA; }
+  small a { color: inherit; }
+</style>
+</head>
+<body>
+  <main>
+    <img src="icon.png" alt="Pigeon Post app icon">
+    <h1>Pigeon Post</h1>
+    <p>A cozy idle pet game. Your pigeons fly to real cities while you're away and come home with postcards.</p>
+    <a class="store" href="https://apps.apple.com/app/id6820972418">Get it on the App Store</a>
+    <a class="store" href="https://play.google.com/store/apps/details?id=com.jst.pigeon_post&amp;referrer=utm_source%3Dpigeon_post_share%26utm_medium%3Dshare">Get it on Google Play</a>
+    <small>Made by <a href="https://o9tech.com/">o9tech</a></small>
+  </main>
+</body>
+</html>

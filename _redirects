@@ -9,3 +9,7 @@
 /portfolio-details.html  /#work          301
 /service-details.html    /#services      301
 /test-server.html        /               301
+
+# The first Pigeon Post build linked here. Pages applies these rules before files,
+# so Netlify's "301!" is not needed (and Pages would skip a line that has it).
+/pigeon-post/privacy-policy.html   /privacy/pigeon-post   301

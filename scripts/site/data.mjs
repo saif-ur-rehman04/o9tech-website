@@ -451,6 +451,25 @@ export const huePour = {
   ],
 };
 
+// Pigeon Post, our idle pet game. Facts come from the Pigeon Post website prompt only.
+// Flip PIGEON_POST_LIVE to true on launch day, then rebuild: the greyed "Coming soon"
+// badges become real links to the two store listings below.
+export const PIGEON_POST_LIVE = false;
+export const pigeonPost = {
+  appStore: 'https://apps.apple.com/app/id6820972418',
+  googlePlay: 'https://play.google.com/store/apps/details?id=com.jst.pigeon_post',
+  icon: 'assets/img/pigeon-post/icon_512.png',
+  feature: 'assets/img/pigeon-post/feature_1024x500.png',
+  accent: '#B8552F',
+  line: 'Send pigeons to real cities. They come home with postcards.',
+  quietLine: 'No account. Your progress stays on your phone.',
+  points: [
+    { icon: 'clock', title: 'Real time flights', text: 'From 2 minutes to 8 hours. They land even with the app closed.' },
+    { icon: 'postcard', title: 'A postcard for every trip', text: 'Each one is drawn for that trip, with one dry line about what happened.' },
+    { icon: 'book', title: 'A stamp album', text: 'A common and a rare stamp for each of 12 cities.' },
+  ],
+};
+
 export const services = [
   {
     slug: 'mobile', page: 'service-mobile.html', title: 'Native iOS & Android', short: 'Native iOS & Android',

@@ -66,6 +66,8 @@ export const icons = {
   drop: svg('<path d="M12 3.5s6.5 7 6.5 11.5a6.5 6.5 0 01-13 0C5.5 10.5 12 3.5 12 3.5z"/><path d="M9 15.5a3 3 0 003 3"/>'),
   target: svg('<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>'),
   calendar: svg('<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.4"/>'),
+  clock: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  postcard: svg('<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M6 10.5h6M6 14h4"/><rect x="15" y="8" width="3.5" height="4" rx=".5"/>'),
   apple: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.4-.9-2.4-4.1zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>',
   playStore: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.2 2.6c-.3.3-.4.7-.4 1.2v16.4c0 .5.1.9.4 1.2l9.2-9.4zM14.6 13.2l2.9 2.9-11.4 6.5c-.4.2-.8.2-1.1.1zM14.6 10.8L5 1.3c.3-.1.7-.1 1.1.1l11.4 6.5zM18.9 8.7l2.6 1.5c.9.5.9 1.2 0 1.7l-2.6 1.5-3.1-3.2z"/></svg>',
 };
