@@ -18,7 +18,14 @@ The `--check` flag fails the build on broken local links, missing images or anch
 - `assets/o9/js/site.js`: behaviour (hand-written, not generated)
 - `design-system/o9tech/MASTER.md`: colors, type, spacing and motion rules
 
-Generated files are committed, so Netlify deploys the repo root as-is with no build step.
+Generated files are committed, so Cloudflare Pages deploys the repo root as-is with no build step.
+Pages serves `page.html` at `/page`, so the build writes clean links (`/#work`, `service-mobile`), never `.html` ones.
+
+To preview locally the way Pages serves the site (clean URLs, `_redirects`, `_headers`, 404 page):
+
+```bash
+node scripts/site/serve.mjs
+```
 
 ## Adding a project
 

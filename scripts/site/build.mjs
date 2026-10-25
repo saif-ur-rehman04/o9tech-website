@@ -10,10 +10,14 @@ import { casePage, servicePage, notFoundPage } from './page-inner.mjs';
 import { huePourPage, huePrivacyPage, policySource, policyMain } from './page-hue.mjs';
 
 const here = dirname(new URL(import.meta.url).pathname);
+// Cloudflare Pages serves page.html at /page and redirects any URL ending in .html,
+// so links, canonical tags and og:url point at clean URLs ("/", "/#work", "service-mobile").
+const cleanUrls = (html) => html.replace(/((?:href|content)="|"url":")((?:https:\/\/o9tech\.com)?\/?)([\w/-]+)\.html(?=[#"])/g,
+  (m, attr, base, name) => attr + ((base + name.replace(/(^|\/)index$/, '$1')) || '/'));
 const out = (rel, content) => {
   const file = join(ROOT, rel);
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, content);
+  writeFileSync(file, rel.endsWith('.html') ? cleanUrls(content) : content);
   return rel;
 };
 // Pages served at more than one URL depth (/hue-pour/, /privacy/hue-pour, any 404 path)
@@ -43,20 +47,16 @@ for (const [name, markup] of Object.entries(badges)) {
 
 // Sitemap, robots, redirects
 const today = new Date().toISOString().slice(0, 10);
-const urls = ['', 'hue-pour', 'privacy/hue-pour', ...services.map((s) => s.page), ...projects.map((p) => p.page)];
+const urls = ['', 'hue-pour', 'privacy/hue-pour', ...[...services, ...projects].map((x) => x.page.replace(/\.html$/, ''))];
 out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${site.url}/${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-out('_redirects', `# Hue Pour short link. huepour.o9tech.com must also be added as a domain alias in Netlify.
-https://huepour.o9tech.com/*  https://o9tech.com/hue-pour  301!
-http://huepour.o9tech.com/*   https://o9tech.com/hue-pour  301!
-
-# Hue Pour pages also answer with a trailing slash (a rewrite, not a redirect, so no loop)
-/hue-pour/               /hue-pour.html             200
-/privacy/hue-pour/       /privacy/hue-pour.html     200
+out('_redirects', `# Cloudflare Pages reads this file. It can only match paths, so the huepour.o9tech.com
+# short link and the www to o9tech.com redirect are Cloudflare Redirect Rules instead.
+# Pages already sends /page.html and /page/ to /page, and /folder to /folder/.
 
 # Old template pages that no longer exist
 /blog.html               /               301
@@ -79,8 +79,9 @@ if (process.argv.includes('--check')) {
     for (const ref of refs) {
       if (/^(https?:|mailto:|tel:|#|data:)/.test(ref)) continue;
       const [path, hash] = ref.split('#');
+      if (path.endsWith('.html')) { console.error(`  ${page}: links to ${ref}, use the clean URL`); problems++; }
       const clean = path.split('?')[0].replace(/^\//, '').replace(/\/$/, '');
-      // resolve like Netlify: exact file, then "page.html" for /page, then "dir/index.html"
+      // resolve like Cloudflare Pages: exact file, then "page.html" for /page, then "dir/index.html"
       const target = clean === '' ? (path.startsWith('/') ? 'index.html' : page)
         : [clean, `${clean}.html`, join(clean, 'index.html')].find((c) => existsSync(join(ROOT, c)) && !c.endsWith('/'));
       if (!target) { console.error(`  ${page}: missing ${ref}`); problems++; continue; }
