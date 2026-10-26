@@ -1,3 +1,12 @@
+/* Self-hosted fonts (variable woff2 from Google Fonts, latin and latin-ext only).
+   Served from our own domain so the first paint does not wait on fonts.googleapis.com. */
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/o9/fonts/jetbrains-mono-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 600; font-display: swap; src: url(/assets/o9/fonts/jetbrains-mono-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/assets/o9/fonts/plus-jakarta-sans-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(/assets/o9/fonts/plus-jakarta-sans-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 500 700; font-display: swap; src: url(/assets/o9/fonts/space-grotesk-latin-ext.woff2) format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 500 700; font-display: swap; src: url(/assets/o9/fonts/space-grotesk-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 /* o9Tech site styles. Built by scripts/site/build.mjs, do not edit assets/o9/css/site.css by hand. */
 
 :root {
@@ -158,6 +167,10 @@ ul { margin: 0; padding: 0; }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
 .js [data-reveal="fade"] { transform: none; }
 .js [data-reveal="scale"] { transform: scale(.96); }
+/* The first screen must not wait for JavaScript: it plays a CSS entrance on first paint
+   instead. Starting just above zero opacity keeps it countable for Largest Contentful Paint. */
+.js .hero [data-reveal], .js .page-hero [data-reveal] { opacity: 1; transform: none; transition: none; animation: reveal-in .7s var(--ease-out) var(--d, 0s) both; }
+@keyframes reveal-in { from { opacity: .01; transform: translate3d(0, 14px, 0); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -353,7 +366,8 @@ body.menu-open { overflow: hidden; }
 
 /* Footer */
 .footer { background: var(--ink-950); color: var(--text-inv); padding-top: clamp(64px, 8vw, 96px); border-top: 1px solid rgba(255,255,255,.08); }
-.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 40px; }
+@media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } .footer-about { grid-column: 1 / -1; } }
 .footer h3 { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-inv-muted); font-weight: 500; margin-bottom: 16px; }
 .footer ul { list-style: none; display: grid; gap: 10px; }
 .footer a { text-decoration: none; color: var(--text-inv); opacity: .85; transition: opacity .2s, color .2s; }
@@ -635,6 +649,8 @@ body.menu-open { overflow: hidden; }
 .cs-facts div { background: var(--ink-950); padding: 16px 18px; }
 .cs-facts dt { font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-inv-muted); margin-bottom: 4px; }
 .cs-facts dd { margin: 0; font-weight: 600; font-size: .9375rem; }
+.cs-facts .cs-facts-wide { grid-column: 1 / -1; }
+.cs-facts dd a { color: inherit; text-underline-offset: 3px; }
 @media (max-width: 520px) { .cs-facts { grid-template-columns: 1fr; } }
 .cs-stage { position: relative; aspect-ratio: 1 / 1; border-radius: var(--r-lg); overflow: hidden; }
 .cs-stage.case-visual { aspect-ratio: 1 / 1; }

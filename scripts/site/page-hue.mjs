@@ -2,7 +2,24 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { site, huePour, HUE_POUR_LIVE } from './data.mjs';
-import { ROOT, esc, img, icons, head, nav, footer } from './ui.mjs';
+import { ROOT, esc, img, icons, head, nav, footer, ld } from './ui.mjs';
+
+// The pages show WebP copies of the store art; the PNG stays for link previews (og:image).
+export const webp = (rel) => rel.replace(/\.png$/, '.webp');
+
+// MobileApplication JSON-LD for a game page. Store links and the free price only appear
+// once the game is live, because before launch neither is true yet.
+export const gameJsonld = (game, live, { name, path, description }) => ld({
+  '@context': 'https://schema.org',
+  '@type': 'MobileApplication',
+  '@id': `${site.url}/${path}#app`,
+  name, description, url: `${site.url}/${path}`,
+  image: `${site.url}/${game.feature}`,
+  applicationCategory: 'GameApplication',
+  operatingSystem: 'iOS, Android',
+  publisher: { '@id': `${site.url}/#organization` },
+  ...(live ? { sameAs: [game.appStore, game.googlePlay], offers: { '@type': 'Offer', price: 0, priceCurrency: 'USD' } } : {}),
+});
 
 // Official store badges, used unmodified. Greyed out with no link until launch.
 // Shared by every game page; the badge files live in the Hue Pour folder.
@@ -23,6 +40,7 @@ export function huePourPage() {
     description: 'Hue Pour is a paint mixing puzzle game for iPhone and Android. Pigments mix like real paint, and one Daily Palette swatch a day is the same for everyone.',
     path: 'hue-pour',
     image: huePour.feature,
+    jsonld: gameJsonld(huePour, HUE_POUR_LIVE, { name: 'Hue Pour', path: 'hue-pour', description: huePour.line }),
   })}
 <body class="page-hue" style="--accent:${huePour.accent}">
 ${nav()}
@@ -32,12 +50,12 @@ ${nav()}
   <div class="container hue-grid">
     <div class="hue-copy">
       <span class="eyebrow">Paint mixing puzzle · iPhone and Android</span>
-      <div class="hue-title">${img(huePour.icon, 'Hue Pour app icon', { lazy: false, priority: true })}<h1 id="hue-title" class="h-display">Hue Pour</h1></div>
+      <div class="hue-title">${img(webp(huePour.icon), 'Hue Pour app icon', { lazy: false, sizes: '92px' })}<h1 id="hue-title" class="h-display">Hue Pour</h1></div>
       <p class="lead">${esc(huePour.line)}</p>
       ${storeBadges()}
       ${HUE_POUR_LIVE ? '<p class="hue-note">Free on iPhone and Android.</p>' : '<p class="hue-note">Coming soon to the App Store and Google Play. Free to play.</p>'}
     </div>
-    <figure class="hue-art">${img(huePour.feature, 'Hue Pour: a mixing bowl of blue and yellow paint swirling into green, next to a green target swatch', { lazy: false })}</figure>
+    <figure class="hue-art">${img(webp(huePour.feature), 'Hue Pour: a mixing bowl of blue and yellow paint swirling into green, next to a green target swatch', { priority: true })}</figure>
   </div>
 </section>
 
@@ -55,12 +73,13 @@ ${nav()}
   <div class="container hue-help">
     <div>
       <h2 id="hue-help" class="h-card">Privacy and support</h2>
-      <p class="muted">Hue Pour has no account and no sign-in. Questions about the game? A person reads every message.</p>
+      <p class="muted">Hue Pour is made by o9Tech, a product engineering studio in Lahore, Pakistan. It has no account and no sign-in. Questions about the game? A person reads every message.</p>
     </div>
     <ul class="hue-links">
       <li><a href="/privacy/hue-pour">${icons.shield}<span>Privacy policy</span></a></li>
       <li><a href="${site.url}/#contact">${icons.mail}<span>Support</span></a></li>
       <li><a href="mailto:support@o9tech.com">${icons.mail}<span>support@o9tech.com</span></a></li>
+      <li><a href="/pigeon-post">${icons.spark}<span>Also from o9Tech: Pigeon Post</span></a></li>
     </ul>
   </div>
 </section>

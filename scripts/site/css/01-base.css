@@ -158,6 +158,10 @@ ul { margin: 0; padding: 0; }
 .js [data-reveal].is-in { opacity: 1; transform: none; }
 .js [data-reveal="fade"] { transform: none; }
 .js [data-reveal="scale"] { transform: scale(.96); }
+/* The first screen must not wait for JavaScript: it plays a CSS entrance on first paint
+   instead. Starting just above zero opacity keeps it countable for Largest Contentful Paint. */
+.js .hero [data-reveal], .js .page-hero [data-reveal] { opacity: 1; transform: none; transition: none; animation: reveal-in .7s var(--ease-out) var(--d, 0s) both; }
+@keyframes reveal-in { from { opacity: .01; transform: translate3d(0, 14px, 0); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

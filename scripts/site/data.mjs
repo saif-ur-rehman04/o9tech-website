@@ -8,7 +8,10 @@ export const site = {
   email: 'info@o9tech.com',
   phone: '+92 345 6259449',
   phoneHref: '+923456259449',
-  address: 'Office No. 8, 3rd Floor, Abbas Trade Center, Lahore 54000',
+  address: 'Office No. 8, 3rd Floor, Abbas Trade Center, Lahore 54000, Pakistan',
+  street: 'Office No. 8, 3rd Floor, Abbas Trade Center', city: 'Lahore', postalCode: '54000', country: 'PK',
+  supportEmail: 'support@o9tech.com',
+  about: 'o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022. We build native iOS and Android apps, cross-platform apps, web platforms, data pipelines and AI features for clients around the world.',
   formAction: 'https://formspree.io/f/mblvzjkr',
   upwork: 'https://www.upwork.com/freelancers/saifurrehman42',
   founded: 2022,
@@ -69,7 +72,7 @@ export const projects = [
   },
   {
     slug: 'triagex', page: 'portfolio-triagex.html', name: 'TriageX', fullName: 'TriageX',
-    category: 'HealthTech', tags: ['web', 'cross', 'ai'], accent: '#e06716',
+    category: 'HealthTech', tags: ['web', 'cross'], accent: '#e06716',
     platforms: ['Web', 'Mobile', 'Kiosk'],
     stack: ['React Native / Expo', 'Next.js 16', 'FastAPI', 'PostgreSQL', 'AWS', 'Docker'],
     tagline: 'Rule-based symptom triage that points patients to the right care.',
@@ -410,7 +413,7 @@ export const projects = [
 // page, disclosed in the note above the reviews); the rest is verbatim.
 export const reviews = [
   { project: 'iOS & Android discounts and bill payment app', date: 'May 2026', tags: ['ios', 'android'], text: '[o9Tech] did a great job for our app. [They were] responsive, cooperative, understood the requirements well and delivered good quality work with no major issues. Our team is happy with what [they] delivered so thanks for your hard work! We look forward to continuing work with [them].' },
-  { project: 'React web app with Google Cloud, Firebase and AI', date: 'Nov 2025', tags: ['web', 'ai'], text: '[o9Tech] did excellent work and demonstrated strong expertise in AI along with solid backend knowledge. [Their] experience with Node.js ensured smooth API handling and reliable data management. Communication was clear, and [they] delivered beyond expectations. I would gladly work with [them] again.' },
+  { project: 'React web app with Google Cloud, Firebase and AI', date: 'Nov 2025', tags: ['web', 'ai', 'data'], text: '[o9Tech] did excellent work and demonstrated strong expertise in AI along with solid backend knowledge. [Their] experience with Node.js ensured smooth API handling and reliable data management. Communication was clear, and [they] delivered beyond expectations. I would gladly work with [them] again.' },
   { project: 'Apple Shortcut for Siri and API integration', date: 'Nov 2025', tags: ['ios'], text: '[o9Tech] delivered quality work with a very fast turnaround and excellent after-development support. Communication was smooth, and we were happy with the results. We’ll gladly work with [them] again when new tasks come up.' },
   { project: 'React Native: auth, messaging, notifications and EAS deploy', date: 'Nov 2025', tags: ['cross'], text: 'was a pleasure working with [o9Tech]' },
   { project: 'Android app update and re-release', date: 'Jul 2025', tags: ['android'], text: 'It was a pleasure working with [o9Tech]. Everything went according to plan, my application was successfully updated. Thank you, [o9Tech].' },
@@ -470,60 +473,124 @@ export const pigeonPost = {
   ],
 };
 
+// Services. metaTitle and metaDescription are written for search results (titles about 60
+// characters, descriptions under 160). faqs show on the service page. excludeTags drops
+// projects from "Related work" (native mobile should not list cross-platform apps).
 export const services = [
   {
     slug: 'mobile', page: 'service-mobile.html', title: 'Native iOS & Android', short: 'Native iOS & Android',
+    metaTitle: 'iOS and Android App Development Company in Pakistan | o9Tech',
+    metaDescription: 'o9Tech builds native iOS and Android apps in Swift, SwiftUI, Kotlin and Jetpack Compose from Lahore, Pakistan, for banks, retailers and startups worldwide.',
     kicker: 'Swift · SwiftUI · Kotlin · Jetpack Compose',
     lead: 'Fast, polished native apps that feel at home on every iPhone and Android phone.',
     body: 'When an app has to be quick, secure and deeply tied to the device, native is the right call. We build with Swift and SwiftUI on iOS and Kotlin and Jetpack Compose on Android, and we know the hard parts: Screen Time, NFC, VoIP, Apple Pay, background location and offline maps.',
     points: ['SwiftUI and UIKit apps, including large migrations to SwiftUI', 'Kotlin and Jetpack Compose apps with clean, modular architecture', 'Banking-grade security: SSL pinning, keychain, encrypted storage', 'Hardware work: NFC, Bluetooth, thermal printers, Screen Time', 'App Store and Google Play releases, reviews and rejections handled'],
     stack: ['Swift', 'SwiftUI', 'UIKit', 'Combine', 'Kotlin', 'Jetpack Compose', 'Coroutines', 'Room', 'Core Data', 'MapKit'],
-    tag: 'ios', alsoTags: ['android'], icon: 'phone',
+    faqs: [
+      { q: 'When is native the right choice?', a: 'When the app leans on the device: NFC, Bluetooth, Screen Time, VoIP, Apple Pay, background location or heavy animation. Native also suits apps where speed and security matter most, like banking. For simpler apps, a cross-platform build can reach both stores faster.' },
+      { q: 'Can you take over an existing iOS or Android app?', a: 'Yes. About 40% of our recent work is taking over codebases other teams started, then stabilizing and shipping them. We start with a code review and a written plan.' },
+      { q: 'Do you handle App Store and Google Play releases?', a: 'Yes. We prepare the builds, store listings and review notes, and we deal with any rejections until the app is live.' },
+    ],
+    tag: 'ios', alsoTags: ['android'], excludeTags: ['cross'], icon: 'phone',
   },
   {
     slug: 'cross-platform', page: 'service-cross-platform.html', title: 'Cross-Platform Apps', short: 'Cross-platform',
+    metaTitle: 'Flutter & React Native Development in Pakistan | o9Tech',
+    metaDescription: 'o9Tech builds cross-platform apps with Flutter, React Native and Kotlin Multiplatform from Lahore, Pakistan: one codebase, both app stores, a native feel.',
     kicker: 'Flutter · React Native · Kotlin Multiplatform',
     lead: 'One codebase, two stores, no compromise on feel.',
     body: 'For most startups, one shared codebase gets you to both stores faster and keeps costs down. We pick the right tool for your product: Flutter for rich custom UI, React Native and Expo when you have a web team, and Kotlin Multiplatform when you want native UI with shared logic.',
     points: ['Flutter apps with custom design systems and smooth animation', 'React Native and Expo apps, including EAS builds and OTA updates', 'Kotlin Multiplatform with Compose Multiplatform UI', 'Real-time features: live video, chat, auctions and sync', 'Taking over and stabilizing apps other teams started'],
     stack: ['Flutter', 'Dart', 'React Native', 'Expo', 'TypeScript', 'Kotlin Multiplatform', 'Compose Multiplatform', 'LiveKit', 'RevenueCat'],
+    faqs: [
+      { q: 'Flutter, React Native or Kotlin Multiplatform: which should we use?', a: 'Flutter suits rich custom UI. React Native and Expo fit teams that already work in React. Kotlin Multiplatform shares the logic while keeping native screens. We recommend one after we learn about your product and your team.' },
+      { q: 'Will a cross-platform app feel native?', a: 'It should. We follow each platform’s navigation, gestures and accessibility, and we write native code for any feature a framework does not cover.' },
+      { q: 'Can you rescue a Flutter or React Native app another team started?', a: 'Yes. Taking over and stabilizing apps other teams started is a big part of our work. We review the code, fix what blocks a release, then plan the rest with you.' },
+    ],
     tag: 'cross', icon: 'layers',
   },
   {
     slug: 'web', page: 'service-web.html', title: 'Full-Stack Web Platforms', short: 'Full-stack web',
+    metaTitle: 'Full-Stack Web Development Company in Pakistan | o9Tech',
+    metaDescription: 'o9Tech builds web apps, dashboards and APIs with Next.js, React, Node.js and FastAPI from Lahore, Pakistan, plus the backend your mobile apps rely on.',
     kicker: 'Next.js · React · Node.js · Python',
     lead: 'Web apps, dashboards and APIs that hold up under real traffic.',
     body: 'We build the web side of your product and the backend that powers every app: customer-facing web apps, admin dashboards, public APIs and the data layer underneath. Fast pages, typed code and APIs your mobile apps can trust.',
     points: ['Next.js and React apps with server rendering', 'REST and GraphQL APIs in Node.js, FastAPI and Django', 'PostgreSQL, Supabase, Firebase and MongoDB data layers', 'Payments with Stripe, Apple Pay and local gateways', 'Admin dashboards and internal tools'],
     stack: ['Next.js', 'React', 'TypeScript', 'Node.js', 'FastAPI', 'PostgreSQL', 'Supabase', 'Firebase', 'Tailwind CSS'],
+    faqs: [
+      { q: 'Can the same team build our web app and our mobile apps?', a: 'Yes. We build the web app, the admin dashboard and the APIs that every client shares, so web and mobile stay in step.' },
+      { q: 'Which backend do you use?', a: 'Usually Node.js or FastAPI with PostgreSQL, Supabase or Firebase, picked to fit your product and your team. We write typed REST or GraphQL APIs.' },
+      { q: 'Do you build admin dashboards and internal tools?', a: 'Yes. Admin dashboards and internal tools are a regular part of our web work, often alongside a customer-facing app.' },
+    ],
     tag: 'web', icon: 'browser',
   },
   {
-    slug: 'ai', page: 'service-ai.html', title: 'AI Systems', short: 'AI systems',
+    slug: 'ai', page: 'service-ai.html', title: 'AI Development', short: 'AI development',
+    metaTitle: 'AI Development Company in Pakistan | o9Tech',
+    metaDescription: 'o9Tech builds AI features from Lahore, Pakistan: assistants on OpenAI and Anthropic models, retrieval over your own data, and computer vision and OCR.',
     kicker: 'LLMs · RAG · Vision · Agents',
     lead: 'Practical AI features that ship inside real products.',
-    body: 'We add AI where it earns its place: assistants that know your data, document and image understanding, smart recommendations and automation. We handle the parts that make it production-ready, from prompt design and retrieval to evaluation, cost control and privacy.',
+    body: 'We add AI where it earns its place: assistants that know your data, document and image understanding, smart recommendations and automation. Our AI engineers handle the parts that make it production ready, from prompt design and retrieval to evaluation, cost control and privacy.',
     points: ['LLM features with OpenAI and Anthropic models', 'Retrieval (RAG) over your own documents and data', 'Computer vision and OCR, including Google Cloud Vision', 'AI matching, scoring and recommendation engines', 'Evaluation, guardrails and cost monitoring'],
     stack: ['OpenAI', 'Anthropic', 'Python', 'FastAPI', 'Vector search', 'Google Cloud Vision', 'Node.js'],
+    faqs: [
+      { q: 'Which AI models do you work with?', a: 'Mostly OpenAI and Anthropic models for language features, and Google Cloud Vision for reading images and documents. We pick the model for each feature and test it on your real data.' },
+      { q: 'How do you keep our data private?', a: 'You own the code and the accounts, and everything lives in your own repositories and cloud accounts. We sign NDAs before detailed talks, and we design each AI feature to send a model only the data it needs.' },
+      { q: 'Do we need data engineering before AI?', a: 'Often, yes. AI answers are only as good as the data behind them. If your data is spread across apps and tools, our data engineers can bring it together first.' },
+    ],
     tag: 'ai', icon: 'spark',
   },
   {
+    // New in October 2026. No portfolio project is tagged 'data' yet, so the page shows
+    // reviews tagged 'data' and hides "Related work" until there is real data work to list.
+    slug: 'data-engineering', page: 'service-data-engineering.html', title: 'Data Engineering', short: 'Data engineering',
+    metaTitle: 'Data Engineering Services in Pakistan | o9Tech',
+    metaDescription: 'o9Tech data engineers in Lahore, Pakistan build data pipelines, warehouses and dashboards on BigQuery, Snowflake and PostgreSQL, ready for analytics and AI.',
+    kicker: 'Pipelines · Warehouses · Dashboards',
+    lead: 'Clean, reliable data that your team and your AI can trust.',
+    body: 'Most companies have their data spread across apps, databases and SaaS tools. Our data engineers build the pipelines, warehouses and dashboards that bring it together into one source your team can trust, and that get it ready for analytics, machine learning and AI features.',
+    points: ['Data pipelines (ETL and ELT) from your apps, databases, APIs and SaaS tools', 'Data warehouses and lakehouses on BigQuery, Snowflake, Redshift or PostgreSQL', 'Data modeling, testing and documentation, so the numbers match across teams', 'Dashboards and reports your team actually uses', 'Clean, well organized data that is ready for machine learning and AI'],
+    stack: ['Python', 'SQL', 'Apache Airflow', 'dbt', 'Apache Spark', 'BigQuery', 'Snowflake', 'PostgreSQL', 'Power BI'],
+    faqs: [
+      { q: 'What is the difference between data engineering and data science?', a: 'Data engineering builds the pipes and the storage: it collects, cleans and organizes data so it is reliable. Data science and AI then use that data to find patterns, make predictions or power features. We do both, and data engineering usually comes first.' },
+      { q: 'Can you work with the tools we already use?', a: 'Yes. We connect to your existing databases, apps and SaaS tools, and pick a warehouse that fits your size and budget, from PostgreSQL to BigQuery or Snowflake.' },
+      { q: 'How do you keep our data safe?', a: 'Data stays in your own cloud accounts, access is limited to the people who need it, and we sign NDAs before detailed talks. You own the code, the pipelines and the accounts.' },
+    ],
+    tag: 'data', icon: 'db',
+  },
+  {
     slug: 'blockchain', page: 'service-blockchain.html', title: 'Blockchain & Web3', short: 'Blockchain',
+    metaTitle: 'Blockchain & Smart Contract Development in Pakistan | o9Tech',
+    metaDescription: 'o9Tech builds smart contracts in Solidity and Rust, and the apps people use to reach them, from Lahore, Pakistan, for voting, payments and digital ownership.',
     kicker: 'Smart contracts · Wallets · On-chain proof',
     lead: 'On-chain systems where trust and proof actually matter.',
     body: 'We use blockchain when you need a record nobody can quietly change: verifiable voting, payments and digital ownership. We build the contracts and the apps people use to reach them, with a sharp focus on security and user experience.',
     points: ['Smart contracts in Solidity and Rust', 'Wallet and payment flows in mobile apps', 'On-chain audit trails and proof of results', 'Integration with Ethereum, Solana, Polygon and BSV', 'Security reviews and test coverage for contracts'],
     stack: ['Solidity', 'Rust', 'Ethereum', 'Solana', 'Polygon', 'BSV', 'Web3.js', 'ethers.js'],
+    faqs: [
+      { q: 'When does a product really need blockchain?', a: 'When you need a record nobody can quietly change, like verifiable votes, payments or digital ownership. If a normal database does the job, we will tell you.' },
+      { q: 'Which chains do you work with?', a: 'Ethereum, Solana, Polygon and BSV, with smart contracts written in Solidity and Rust.' },
+      { q: 'How do you handle smart contract security?', a: 'Every contract gets test coverage and a security review before it goes live.' },
+    ],
     tag: 'blockchain', icon: 'chain',
   },
   {
     slug: 'cloud', page: 'service-cloud.html', title: 'Cloud & DevOps', short: 'Cloud & DevOps',
+    metaTitle: 'Cloud & DevOps Services in Pakistan | o9Tech',
+    metaDescription: 'o9Tech sets up AWS and Google Cloud infrastructure, Docker deployments, CI/CD for web and mobile apps, and monitoring, from Lahore, Pakistan.',
     kicker: 'AWS · GCP · Docker · CI/CD',
     lead: 'Infrastructure and release pipelines you never have to think about.',
     body: 'Good apps need dull, reliable plumbing. We set up cloud infrastructure, automated builds and releases for web and mobile, monitoring and alerts, so your team ships often and sleeps well.',
     points: ['AWS and Google Cloud setups sized to your traffic', 'Docker and container deployments', 'CI/CD for web plus Fastlane and EAS for mobile', 'Crash reporting, logging and uptime monitoring', 'Cost reviews and security hardening'],
     stack: ['AWS', 'Google Cloud', 'Docker', 'GitHub Actions', 'Fastlane', 'EAS', 'Firebase', 'Sentry'],
-    tag: 'web', icon: 'cloud',
+    faqs: [
+      { q: 'Can you set up CI/CD for our mobile apps?', a: 'Yes. We automate builds and releases with Fastlane for native apps and EAS for Expo apps, so every change can reach TestFlight or Play testing without manual steps.' },
+      { q: 'AWS or Google Cloud?', a: 'Both work well. We usually follow what your team already uses, and we size the setup to your traffic so you do not pay for servers you do not need.' },
+      { q: 'Do you set up monitoring?', a: 'Yes. Crash reporting, logging, uptime checks and alerts are part of every setup, so problems show up before your users report them.' },
+    ],
+    // Shares the 'web' tag for its related work, but case studies do not list it as a service.
+    tag: 'web', icon: 'cloud', noCaseLink: true,
   },
 ];
 
@@ -538,7 +605,8 @@ export const faqs = [
   { q: 'What kinds of projects do you take on?', a: 'New apps from scratch, MVPs for startups, and existing apps that need new features or a rescue. About 40% of our recent work is taking over codebases other teams started, then stabilizing and shipping them.' },
   { q: 'Native or cross-platform: which should we pick?', a: 'It depends on your product. Native (Swift, Kotlin) is best when you need deep device features or top performance. Flutter, React Native or Kotlin Multiplatform get you to both stores faster with one codebase. We will recommend one and explain why.' },
   { q: 'How fast can you ship?', a: 'A focused MVP can be live in a few weeks. We took AirLister from zero to the App Store in 14 days. Larger products run in two-week sprints with a working build at the end of each one.' },
-  { q: 'Who will actually work on our project?', a: 'Senior engineers who have shipped banking, streaming, messaging and marketplace apps. The architects who scope your project stay involved through launch.' },
+  { q: 'Who will actually work on our project?', a: 'Senior engineers who have shipped banking, streaming, messaging and marketplace apps, plus our own data engineers and AI engineers for data platforms and AI features. The architects who scope your project stay involved through launch.' },
   { q: 'Do you sign NDAs and hand over the code?', a: 'Yes. We sign NDAs before detailed talks, and you own the code, designs and accounts. Everything lives in your repositories and store accounts.' },
   { q: 'Can you support the app after launch?', a: 'Yes. We offer ongoing maintenance, OS updates, monitoring and feature work, either by the month or as needed.' },
+  { q: 'Where is o9Tech based?', a: 'o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022. We work remotely with clients on four continents, and the senior engineers who scope your project also build it.' },
 ];

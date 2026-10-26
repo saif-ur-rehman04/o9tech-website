@@ -7,6 +7,9 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
 
 /assets/o9/css/*
   Cache-Control: public, max-age=31536000, immutable
@@ -14,5 +17,94 @@
 /assets/o9/js/*
   Cache-Control: public, max-age=31536000, immutable
 
-/assets/img/work/*
+/assets/o9/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/o9/img/*
   Cache-Control: public, max-age=604800
+
+/assets/img/*
+  Cache-Control: public, max-age=604800
+
+# The 404 page is served with status 200 at /404, so keep it out of search results.
+/404
+  X-Robots-Tag: noindex
+
+# The site deploys from the repo root, so the generator, its sources and old template
+# files are reachable. They are not pages: keep them out of search results.
+/scripts/*
+  X-Robots-Tag: noindex
+
+/forms/*
+  X-Robots-Tag: noindex
+
+/design-system/*
+  X-Robots-Tag: noindex
+
+/CACHE_FIX.md
+  X-Robots-Tag: noindex
+
+/CHANGES_SUMMARY.md
+  X-Robots-Tag: noindex
+
+/COLOR_UPDATE.md
+  X-Robots-Tag: noindex
+
+/CONFIGURATION_REFERENCE.md
+  X-Robots-Tag: noindex
+
+/CUSTOMIZATION_GUIDE.md
+  X-Robots-Tag: noindex
+
+/EMAIL_SETUP.md
+  X-Robots-Tag: noindex
+
+/LOCAL_SERVER_GUIDE.md
+  X-Robots-Tag: noindex
+
+/LOGO_INSTRUCTIONS.md
+  X-Robots-Tag: noindex
+
+/QUICK_START_CHECKLIST.md
+  X-Robots-Tag: noindex
+
+/README_CUSTOMIZATION.md
+  X-Robots-Tag: noindex
+
+/Readme.txt
+  X-Robots-Tag: noindex
+
+# App policies that exist at more than one URL. Every URL keeps working for the app
+# stores; the canonical tells search engines which copy is the main one.
+/SafePick/privacypolicy
+  Link: <https://o9tech.com/SafePick/privacy-policy>; rel="canonical"
+
+/color-fluid-sort/privacypolicy
+  Link: <https://o9tech.com/color-fluid-sort/privacy-policy>; rel="canonical"
+
+/infinite-geometry-stack/privacypolicy
+  Link: <https://o9tech.com/infinite-geometry-stack/privacy-policy>; rel="canonical"
+
+/longdog/
+  Link: <https://o9tech.com/longdog/privacy-policy>; rel="canonical"
+
+/longdog/longdog-privacy-policy
+  Link: <https://o9tech.com/longdog/privacy-policy>; rel="canonical"
+
+/longdog/privacypolicy
+  Link: <https://o9tech.com/longdog/privacy-policy>; rel="canonical"
+
+/neon-merge-drop/privacypolicy
+  Link: <https://o9tech.com/neon-merge-drop/privacy-policy>; rel="canonical"
+
+/nestora/privacypolicy
+  Link: <https://o9tech.com/nestora/privacy-policy>; rel="canonical"
+
+/orbit-dodge/privacypolicy
+  Link: <https://o9tech.com/orbit-dodge/privacy-policy>; rel="canonical"
+
+/snoozetale/privacypolicy
+  Link: <https://o9tech.com/snoozetale/privacy-policy>; rel="canonical"
+
+/syncdrop/privacypolicy
+  Link: <https://o9tech.com/syncdrop/privacy-policy>; rel="canonical"

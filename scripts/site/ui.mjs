@@ -1,5 +1,5 @@
 // Shared HTML building blocks for the o9Tech site generator.
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { site, services } from './data.mjs';
@@ -27,10 +27,40 @@ export function imgSize(rel) {
   return size;
 }
 
+// Smaller copies made by scripts/site/resize-images.mjs sit next to the original as
+// name-640.webp (phone screenshots) and name-192.webp (app icons). When one exists the
+// <img> gets a srcset, so phones download the small file instead of the full one.
+const VARIANTS = [192, 640];
+const srcset = (rel, w) => {
+  if (!rel.endsWith('.webp')) return '';
+  const found = VARIANTS.filter((n) => n < w && existsSync(join(ROOT, rel.replace(/\.webp$/, `-${n}.webp`))));
+  return found.length ? [...found.map((n) => `${rel.replace(/\.webp$/, `-${n}.webp`)} ${n}w`), `${rel} ${w}w`].join(', ') : '';
+};
 export const img = (rel, alt, { cls = '', lazy = true, sizes = '', priority = false } = {}) => {
   const { w, h } = imgSize(rel);
-  return `<img src="${rel}" width="${w}" height="${h}" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${lazy && !priority ? ' loading="lazy"' : ''} decoding="async"${priority ? ' fetchpriority="high"' : ''}${sizes ? ` sizes="${sizes}"` : ''}>`;
+  const set = srcset(rel, w);
+  // Icons are drawn at 44 to 92px and phone screenshots at about 110 to 300px.
+  const size = sizes || (set ? (h > w ? '(max-width: 600px) 45vw, 300px' : '96px') : '');
+  return `<img src="${rel}"${set ? ` srcset="${set}"` : ''} width="${w}" height="${h}" alt="${esc(alt)}"${cls ? ` class="${cls}"` : ''}${lazy && !priority ? ' loading="lazy"' : ''} decoding="async"${priority ? ' fetchpriority="high"' : ''}${size ? ` sizes="${size}"` : ''}>`;
 };
+
+// JSON-LD block. "<" is escaped so text can never close the script tag early.
+export const ld = (data) => `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+
+// Shortens text for a meta description without cutting a word in half: it keeps whole
+// sentences when they fit, otherwise it stops at the last full word.
+export function clip(text, max = 155) {
+  const t = String(text).replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  const sentences = t.match(/[^.!?]+[.!?]+/g) || [];
+  let out = '';
+  for (const sentence of sentences) {
+    if ((out + sentence).trim().length > max) break;
+    out += sentence;
+  }
+  if (out.trim().length >= 70) return out.trim();
+  return t.slice(0, max).replace(/[\s,;:]+\S*$/, '').replace(/[,;:]$/, '') + '.';
+}
 
 const svg = (body, extra = '') => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"${extra}>${body}</svg>`;
 export const icons = {
@@ -108,8 +138,8 @@ export const emblem = (code, label) => {
 export const stars = (n = 5) => `<span class="stars" role="img" aria-label="Rated ${n} out of 5">${icons.star.repeat(n)}</span>`;
 
 // Device frames
-export const phone = (src, alt, { cls = '', android = false, priority = false } = {}) =>
-  `<div class="device-phone${android ? ' is-android' : ''}${cls ? ` ${cls}` : ''}"><div class="screen">${img(src, alt, { priority })}</div></div>`;
+export const phone = (src, alt, { cls = '', android = false, priority = false, lazy = true } = {}) =>
+  `<div class="device-phone${android ? ' is-android' : ''}${cls ? ` ${cls}` : ''}"><div class="screen">${img(src, alt, { priority, lazy })}</div></div>`;
 
 export const browser = (src, alt, url = '') =>
   `<div class="device-browser"><div class="bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="url">${esc(url)}</span></div><div class="viewport">${img(src, alt)}</div></div>`;
@@ -152,7 +182,7 @@ export function caseCard(p, i) {
 }
 
 // Page shell
-export function head({ title, description, path = '', image = 'assets/o9/img/og.jpg', jsonld = '' }) {
+export function head({ title, description, path = '', image = 'assets/o9/img/og.jpg', jsonld = '', noindex = false }) {
   const url = `${site.url}/${path}`;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -161,7 +191,7 @@ export function head({ title, description, path = '', image = 'assets/o9/img/og.
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${url}">
+${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" href="${url}">`}
 <meta name="theme-color" content="#09090b">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="o9Tech">
@@ -173,9 +203,8 @@ export function head({ title, description, path = '', image = 'assets/o9/img/og.
 <link rel="icon" type="image/png" sizes="32x32" href="assets/o9/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/o9/img/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/o9/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="preload" href="/assets/o9/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/o9/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/o9/css/site.css?v=${BUILD_ID}">
 <script>document.documentElement.classList.add('js')</script>
 ${jsonld}
@@ -227,7 +256,7 @@ export function footer() {
           <img src="assets/o9/img/mark-light.webp" width="${imgSize('assets/o9/img/mark-light.webp').w}" height="${imgSize('assets/o9/img/mark-light.webp').h}" alt="">
           <span>o9Tech</span>
         </a>
-        <p>A product engineering studio in Lahore. We design, build and scale mobile apps, web platforms and AI features for teams around the world.</p>
+        <p>${esc(site.about)}</p>
       </div>
       <div>
         <h3>Services</h3>
@@ -241,6 +270,15 @@ export function footer() {
           <li><a href="index.html#process">How we work</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
           <li><a href="${site.upwork}" target="_blank" rel="noopener">Hire us on Upwork</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Our apps</h3>
+        <ul>
+          <li><a href="/hue-pour">Hue Pour</a></li>
+          <li><a href="/pigeon-post">Pigeon Post</a></li>
+          <li><a href="/privacy/hue-pour">Hue Pour privacy</a></li>
+          <li><a href="/privacy/pigeon-post">Pigeon Post privacy</a></li>
         </ul>
       </div>
       <div>

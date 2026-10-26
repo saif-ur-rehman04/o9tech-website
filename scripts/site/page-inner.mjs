@@ -1,6 +1,11 @@
 // Case study, service and 404 templates.
-import { site, projects, services } from './data.mjs';
-import { esc, img, icons, emblem, phone, browser, caseVisual, caseCard, head, nav, footer } from './ui.mjs';
+import { site, projects, services, reviews, process } from './data.mjs';
+import { esc, img, icons, emblem, phone, browser, caseVisual, caseCard, head, nav, footer, ld, clip, stars, reviewHtml } from './ui.mjs';
+
+// Absolute clean URL for a generated page ("service-web.html" becomes https://o9tech.com/service-web).
+const pageUrl = (page) => `${site.url}/${page.replace(/\.html$/, '').replace(/(^|\/)index$/, '')}`;
+const crumbs = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.map(([name, url], i) => ({ '@type': 'ListItem', position: i + 1, name, item: url })) });
+const serviceFor = (p) => services.filter((s) => !s.noCaseLink && [s.tag, ...(s.alsoTags || [])].some((t) => p.tags.includes(t)) && !(s.excludeTags || []).some((t) => p.tags.includes(t)));
 
 const ctaBand = (title = 'Building something similar?', text = "Tell us about your product. A senior engineer will reply within one business day.") => `
 <section class="band band-light" aria-label="Start a project">
@@ -32,11 +37,20 @@ export function casePage(p, i) {
   const next = projects[(i + 1) % projects.length];
   const status = p.archived ? 'No longer on the stores' : p.links.ios || p.links.play ? 'Live on the stores' : p.links.web ? 'Live on the web' : p.source === 'upwork' ? 'Delivered for a client' : 'Delivered';
   const g = gallery(p);
-  const jsonld = `<script type="application/ld+json">${JSON.stringify({
-    '@context': 'https://schema.org', '@type': 'CreativeWork', name: p.fullName, about: p.tagline,
-    creator: { '@type': 'Organization', name: 'o9Tech', url: site.url }, url: `${site.url}/${p.page}`,
-  })}</script>`;
-  return `${head({ title: `${p.fullName} case study | o9Tech`, description: `${p.tagline} ${p.built}`.slice(0, 158), path: p.page, jsonld })}
+  const url = pageUrl(p.page);
+  const mobile = p.platforms.some((x) => /iOS|Android/.test(x));
+  const app = {
+    '@type': mobile ? 'MobileApplication' : 'WebApplication', name: p.fullName, description: p.tagline,
+    applicationCategory: p.category, operatingSystem: p.platforms.join(', '),
+    contributor: { '@id': `${site.url}/#organization` },
+    ...(!p.archived && Object.values(p.links).filter(Boolean).length ? { sameAs: Object.values(p.links).filter(Boolean) } : {}),
+  };
+  const jsonld = ld({ '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebPage', '@id': url, url, name: `${p.fullName} case study`, description: p.tagline, about: app, isPartOf: { '@id': `${site.url}/#website` } },
+    crumbs([['Home', `${site.url}/`], ['Work', `${site.url}/#work`], [p.name, url]]),
+  ] });
+  const related = serviceFor(p);
+  return `${head({ title: `${p.fullName} case study | o9Tech`, description: clip(`${p.tagline} ${p.built}`), path: p.page, jsonld })}
 <body>
 ${nav('work')}
 <main id="main">
@@ -50,9 +64,10 @@ ${nav('work')}
         <div class="cs-title" data-reveal>${p.icon ? img(p.icon, `${p.name} app icon`, { lazy: false }) : ''}<h1 class="h-section">${esc(p.fullName)}</h1></div>
         <p class="lead" data-reveal>${esc(p.tagline)}</p>
         <dl class="cs-facts" data-reveal>
-          <div><dt>Platforms</dt><dd>${esc(p.platforms.join(', '))}</dd></div>
+          <div><dt>Product platforms</dt><dd>${esc(p.platforms.join(', '))}</dd></div>
           <div><dt>Category</dt><dd>${esc(p.category)}</dd></div>
           <div><dt>Status</dt><dd>${esc(status)}</dd></div>
+          ${related.length ? `<div class="cs-facts-wide"><dt>Services</dt><dd>${related.map((x) => `<a href="${x.page}">${esc(x.short)}</a>`).join(', ')}</dd></div>` : ''}
         </dl>
         ${storeLinks(p.links) ? `<div class="cs-links" data-reveal>${storeLinks(p.links)}</div>` : ''}
         ${p.archived ? `<p class="archived-note" data-reveal>${icons.shield} This app has since been taken off the stores by its owner.</p>` : ''}
@@ -101,8 +116,17 @@ ${footer()}`;
 }
 
 export function servicePage(s) {
-  const related = projects.filter((p) => p.tags.includes(s.tag) || (s.alsoTags || []).some((t) => p.tags.includes(t))).filter((p) => !p.archived).slice(0, 6);
-  return `${head({ title: `${s.title} | o9Tech`, description: `${s.lead} ${s.body}`.slice(0, 158), path: s.page })}
+  const has = (p, tags) => tags.some((t) => p.tags.includes(t));
+  const tags = [s.tag, ...(s.alsoTags || [])];
+  const related = projects.filter((p) => has(p, tags) && !has(p, s.excludeTags || []) && !p.archived).slice(0, 6);
+  const quotes = reviews.filter((r) => has(r, tags)).slice(0, 3);
+  const url = pageUrl(s.page);
+  const jsonld = ld({ '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Service', '@id': `${url}#service`, name: s.title, serviceType: s.title, description: s.metaDescription, url,
+      provider: { '@id': `${site.url}/#organization` }, areaServed: 'Worldwide' },
+    crumbs([['Home', `${site.url}/`], ['Services', `${site.url}/#services`], [s.short, url]]),
+  ] });
+  return `${head({ title: s.metaTitle, description: s.metaDescription, path: s.page, jsonld })}
 <body>
 ${nav('services')}
 <main id="main">
@@ -116,7 +140,7 @@ ${nav('services')}
         <span class="eyebrow" data-reveal>${esc(s.kicker)}</span>
         <h1 class="h-display" data-reveal>${esc(s.title)}</h1>
         <p class="lead" data-reveal>${esc(s.lead)}</p>
-        <div class="hero-actions" data-reveal><a class="btn btn-primary" href="index.html#contact">Start a project ${icons.arrow}</a><a class="btn btn-ghost" href="#related">See related work</a></div>
+        <div class="hero-actions" data-reveal><a class="btn btn-primary" href="index.html#contact">Start a project ${icons.arrow}</a>${related.length ? '<a class="btn btn-ghost" href="#related">See related work</a>' : '<a class="btn btn-ghost" href="#svc-faq-title">Read the FAQ</a>'}</div>
       </div>
       <div class="chip-row" data-reveal style="align-content:end">${s.stack.map((t) => `<span class="chip">${esc(t)}</span>`).join('')}</div>
     </div>
@@ -129,14 +153,56 @@ ${nav('services')}
       <span class="eyebrow" data-reveal>What we do</span>
       <h2 id="svc-what" data-reveal>How we help</h2>
       <p class="lead" data-reveal>${esc(s.body)}</p>
+      <p class="muted" data-reveal>o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022. We work with clients around the world.</p>
     </div>
     <ul class="svc-points" data-stagger>
       ${s.points.map((pt) => `<li data-reveal>${icons.check}<span>${esc(pt)}</span></li>`).join('\n      ')}
     </ul>
   </div>
 </section>
+${quotes.length ? `
+<section class="band band-dark" aria-labelledby="svc-reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Client reviews</span>
+      <h2 id="svc-reviews" class="h-section" data-reveal>What clients say about this work</h2>
+    </div>
+    <div class="review-wall" data-stagger>
+      ${quotes.map((r) => `<figure class="review-card" data-reveal>
+        <blockquote>${reviewHtml(r.text)}</blockquote>
+        <figcaption class="review-meta">${stars(5)}<span><strong>${esc(r.project)}</strong><br>${esc(r.date)} · Upwork</span></figcaption>
+      </figure>`).join('\n      ')}
+    </div>
+    <p class="review-note" data-reveal>From real Upwork contracts delivered by our co-founder, Saif ur Rehman, with names and pronouns changed to refer to the o9Tech team. <a href="index.html#reviews">See all reviews</a>.</p>
+  </div>
+</section>` : ''}
 
-<section class="band band-light-2" id="related" aria-labelledby="svc-work">
+<section class="band band-light" aria-labelledby="svc-process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>How we work</span>
+      <h2 id="svc-process" class="h-section" data-reveal>A clear plan, weekly builds, no surprises.</h2>
+    </div>
+    <ol class="process" data-stagger style="list-style:none;padding:0;margin:0">
+      ${process.map((st) => `<li class="step" data-reveal><span class="step-n">${st.n}</span><h3>${esc(st.title)}</h3><p>${esc(st.text)}</p></li>`).join('\n      ')}
+    </ol>
+  </div>
+</section>
+
+<section class="band band-light-2" aria-labelledby="svc-faq-title">
+  <div class="container faq-grid">
+    <div class="section-head" style="margin:0;align-content:start">
+      <span class="eyebrow" data-reveal>FAQ</span>
+      <h2 id="svc-faq-title" class="h-section" data-reveal>${esc(s.short)} questions</h2>
+      <p class="lead" data-reveal>Something else on your mind? <a href="index.html#contact">Ask us directly</a>.</p>
+    </div>
+    <div class="faq-list" data-stagger>
+      ${s.faqs.map((f, i) => `<details class="faq-item" data-reveal${i === 0 ? ' open' : ''}><summary>${esc(f.q)}<span class="plus" aria-hidden="true">${icons.plus}</span></summary><p class="answer">${esc(f.a)}</p></details>`).join('\n      ')}
+    </div>
+  </div>
+</section>
+${related.length ? `
+<section class="band band-light" id="related" aria-labelledby="svc-work">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-reveal>Related work</span>
@@ -144,14 +210,14 @@ ${nav('services')}
     </div>
     <div class="work-grid">${related.map((p, i) => caseCard({ ...p, featured: false }, i)).join('')}</div>
   </div>
-</section>
+</section>` : ''}
 ${ctaBand('Ready to talk it through?', 'Send us a short note about your product and goals. We reply within one business day.')}
 </main>
 ${footer()}`;
 }
 
 export function notFoundPage() {
-  return `${head({ title: 'Page not found | o9Tech', description: 'This page does not exist. Head back to the o9Tech home page.', path: '404.html' })}
+  return `${head({ title: 'Page not found | o9Tech', description: 'This page does not exist. Head back to the o9Tech home page.', path: '404.html', noindex: true })}
 <body>
 ${nav()}
 <main id="main">

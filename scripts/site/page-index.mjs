@@ -1,6 +1,6 @@
 // Home page template.
 import { site, projects, reviews, services, process, faqs, filters, upworkStats } from './data.mjs';
-import { esc, img, icons, badges, emblem, stars, phone, caseCard, head, nav, footer, reviewHtml } from './ui.mjs';
+import { esc, img, icons, badges, emblem, stars, phone, caseCard, head, nav, footer, reviewHtml, ld } from './ui.mjs';
 
 const art = {
   phone: `<svg viewBox="0 0 360 150" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".9"><rect x="40" y="8" width="70" height="138" rx="14"/><rect x="128" y="22" width="70" height="138" rx="14" opacity=".5"/></g><rect x="62" y="14" width="26" height="5" rx="2.5" fill="currentColor" opacity=".7"/><g fill="#fef119"><rect x="52" y="34" width="46" height="8" rx="4"/><rect x="52" y="104" width="30" height="20" rx="6" opacity=".9"/></g><g fill="currentColor" opacity=".35"><rect x="52" y="50" width="38" height="5" rx="2.5"/><rect x="52" y="60" width="44" height="5" rx="2.5"/><rect x="52" y="70" width="30" height="5" rx="2.5"/><rect x="140" y="48" width="44" height="40" rx="8"/><rect x="140" y="96" width="34" height="5" rx="2.5"/></g><g font-family="JetBrains Mono, monospace" font-size="9.5" fill="currentColor" opacity=".75"><text x="218" y="48">struct Feed: View {</text><text x="228" y="64">var body: some View</text><text x="218" y="96">@Composable fun Feed()</text><text x="228" y="112">LazyColumn { }</text></g></svg>`,
@@ -8,6 +8,7 @@ const art = {
   spark: `<svg viewBox="0 0 220 120" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-opacity=".3"><path d="M30 30L100 60L30 90M100 60l80-35M100 60l80 35M100 60h80"/></g><g fill="currentColor"><circle cx="30" cy="30" r="5" opacity=".6"/><circle cx="30" cy="90" r="5" opacity=".6"/><circle cx="180" cy="25" r="5" opacity=".6"/><circle cx="180" cy="60" r="5" opacity=".6"/><circle cx="180" cy="95" r="5" opacity=".6"/></g><circle cx="100" cy="60" r="16" fill="#fef119"/><path d="M100 50l2.6 7.4L110 60l-7.4 2.6L100 70l-2.6-7.4L90 60l7.4-2.6z" fill="#111114"/></svg>`,
   browser: `<svg viewBox="0 0 220 120" aria-hidden="true" focusable="false"><rect x="10" y="8" width="200" height="106" rx="10" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.4"/><path d="M10 26h200" stroke="currentColor" stroke-opacity=".3"/><g fill="currentColor" opacity=".5"><circle cx="22" cy="17" r="3"/><circle cx="32" cy="17" r="3"/><circle cx="42" cy="17" r="3"/></g><path d="M28 94l30-22 26 12 30-30 28 16 36-26" fill="none" stroke="#fef119" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><g fill="currentColor" opacity=".2"><rect x="28" y="38" width="60" height="6" rx="3"/></g></svg>`,
   chain: `<svg viewBox="0 0 320 90" aria-hidden="true" focusable="false"><g font-family="JetBrains Mono, monospace" font-size="9.5"><g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.4"><rect x="12" y="20" width="76" height="50" rx="10"/><rect x="122" y="20" width="76" height="50" rx="10"/></g><rect x="232" y="20" width="76" height="50" rx="10" fill="#fef119"/><path d="M88 45h34M198 45h34" stroke="currentColor" stroke-opacity=".5" stroke-dasharray="3 4"/><g fill="currentColor" opacity=".75"><text x="24" y="40">#0x8f..</text><text x="24" y="56">vote: 1</text><text x="134" y="40">#0x3a..</text><text x="134" y="56">vote: 1</text></g><g fill="#111114"><text x="244" y="40">#0x91..</text><text x="244" y="56">verified</text></g></g></svg>`,
+  data: `<svg viewBox="0 0 320 96" aria-hidden="true" focusable="false"><g font-family="JetBrains Mono, monospace" font-size="9.5"><g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.4"><rect x="10" y="8" width="58" height="22" rx="6"/><rect x="10" y="37" width="58" height="22" rx="6"/><rect x="10" y="66" width="58" height="22" rx="6"/></g><g fill="currentColor" opacity=".75"><text x="27" y="23">apps</text><text x="27" y="52">APIs</text><text x="30" y="81">SaaS</text></g><path d="M68 19c30 0 30 29 52 29M68 48h52M68 77c30 0 30-29 52-29" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-dasharray="3 4"/><ellipse cx="152" cy="26" rx="30" ry="8" fill="#fef119"/><path d="M122 26v44c0 4.4 13.4 8 30 8s30-3.6 30-8V26" fill="#fef119" opacity=".9"/><text x="131" y="56" fill="#111114">warehouse</text><path d="M182 48h30" stroke="#fef119" stroke-width="2"/><g fill="currentColor"><rect x="224" y="58" width="14" height="24" rx="3" opacity=".45"/><rect x="246" y="44" width="14" height="38" rx="3" opacity=".6"/><rect x="268" y="30" width="14" height="52" rx="3" opacity=".75"/><rect x="290" y="16" width="14" height="66" rx="3"/></g></g></svg>`,
   cloud: `<svg viewBox="0 0 320 90" aria-hidden="true" focusable="false"><g font-family="JetBrains Mono, monospace" font-size="10"><g fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.4"><rect x="10" y="28" width="62" height="34" rx="17"/><rect x="92" y="28" width="62" height="34" rx="17"/><rect x="174" y="28" width="62" height="34" rx="17"/></g><rect x="256" y="28" width="56" height="34" rx="17" fill="#22c55e"/><g fill="currentColor" opacity=".8"><text x="26" y="49">build</text><text x="111" y="49">test</text><text x="187" y="49">deploy</text></g><text x="268" y="49" fill="#052e16">live</text><path d="M72 45h20M154 45h20M236 45h20" stroke="#fef119" stroke-width="2"/></g></svg>`,
 };
 
@@ -44,6 +45,7 @@ const archNode = (n) => `<button type="button" class="arch-node" data-id="${n.id
 
 export function indexPage() {
   const byslug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+  const svc = Object.fromEntries(services.map((x) => [x.slug, x]));
   const marqueeApps = projects.filter((p) => p.icon);
   const marqueeItems = marqueeApps.map((p) => `<a class="marquee-item" href="${p.page}">${img(p.icon, '')}<span>${esc(p.name)}<small>${esc(p.category)}</small></span></a>`).join('');
   const marqueeClone = marqueeApps.map((p) => `<a class="marquee-item" href="${p.page}" tabindex="-1">${img(p.icon, '')}<span>${esc(p.name)}<small>${esc(p.category)}</small></span></a>`).join('');
@@ -51,22 +53,41 @@ export function indexPage() {
   const spotlight = [0, 1, 9, 6, 10, 5].map((i) => reviews[i]);
   const WALL_LIMIT = 9;
 
-  const jsonld = `<script type="application/ld+json">${JSON.stringify({
+  // ProfessionalService is a kind of Organization, so the @id below is what every other
+  // page points at with provider, contributor and publisher.
+  const jsonld = ld({
     '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'o9Tech',
-    url: site.url,
-    logo: `${site.url}/assets/o9/img/logo.webp`,
-    email: site.email,
-    telephone: site.phone,
-    foundingDate: String(site.founded),
-    address: { '@type': 'PostalAddress', streetAddress: 'Office No. 8, 3rd Floor, Abbas Trade Center', addressLocality: 'Lahore', postalCode: '54000', addressCountry: 'PK' },
-    sameAs: [site.upwork],
-  })}</script>`;
+    '@graph': [
+      {
+        '@type': 'ProfessionalService',
+        '@id': `${site.url}/#organization`,
+        name: 'o9Tech',
+        url: `${site.url}/`,
+        logo: `${site.url}/assets/o9/img/logo.webp`,
+        image: `${site.url}/assets/o9/img/og.jpg`,
+        description: site.about,
+        email: site.email,
+        telephone: site.phone,
+        foundingDate: String(site.founded),
+        address: { '@type': 'PostalAddress', streetAddress: site.street, addressLocality: site.city, postalCode: site.postalCode, addressCountry: site.country },
+        areaServed: 'Worldwide',
+        contactPoint: [
+          { '@type': 'ContactPoint', contactType: 'sales', email: site.email, telephone: site.phone, availableLanguage: 'English' },
+          { '@type': 'ContactPoint', contactType: 'customer support', email: site.supportEmail, availableLanguage: 'English' },
+        ],
+        knowsAbout: ['iOS app development', 'Android app development', 'Flutter', 'React Native', 'Kotlin Multiplatform', 'Web development', 'Data engineering', 'Artificial intelligence', 'Blockchain', 'Cloud and DevOps'],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog', name: 'Services',
+          itemListElement: services.map((x) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', '@id': `${site.url}/${x.page.replace(/\.html$/, '')}#service`, name: x.title } })),
+        },
+      },
+      { '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`, name: 'o9Tech', publisher: { '@id': `${site.url}/#organization` }, inLanguage: 'en' },
+    ],
+  });
 
   return `${head({
-    title: 'o9Tech | Mobile, Web & AI Product Engineering Studio',
-    description: 'o9Tech is a senior-led software studio in Lahore. We build native iOS and Android apps, Flutter, React Native and KMP apps, web platforms, blockchain and AI systems.',
+    title: 'App, Web, Data & AI Development Company in Pakistan | o9Tech',
+    description: 'o9Tech is a software studio in Lahore, Pakistan, founded in 2022. We build iOS and Android apps, web platforms, data pipelines and AI features for clients.',
     jsonld,
   })}
 <body>
@@ -81,9 +102,9 @@ ${nav()}
   </div>
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow" data-reveal>Product engineering studio · Lahore to worldwide</span>
+      <span class="eyebrow" data-reveal>Product engineering studio · Lahore, Pakistan</span>
       <h1 id="hero-title" class="h-display" data-reveal style="--d:.06s"><span class="line">We engineer the apps</span> <span class="line">people <em>open every day.</em></span></h1>
-      <p class="lead" data-reveal style="--d:.12s">o9Tech is run by senior architects who have shipped banking, streaming, messaging and marketplace apps. We design, build and scale native iOS and Android apps, cross-platform products, web platforms, blockchain systems and AI features.</p>
+      <p class="lead" data-reveal style="--d:.12s">o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022 and run by senior architects who have shipped banking, streaming, messaging and marketplace apps. We design, build and scale native iOS and Android apps, cross-platform products, web platforms, data platforms, blockchain systems and AI features.</p>
       <div class="hero-actions" data-reveal style="--d:.18s">
         <a class="btn btn-primary" href="#contact">Start a project ${icons.arrow}</a>
         <a class="btn btn-ghost" href="#work">See our work</a>
@@ -97,8 +118,8 @@ ${nav()}
       <div class="stage">
         <div class="stage-inner">
           ${phone(byslug.tradingcardtv.visual.images[0], 'Trading Card TV live auction screen', { cls: 'p1 float', priority: true })}
-          ${phone(byslug.worlds.visual.images[1], 'Worlds memory journal screen', { cls: 'p2 float' })}
-          ${phone(byslug.hiiker.visual.images[0], 'HiiKER trail map screen', { cls: 'p3 float' })}
+          ${phone(byslug.worlds.visual.images[1], 'Worlds memory journal screen', { cls: 'p2 float', lazy: false })}
+          ${phone(byslug.hiiker.visual.images[0], 'HiiKER trail map screen', { cls: 'p3 float', lazy: false })}
           <span class="stage-chip c1"><i></i>Swift · SwiftUI</span>
           <span class="stage-chip c2"><i></i>Kotlin · Compose</span>
           <span class="stage-chip c3"><i></i>Flutter + LiveKit</span>
@@ -137,7 +158,7 @@ ${nav()}
     </div>
     <div class="metrics" data-stagger>
       <div class="metric" data-reveal><span class="metric-value" data-count="${projects.length}"><span class="n">${projects.length}</span></span><span class="metric-label">Products in our portfolio</span><span class="metric-note">Fintech, health, travel, retail, media and more.</span></div>
-      <div class="metric" data-reveal><span class="metric-value" data-count="100"><span class="n">100</span><sup>%</sup></span><span class="metric-label">Job Success Score</span><span class="metric-note">${esc(upworkStats.badge)} on Upwork across ${upworkStats.jobs} contracts.</span></div>
+      <div class="metric" data-reveal><span class="metric-value" data-count="100"><span class="n">100</span><sup>%</sup></span><span class="metric-label">Job Success Score</span><span class="metric-note">${esc(upworkStats.badge)} on our co-founder's Upwork profile, across ${upworkStats.jobs} contracts.</span></div>
       <div class="metric" data-reveal><span class="metric-value" data-count="${reviews.length}"><span class="n">${reviews.length}</span></span><span class="metric-label">Five-star client reviews</span><span class="metric-note">Each one from a real Upwork contract.</span></div>
       <div class="metric" data-reveal><span class="metric-value" data-count="14"><span class="n">14</span><sup>days</sup></span><span class="metric-label">From zero to the App Store</span><span class="metric-note">AirLister, built with an AI-native workflow.</span></div>
     </div>
@@ -152,12 +173,13 @@ ${nav()}
       <p class="lead" data-reveal>From the first screen to the servers behind it. Pick one service or hand us the whole build.</p>
     </div>
     <div class="bento" data-stagger>
-      ${bento(services[0], 'span-2 row-2 is-dark', art.phone, [['Sw', 'Swift'], ['SU', 'SwiftUI'], ['Kt', 'Kotlin'], ['JC', 'Compose']])}
-      ${bento(services[1], 'span-2', art.layers)}
-      ${bento(services[3], 'is-dark', art.spark)}
-      ${bento(services[2], '', art.browser)}
-      ${bento(services[4], 'span-2', art.chain)}
-      ${bento(services[5], 'span-2 is-dark', art.cloud)}
+      ${bento(svc.mobile, 'span-2 row-2 is-dark', art.phone, [['Sw', 'Swift'], ['SU', 'SwiftUI'], ['Kt', 'Kotlin'], ['JC', 'Compose']])}
+      ${bento(svc['cross-platform'], 'span-2', art.layers)}
+      ${bento(svc.ai, 'is-dark', art.spark)}
+      ${bento(svc.web, '', art.browser)}
+      ${bento(svc['data-engineering'], 'span-2', art.data)}
+      ${bento(svc.blockchain, '', art.chain)}
+      ${bento(svc.cloud, 'is-dark', art.cloud)}
     </div>
   </div>
 </section>
@@ -214,10 +236,10 @@ ${nav()}
       </div>
       <div class="spotlight" data-spotlight data-reveal role="region" aria-roledescription="carousel" aria-label="Featured client reviews" tabindex="0">
         <div class="spotlight-track" aria-live="off">
-          ${spotlight.map((r, i) => `<figure class="spotlight-item" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${spotlight.length}"${i ? ' hidden' : ''}>
+          ${spotlight.map((r, i) => `<div class="spotlight-item" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${spotlight.length}"${i ? ' hidden' : ''}>
             <blockquote>${reviewHtml(r.text)}</blockquote>
-            <figcaption class="review-meta">${stars(5)}<strong>${esc(r.project)}</strong><span>${esc(r.date)} · Upwork</span></figcaption>
-          </figure>`).join('\n          ')}
+            <div class="review-meta">${stars(5)}<strong>${esc(r.project)}</strong><span>${esc(r.date)} · Upwork</span></div>
+          </div>`).join('\n          ')}
         </div>
         <div class="spotlight-nav">
           <button type="button" class="icon-btn" data-prev aria-label="Previous review">${icons.arrowLeft}</button>
@@ -292,7 +314,7 @@ ${nav()}
         <iframe title="Map showing Abbas Trade Center, Lahore" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108901.38774107897!2d74.2912554059594!3d31.520369047262683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190fb60d03a11d%3A0xd4c32a9462635b2!2sAbbas%20Trade%20Center%2C%20Lahore%20Cantt!5e0!3m2!1sen!2s!4v1700791111111!5m2!1sen!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-    <form class="form-card" action="${site.formAction}" method="post" data-contact-form novalidate data-reveal>
+    <form class="form-card" action="${site.formAction}" method="post" data-contact-form novalidate data-reveal aria-label="Contact o9Tech">
       <input type="hidden" name="_subject" value="New project inquiry from o9tech.com">
       <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
       <div class="form-grid">
@@ -302,7 +324,7 @@ ${nav()}
         <fieldset class="field full" style="border:0;padding:0;margin:0">
           <legend style="font-weight:600;font-size:.875rem;margin-bottom:6px">What do you need?</legend>
           <div class="choice-row">
-            ${['Mobile app', 'Web platform', 'AI feature', 'Blockchain', 'Rescue an existing app', 'Something else'].map((c, i) => `<label class="choice"><input type="radio" name="need" value="${c}"${i === 0 ? ' checked' : ''}><span>${c}</span></label>`).join('')}
+            ${['Mobile app', 'Web platform', 'AI feature', 'Data engineering', 'Blockchain', 'Rescue an existing app', 'Something else'].map((c, i) => `<label class="choice"><input type="radio" name="need" value="${c}"${i === 0 ? ' checked' : ''}><span>${c}</span></label>`).join('')}
           </div>
         </fieldset>
         <div class="field full"><label for="f-budget">Rough budget <span class="muted" style="font-weight:500">(optional)</span></label>

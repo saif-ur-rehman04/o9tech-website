@@ -1,7 +1,7 @@
 // Pigeon Post product page and its privacy policy page. Same layout as the Hue Pour pages.
 import { site, pigeonPost, PIGEON_POST_LIVE } from './data.mjs';
 import { esc, img, icons, head, nav, footer } from './ui.mjs';
-import { storeBadges, policySource, policyMain } from './page-hue.mjs';
+import { storeBadges, policySource, policyMain, webp, gameJsonld } from './page-hue.mjs';
 
 export const pigeonPolicySource = () => policySource('pigeon-post-privacy.html');
 
@@ -11,6 +11,7 @@ export function pigeonPostPage() {
     description: 'Pigeon Post is an idle pet game for iPhone and Android. Send pigeons to real cities and they come home with postcards.',
     path: 'pigeon-post',
     image: pigeonPost.feature,
+    jsonld: gameJsonld(pigeonPost, PIGEON_POST_LIVE, { name: 'Pigeon Post', path: 'pigeon-post', description: pigeonPost.line }),
   })}
 <body class="page-hue page-pigeon" style="--accent:${pigeonPost.accent}">
 ${nav()}
@@ -20,12 +21,12 @@ ${nav()}
   <div class="container hue-grid">
     <div class="hue-copy">
       <span class="eyebrow">Idle pet game · iPhone and Android</span>
-      <div class="hue-title">${img(pigeonPost.icon, 'Pigeon Post app icon', { lazy: false, priority: true })}<h1 id="pigeon-title" class="h-display">Pigeon Post</h1></div>
+      <div class="hue-title">${img(webp(pigeonPost.icon), 'Pigeon Post app icon', { lazy: false, sizes: '92px' })}<h1 id="pigeon-title" class="h-display">Pigeon Post</h1></div>
       <p class="lead">${esc(pigeonPost.line)}</p>
       ${storeBadges(pigeonPost, PIGEON_POST_LIVE)}
       ${PIGEON_POST_LIVE ? '<p class="hue-note">Free on iPhone and Android.</p>' : '<p class="hue-note">Coming soon to the App Store and Google Play. Free to play.</p>'}
     </div>
-    <figure class="hue-art">${img(pigeonPost.feature, 'Pigeon Post: postcards from Tokyo, Sydney and Paris, with a pigeon on one of them', { lazy: false })}</figure>
+    <figure class="hue-art">${img(webp(pigeonPost.feature), 'Pigeon Post: postcards from Tokyo, Sydney and Paris, with a pigeon on one of them', { priority: true })}</figure>
   </div>
 </section>
 
@@ -43,12 +44,13 @@ ${nav()}
   <div class="container hue-help">
     <div>
       <h2 id="pigeon-help" class="h-card">Privacy and support</h2>
-      <p class="muted">Pigeon Post has no account and no sign-in. Questions about the game? A person reads every message.</p>
+      <p class="muted">Pigeon Post is made by o9Tech, a product engineering studio in Lahore, Pakistan. It has no account and no sign-in. Questions about the game? A person reads every message.</p>
     </div>
     <ul class="hue-links">
       <li><a href="/privacy/pigeon-post">${icons.shield}<span>Privacy policy</span></a></li>
       <li><a href="${site.url}/#contact">${icons.mail}<span>Support</span></a></li>
       <li><a href="mailto:support@o9tech.com">${icons.mail}<span>support@o9tech.com</span></a></li>
+      <li><a href="/hue-pour">${icons.drop}<span>Also from o9Tech: Hue Pour</span></a></li>
     </ul>
   </div>
 </section>

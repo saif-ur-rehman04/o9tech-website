@@ -16,6 +16,8 @@
 .cs-facts div { background: var(--ink-950); padding: 16px 18px; }
 .cs-facts dt { font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-inv-muted); margin-bottom: 4px; }
 .cs-facts dd { margin: 0; font-weight: 600; font-size: .9375rem; }
+.cs-facts .cs-facts-wide { grid-column: 1 / -1; }
+.cs-facts dd a { color: inherit; text-underline-offset: 3px; }
 @media (max-width: 520px) { .cs-facts { grid-template-columns: 1fr; } }
 .cs-stage { position: relative; aspect-ratio: 1 / 1; border-radius: var(--r-lg); overflow: hidden; }
 .cs-stage.case-visual { aspect-ratio: 1 / 1; }

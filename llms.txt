@@ -1,0 +1,54 @@
+# o9Tech
+
+> o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022. We build native iOS and Android apps, cross-platform apps, web platforms, data pipelines and AI features for clients around the world.
+
+Contact: info@o9tech.com, +92 345 6259449. Office: Office No. 8, 3rd Floor, Abbas Trade Center, Lahore 54000, Pakistan.
+
+## Services
+
+- [Native iOS & Android](https://o9tech.com/service-mobile): Fast, polished native apps that feel at home on every iPhone and Android phone.
+- [Cross-Platform Apps](https://o9tech.com/service-cross-platform): One codebase, two stores, no compromise on feel.
+- [Full-Stack Web Platforms](https://o9tech.com/service-web): Web apps, dashboards and APIs that hold up under real traffic.
+- [AI Development](https://o9tech.com/service-ai): Practical AI features that ship inside real products.
+- [Data Engineering](https://o9tech.com/service-data-engineering): Clean, reliable data that your team and your AI can trust.
+- [Blockchain & Web3](https://o9tech.com/service-blockchain): On-chain systems where trust and proof actually matter.
+- [Cloud & DevOps](https://o9tech.com/service-cloud): Infrastructure and release pipelines you never have to think about.
+
+## Our apps
+
+- [Hue Pour](https://o9tech.com/hue-pour): A paint mixing puzzle where blue and yellow make green, like real paint.
+- [Pigeon Post](https://o9tech.com/pigeon-post): Send pigeons to real cities. They come home with postcards.
+
+## Case studies
+
+- [Worlds: Memory Journals](https://o9tech.com/portfolio-worlds): Private and shared memory journals for couples, friends and family.
+- [Trading Card TV](https://o9tech.com/portfolio-tradingcardtv): Live card breaks, auctions and trades for sports and Pokemon fans.
+- [AirLister](https://o9tech.com/portfolio-airlister): Sell, rent or buy Australian property direct, with no middleman.
+- [TriageX](https://o9tech.com/portfolio-triagex): Rule-based symptom triage that points patients to the right care.
+- [Pryvate Messenger](https://o9tech.com/portfolio-pryvatemessenger): Encrypted calls, chats and email in one private messenger.
+- [HiiKER](https://o9tech.com/portfolio-hiiker): Hiking maps, multi-day route planning and offline navigation.
+- [Beyon Money](https://o9tech.com/portfolio-beyonmoney): Bahrain's money app for cards, transfers and savings.
+- [Votari](https://o9tech.com/portfolio-votari): Private, verifiable voting with results anchored on the blockchain.
+- [Going Solo](https://o9tech.com/portfolio-goingsolo): Meet solo travelers nearby, plan trips and find a travel buddy.
+- [DriverFly](https://o9tech.com/portfolio-driverfly): Automated driver hiring and DOT compliance for carriers.
+- [AI-Powered Health & Wellness Platform](https://o9tech.com/portfolio-health-ai): Personal wellness plans driven by AI recommendations.
+- [Resumifi AI Resume Builder](https://o9tech.com/portfolio-resumifi): An AI resume builder that writes ATS-ready resumes.
+- [Dubai Mall App](https://o9tech.com/portfolio-dubaimallapp): Stores, dining, offers and indoor maps for the Dubai Mall.
+- [KFH Bahrain](https://o9tech.com/portfolio-kfhbahrain): Islamic mobile banking with fully digital onboarding.
+- [The Boubyan App](https://o9tech.com/portfolio-boubyanbank): Mobile banking for one of Kuwait's leading Islamic banks.
+- [Jeeny](https://o9tech.com/portfolio-jeeny): Affordable everyday rides across Saudi Arabia and Jordan.
+- [Block: Focus on What Matters](https://o9tech.com/portfolio-blockapp): Tap a physical Block to lock distracting apps and focus.
+- [Officetree Phone](https://o9tech.com/portfolio-officetreephone): A full business phone line on the smartphone you already carry.
+- [Reserval](https://o9tech.com/portfolio-reserval): Book cruises, hotels and flights in one Saudi travel app.
+- [NPFL Live](https://o9tech.com/portfolio-npfllive): Live streams and highlights of Nigeria's top football league.
+- [Kohinoor Fabric Library](https://o9tech.com/portfolio-kohinoorfabriclibrary): Browse, filter and order Kohinoor Mills fabrics from an iPhone.
+- [Routinsie: Routine Planner](https://o9tech.com/portfolio-routinsie): A habit tracker and daily routine planner.
+- [MealSmash](https://o9tech.com/portfolio-mealsmash): Order from local restaurants and track delivery in real time.
+- [Ziply On-Demand](https://o9tech.com/portfolio-ziply): Door-to-door courier delivery for local businesses.
+- [Gravity Social Calendar](https://o9tech.com/portfolio-gravity): Plan and schedule social content across platforms.
+- [Thoubak](https://o9tech.com/portfolio-thoubak): Book a tailor to measure you at home, then get your thobe delivered.
+- [Gravel Parking](https://o9tech.com/portfolio-gravel): Find a parking spot nearby, or earn money from your empty one.
+- [Stay Seated](https://o9tech.com/portfolio-stayseated): Order food and drinks at the game and get them brought to your seat.
+- [Hookah Butler](https://o9tech.com/portfolio-hookahbutler): Order a hookah from your phone and have it brought to your table.
+- [Scissors](https://o9tech.com/portfolio-scissors): Find and book barbers, salons and beauty pros near you.
+- [Kuluna Daaya](https://o9tech.com/portfolio-kulunadaaya): Share Islamic learning bags and earn points as people learn.

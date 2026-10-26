@@ -3,8 +3,9 @@
 //   node scripts/site/build.mjs --check  render, then fail on broken local links or em dashes
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import { site, projects, services } from './data.mjs';
+import { site, projects, services, huePour, pigeonPost } from './data.mjs';
 import { ROOT, badges } from './ui.mjs';
+import { createHash } from 'node:crypto';
 import { indexPage } from './page-index.mjs';
 import { casePage, servicePage, notFoundPage } from './page-inner.mjs';
 import { huePourPage, huePrivacyPage, policySource, policyMain } from './page-hue.mjs';
@@ -23,7 +24,8 @@ const out = (rel, content) => {
 };
 // Pages served at more than one URL depth (/hue-pour/, /privacy/hue-pour, any 404 path)
 // need root-relative links instead of "assets/..." ones.
-const absolutize = (html) => html.replace(/(\s(?:href|src)=")(?!https?:|mailto:|tel:|#|\/|data:)/g, '$1/');
+const absolutize = (html) => html.replace(/(\s(?:href|src)=")(?!https?:|mailto:|tel:|#|\/|data:)/g, '$1/')
+  .replace(/(\ssrcset=")([^"]+)"/g, (m, attr, list) => `${attr}${list.split(', ').map((c) => (/^(https?:|\/)/.test(c) ? c : `/${c}`)).join(', ')}"`);
 
 const written = [];
 
@@ -51,10 +53,41 @@ for (const [name, markup] of Object.entries(badges)) {
 // Sitemap, robots, redirects
 const today = new Date().toISOString().slice(0, 10);
 const urls = ['', 'hue-pour', 'privacy/hue-pour', 'pigeon-post', 'privacy/pigeon-post', ...[...services, ...projects].map((x) => x.page.replace(/\.html$/, ''))];
+// lastmod is the day a page's content last changed, not the build date. lastmod.json keeps a
+// hash of each page (without the cache-busting ?v= tags, which change with any style edit).
+const lastmodFile = join(here, 'lastmod.json');
+const lastmod = existsSync(lastmodFile) ? JSON.parse(readFileSync(lastmodFile, 'utf8')) : {};
+for (const u of urls) {
+  const file = join(ROOT, u === '' ? 'index.html' : `${u}.html`);
+  const hash = createHash('sha1').update(readFileSync(file, 'utf8').replace(/\?v=[0-9a-f]{8}/g, '')).digest('hex').slice(0, 12);
+  if (lastmod[u]?.hash !== hash) lastmod[u] = { hash, date: today };
+}
+writeFileSync(lastmodFile, `${JSON.stringify(Object.fromEntries(urls.map((u) => [u, lastmod[u]])), null, 2)}\n`);
 out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${site.url}/${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${urls.map((u) => `  <url><loc>${site.url}/${u}</loc><lastmod>${lastmod[u].date}</lastmod></url>`).join('\n')}
 </urlset>
+`);
+// A plain Markdown summary for AI assistants and agents (llmstxt.org). Search engines ignore it.
+const link = (page) => `${site.url}/${page.replace(/\.html$/, '')}`;
+out('llms.txt', `# o9Tech
+
+> ${site.about}
+
+Contact: ${site.email}, ${site.phone}. Office: ${site.address}.
+
+## Services
+
+${services.map((x) => `- [${x.title}](${link(x.page)}): ${x.lead}`).join('\n')}
+
+## Our apps
+
+- [Hue Pour](${site.url}/hue-pour): ${huePour.line}
+- [Pigeon Post](${site.url}/pigeon-post): ${pigeonPost.line}
+
+## Case studies
+
+${projects.map((p) => `- [${p.fullName}](${link(p.page)}): ${p.tagline}`).join('\n')}
 `);
 out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
 out('_redirects', `# Cloudflare Pages reads this file. It can only match paths, so the huepour.o9tech.com
@@ -97,6 +130,13 @@ if (process.argv.includes('--check')) {
         if (!targetHtml.includes(`id="${hash}"`)) { console.error(`  ${page}: missing anchor ${ref}`); problems++; }
       }
     }
+    for (const [, json] of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      try { JSON.parse(json); } catch { console.error(`  ${page}: JSON-LD does not parse`); problems++; }
+    }
+    const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+    const desc = (html.match(/<meta name="description" content="([^"]*)">/) || [])[1] || '';
+    if (title.length > 70) { console.error(`  ${page}: title is ${title.length} characters`); problems++; }
+    if (desc.length > 160 || !/[.!?]$/.test(desc)) { console.error(`  ${page}: description is ${desc.length} characters or stops mid-sentence`); problems++; }
     const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
     if (text.includes('—')) { console.error(`  ${page}: contains an em dash`); problems++; }
     if (/hue-pour|pigeon-post/.test(page) && text.includes('–')) { console.error(`  ${page}: contains an en dash`); problems++; }
