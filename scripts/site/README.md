@@ -37,7 +37,7 @@ node scripts/site/serve.mjs
 
 ## Services
 
-Each entry in `services` has its own `metaTitle` (about 60 characters) and `metaDescription` (under 160), plus `faqs` shown on the service page. Reviews and related projects are matched by `tag`. A service with no matching projects (like Data Engineering today) hides its "Related work" section.
+Each entry in `services` has its own `metaTitle` (about 60 characters) and `metaDescription` (under 160), plus `faqs` shown on the service page. Reviews and related projects are matched by `tag`. A service with no matching projects hides its "Related work" section.
 
 ## SEO files
 

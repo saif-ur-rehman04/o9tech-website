@@ -50,7 +50,10 @@ export function indexPage() {
   const marqueeItems = marqueeApps.map((p) => `<a class="marquee-item" href="${p.page}">${img(p.icon, '')}<span>${esc(p.name)}<small>${esc(p.category)}</small></span></a>`).join('');
   const marqueeClone = marqueeApps.map((p) => `<a class="marquee-item" href="${p.page}" tabindex="-1">${img(p.icon, '')}<span>${esc(p.name)}<small>${esc(p.category)}</small></span></a>`).join('');
   const counts = Object.fromEntries(filters.map((f) => [f.id, f.id === 'all' ? projects.length : projects.filter((p) => p.tags.includes(f.id)).length]));
-  const spotlight = [0, 1, 9, 6, 10, 5].map((i) => reviews[i]);
+  // Reviews newest first; the spotlight shows a hand-picked mix from both co-founders' profiles.
+  const sorted = [...reviews].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const pick = ['React Native app from AI prototype to the App Store', 'iOS & Android discounts and bill payment app', 'Paywall and permissions rebuild for an iOS and Android app', 'React web app with Google Cloud, Firebase and AI', 'iOS app with NFC, blockchain and Merkle trees', 'Native Android ID card reader with thermal printers'];
+  const spotlight = pick.map((name) => reviews.find((r) => r.project === name));
   const WALL_LIMIT = 9;
 
   // ProfessionalService is a kind of Organization, so the @id below is what every other
@@ -69,6 +72,7 @@ export function indexPage() {
         email: site.email,
         telephone: site.phone,
         foundingDate: String(site.founded),
+        founder: site.founders.map((f) => ({ '@type': 'Person', name: f.name, jobTitle: 'Co-founder', sameAs: f.upwork })),
         address: { '@type': 'PostalAddress', streetAddress: site.street, addressLocality: site.city, postalCode: site.postalCode, addressCountry: site.country },
         areaServed: 'Worldwide',
         contactPoint: [
@@ -158,7 +162,7 @@ ${nav()}
     </div>
     <div class="metrics" data-stagger>
       <div class="metric" data-reveal><span class="metric-value" data-count="${projects.length}"><span class="n">${projects.length}</span></span><span class="metric-label">Products in our portfolio</span><span class="metric-note">Fintech, health, travel, retail, media and more.</span></div>
-      <div class="metric" data-reveal><span class="metric-value" data-count="100"><span class="n">100</span><sup>%</sup></span><span class="metric-label">Job Success Score</span><span class="metric-note">${esc(upworkStats.badge)} on our co-founder's Upwork profile, across ${upworkStats.jobs} contracts.</span></div>
+      <div class="metric" data-reveal><span class="metric-value" data-count="100"><span class="n">100</span><sup>%</sup></span><span class="metric-label">Job Success Score</span><span class="metric-note">${esc(upworkStats.badge)} and Top Rated on our co-founders' Upwork profiles, across ${upworkStats.jobs} contracts.</span></div>
       <div class="metric" data-reveal><span class="metric-value" data-count="${reviews.length}"><span class="n">${reviews.length}</span></span><span class="metric-label">Five-star client reviews</span><span class="metric-note">Each one from a real Upwork contract.</span></div>
       <div class="metric" data-reveal><span class="metric-value" data-count="14"><span class="n">14</span><sup>days</sup></span><span class="metric-label">From zero to the App Store</span><span class="metric-note">AirLister, built with an AI-native workflow.</span></div>
     </div>
@@ -232,7 +236,7 @@ ${nav()}
         <span class="eyebrow" data-reveal>Client reviews</span>
         <h2 id="reviews-title" class="h-section" data-reveal>Clients say it better than we can.</h2>
         <div class="review-badges" data-reveal>${badges.verified}${badges.topRated}</div>
-        <p class="review-note" data-reveal>Every review here comes from a real Upwork contract delivered by our co-founder, Saif ur Rehman. We changed names and pronouns so they refer to the o9Tech team. Everything else is word for word. <a href="${site.upwork}" target="_blank" rel="noopener">See the profile on Upwork</a>.</p>
+        <p class="review-note" data-reveal>Every review here comes from a real Upwork contract delivered by our co-founders, Saif ur Rehman and Shuja Ud Din. We changed names and pronouns so they refer to the o9Tech team. Everything else is word for word. See the profiles on Upwork: ${site.founders.map((f) => `<a href="${f.upwork}" target="_blank" rel="noopener">${esc(f.name)}</a>`).join(' and ')}.</p>
       </div>
       <div class="spotlight" data-spotlight data-reveal role="region" aria-roledescription="carousel" aria-label="Featured client reviews" tabindex="0">
         <div class="spotlight-track" aria-live="off">
@@ -251,7 +255,7 @@ ${nav()}
       </div>
     </div>
     <div class="review-wall" data-stagger>
-      ${reviews.map((r, i) => `<figure class="review-card" data-reveal${i >= WALL_LIMIT ? ' hidden' : ''}>
+      ${sorted.map((r, i) => `<figure class="review-card" data-reveal${i >= WALL_LIMIT ? ' hidden' : ''}>
         <blockquote>${reviewHtml(r.text)}</blockquote>
         <figcaption class="review-meta">${stars(5)}<span><strong>${esc(r.project)}</strong><br>${esc(r.date)} · Upwork</span></figcaption>
       </figure>`).join('\n      ')}

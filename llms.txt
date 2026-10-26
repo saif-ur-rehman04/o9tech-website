@@ -29,10 +29,14 @@ Contact: info@o9tech.com, +92 345 6259449. Office: Office No. 8, 3rd Floor, Abba
 - [HiiKER](https://o9tech.com/portfolio-hiiker): Hiking maps, multi-day route planning and offline navigation.
 - [Beyon Money](https://o9tech.com/portfolio-beyonmoney): Bahrain's money app for cards, transfers and savings.
 - [Votari](https://o9tech.com/portfolio-votari): Private, verifiable voting with results anchored on the blockchain.
+- [Venn Social: Find Your People](https://o9tech.com/portfolio-venn): A supportive community app that finds your people and your circles.
+- [BeatYou: Habit Tracker & Goals](https://o9tech.com/portfolio-beatyou): Build habits, challenge friends and pledge to charity to stay accountable.
 - [Going Solo](https://o9tech.com/portfolio-goingsolo): Meet solo travelers nearby, plan trips and find a travel buddy.
 - [DriverFly](https://o9tech.com/portfolio-driverfly): Automated driver hiring and DOT compliance for carriers.
 - [AI-Powered Health & Wellness Platform](https://o9tech.com/portfolio-health-ai): Personal wellness plans driven by AI recommendations.
 - [Resumifi AI Resume Builder](https://o9tech.com/portfolio-resumifi): An AI resume builder that writes ATS-ready resumes.
+- [DaBot Data Pipeline Automation](https://o9tech.com/portfolio-dabot): AI that onboards data and automates the pipelines behind it.
+- [AI WhatsApp Lead Conversion Chatbot](https://o9tech.com/portfolio-leadbot): An AI chatbot that turns WhatsApp group chats into qualified leads.
 - [Dubai Mall App](https://o9tech.com/portfolio-dubaimallapp): Stores, dining, offers and indoor maps for the Dubai Mall.
 - [KFH Bahrain](https://o9tech.com/portfolio-kfhbahrain): Islamic mobile banking with fully digital onboarding.
 - [The Boubyan App](https://o9tech.com/portfolio-boubyanbank): Mobile banking for one of Kuwait's leading Islamic banks.
@@ -45,6 +49,7 @@ Contact: info@o9tech.com, +92 345 6259449. Office: Office No. 8, 3rd Floor, Abba
 - [Routinsie: Routine Planner](https://o9tech.com/portfolio-routinsie): A habit tracker and daily routine planner.
 - [MealSmash](https://o9tech.com/portfolio-mealsmash): Order from local restaurants and track delivery in real time.
 - [Ziply On-Demand](https://o9tech.com/portfolio-ziply): Door-to-door courier delivery for local businesses.
+- [Courier Logistics Platform](https://o9tech.com/portfolio-courier): Driver and merchant apps plus an operations dashboard for a delivery company.
 - [Gravity Social Calendar](https://o9tech.com/portfolio-gravity): Plan and schedule social content across platforms.
 - [Thoubak](https://o9tech.com/portfolio-thoubak): Book a tailor to measure you at home, then get your thobe delivered.
 - [Gravel Parking](https://o9tech.com/portfolio-gravel): Find a parking spot nearby, or earn money from your empty one.

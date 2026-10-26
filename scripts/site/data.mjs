@@ -1,6 +1,6 @@
 // Content for the o9Tech site. build.mjs turns this into static HTML.
 // Project facts come from the App Store, Google Play, official sites and the
-// co-founder's Upwork portfolio (checked October 2026).
+// co-founders' Upwork portfolios (Saif ur Rehman and Shuja Ud Din, checked October 2026).
 
 export const site = {
   name: 'o9Tech',
@@ -14,6 +14,11 @@ export const site = {
   about: 'o9Tech is a product engineering studio in Lahore, Pakistan, founded in 2022. We build native iOS and Android apps, cross-platform apps, web platforms, data pipelines and AI features for clients around the world.',
   formAction: 'https://formspree.io/f/mblvzjkr',
   upwork: 'https://www.upwork.com/freelancers/saifurrehman42',
+  // The two co-founders. Their Upwork profiles are where the reviews and Upwork projects come from.
+  founders: [
+    { name: 'Saif ur Rehman', upwork: 'https://www.upwork.com/freelancers/saifurrehman42' },
+    { name: 'Shuja Ud Din', upwork: 'https://www.upwork.com/freelancers/shujau' },
+  ],
   founded: 2022,
 };
 
@@ -72,7 +77,7 @@ export const projects = [
   },
   {
     slug: 'triagex', page: 'portfolio-triagex.html', name: 'TriageX', fullName: 'TriageX',
-    category: 'HealthTech', tags: ['web', 'cross'], accent: '#e06716',
+    category: 'HealthTech', tags: ['web', 'cross', 'ai'], accent: '#e06716',
     platforms: ['Web', 'Mobile', 'Kiosk'],
     stack: ['React Native / Expo', 'Next.js 16', 'FastAPI', 'PostgreSQL', 'AWS', 'Docker'],
     tagline: 'Rule-based symptom triage that points patients to the right care.',
@@ -131,6 +136,30 @@ export const projects = [
     icon: W('votari', 'icon.webp'), visual: { type: 'phone', images: shots('votari', 4) }, featured: true,
   },
   {
+    slug: 'venn', page: 'portfolio-venn.html', name: 'Venn Social', fullName: 'Venn Social: Find Your People',
+    category: 'Social', tags: ['cross', 'ios', 'android', 'web'], accent: '#6b4ce6', source: 'upwork',
+    platforms: ['iOS', 'Android', 'Web'],
+    stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Next.js', 'Bunny CDN'],
+    tagline: 'A supportive community app that finds your people and your circles.',
+    summary: 'Venn Social matches people into Circles, small communities built around a shared season of life, and adds World Feed, a vertical video feed. Moderators handle reports, cases and appeals from a web dashboard.',
+    built: 'We worked on the React Native and Expo app and the Next.js admin dashboard, both on one Supabase backend: the ranked feed, the video pipeline on Bunny CDN, the Aura reputation system and the moderation tools.',
+    features: ['Circles: small communities matched to what you are going through', 'World Feed: a ranked vertical video feed', 'Aura, a karma-style reputation system', 'Moderation dashboard for reports, cases and appeals', 'Supabase auth, realtime data and edge functions'],
+    links: { ios: 'https://apps.apple.com/us/app/venn-social-find-your-people/id6755972603', play: 'https://play.google.com/store/apps/details?id=com.vennnetwork.venn' },
+    icon: W('venn', 'icon.webp'), visual: { type: 'gallery', images: shots('venn', 5), cover: W('venn', 'cover.webp') },
+  },
+  {
+    slug: 'beatyou', page: 'portfolio-beatyou.html', name: 'BeatYou', fullName: 'BeatYou: Habit Tracker & Goals',
+    category: 'Health & fitness', tags: ['cross', 'ios', 'android', 'ai'], accent: '#16c25f', source: 'upwork',
+    platforms: ['iOS', 'Android'],
+    stack: ['Flutter', 'Dart', 'Supabase', 'RevenueCat', 'ML Kit', 'HealthKit'],
+    tagline: 'Build habits, challenge friends and pledge to charity to stay accountable.',
+    summary: 'BeatYou helps people build good habits and quit bad ones with real accountability. They challenge friends and family, climb leaderboards, and can pledge to a charity so every outcome counts.',
+    built: 'We built the Flutter app for iOS and Android with Supabase for auth, data and storage, BLoC for state, HealthKit and Health Connect sync for steps and workouts, a RevenueCat paywall, and ML Kit exercise detection that counts reps with the camera.',
+    features: ['Daily and weekly habit goals, plus limits for habits you want to quit', 'Challenges with friends and family, with live progress', 'Leaderboards, streaks and analytics', 'Steps and workouts synced from HealthKit and Health Connect', 'Camera rep counting with ML Kit', 'Charity pledges for accountability'],
+    links: { ios: 'https://apps.apple.com/us/app/beatyou-habit-tracker-goals/id6755140701' },
+    icon: W('beatyou', 'icon.webp'), visual: { type: 'gallery', images: shots('beatyou', 6), cover: W('beatyou', 'cover.webp') },
+  },
+  {
     slug: 'goingsolo', page: 'portfolio-goingsolo.html', name: 'Going Solo', fullName: 'Going Solo',
     category: 'Travel', tags: ['ios', 'android', 'cross'], accent: '#3b8fd9',
     platforms: ['iOS', 'Android'],
@@ -177,6 +206,30 @@ export const projects = [
     features: ['Customizable resume templates', 'AI-written summaries and skill sections', 'ATS-friendly output', 'Cover letter and analysis tools'],
     links: {},
     icon: null, visual: { type: 'browser', url: 'resumifi.ai', images: [W('up-resumebuilder', '5068ad5a.webp'), W('up-resumebuilder', 'e146b290.webp')], cover: W('up-resumebuilder', 'cover.webp') },
+  },
+  {
+    slug: 'dabot', page: 'portfolio-dabot.html', name: 'DaBot', fullName: 'DaBot Data Pipeline Automation',
+    category: 'Data platform', tags: ['web', 'ai', 'data'], accent: '#1f6bff', source: 'upwork',
+    platforms: ['Web'],
+    stack: ['React', 'AI agents', 'Data pipelines', 'Canonical data model'],
+    tagline: 'AI that onboards data and automates the pipelines behind it.',
+    summary: 'DaBot is a DataOps platform. It brings data in from many internal and external sources, maps it into one canonical model and keeps the pipelines running with far less manual work.',
+    built: 'We built and maintained platform features: the frontend for data onboarding, the backend logic for AI-driven pipeline automation, and the integrations that bring many data sources into one canonical model. Clients cut manual data work by 70% and onboarded data 10 times faster.',
+    features: ['Guided data onboarding from internal and external sources', 'AI-driven pipeline automation', 'One canonical data model instead of many one-off pipelines', 'Less manual data work and faster onboarding'],
+    links: {},
+    icon: null, visual: { type: 'browser', url: 'DaBot platform', images: [W('up-dabot', 'page.webp')] },
+  },
+  {
+    slug: 'leadbot', page: 'portfolio-leadbot.html', name: 'WhatsApp Lead Bot', fullName: 'AI WhatsApp Lead Conversion Chatbot',
+    category: 'AI SaaS', tags: ['web', 'ai'], accent: '#5b3df5', source: 'upwork',
+    platforms: ['Web'],
+    stack: ['Next.js', 'Python', 'AI chatbot', 'CRM integration'],
+    tagline: 'An AI chatbot that turns WhatsApp group chats into qualified leads.',
+    summary: 'The chatbot watches busy WhatsApp groups, spots leads, starts the conversation and qualifies them, then hands sales-ready opportunities to the CRM.',
+    built: 'We built it as full-stack and AI integration developers, with Next.js and Python: lead detection, automated engagement and qualification, and the CRM integration that keeps the sales pipeline up to date.',
+    features: ['Automatic lead detection in WhatsApp groups', 'AI engagement and lead qualification', 'CRM integration for pipeline management', 'Fewer manual follow-ups and higher conversion'],
+    links: {},
+    icon: null, visual: { type: 'browser', url: 'lead chatbot', images: [W('up-leadbot', 'page.webp')] },
   },
   {
     slug: 'dubaimall', page: 'portfolio-dubaimallapp.html', name: 'Dubai Mall', fullName: 'Dubai Mall App',
@@ -323,6 +376,18 @@ export const projects = [
     icon: null, visual: { type: 'phone', images: [W('up-ziply', '697da826.webp'), W('up-ziply', '11e6aa70.webp'), W('up-ziply', '29076773.webp')], cover: W('up-ziply', 'cover.webp') },
   },
   {
+    slug: 'courier', page: 'portfolio-courier.html', name: 'Courier Platform', fullName: 'Courier Logistics Platform',
+    category: 'Logistics', tags: ['web', 'ios', 'android'], accent: '#f2a900', source: 'upwork',
+    platforms: ['iOS', 'Android', 'Web'],
+    stack: ['React', 'iOS', 'Android', 'GPS tracking'],
+    tagline: 'Driver and merchant apps plus an operations dashboard for a delivery company.',
+    summary: 'A complete delivery platform: merchants create orders, drivers handle pickups and drop-offs, and the operations team follows every delivery live from a web dashboard.',
+    built: 'We led the mobile and web build: driver and merchant apps for iOS and Android and a React dashboard for operations, with order creation, live tracking, delivery workflows, push notifications and real-time status updates.',
+    features: ['Order creation for merchants', 'Live GPS tracking', 'Delivery workflows for drivers', 'Push notifications and real-time status', 'Web dashboard for the operations team'],
+    links: {},
+    icon: null, visual: { type: 'browser', url: 'delivery platform', images: [W('up-courier', 'page-1.webp'), W('up-courier', 'page-2.webp')] },
+  },
+  {
     slug: 'gravity', page: 'portfolio-gravity.html', name: 'Gravity', fullName: 'Gravity Social Calendar',
     category: 'Social media tools', tags: ['cross', 'ios'], accent: '#e2584c', source: 'upwork',
     platforms: ['iOS'],
@@ -408,7 +473,7 @@ export const projects = [
   },
 ];
 
-// Real Upwork feedback from contracts delivered by co-founder Saif ur Rehman.
+// Real Upwork feedback from contracts delivered by the co-founders, Saif ur Rehman and Shuja Ud Din.
 // Words in [brackets] were changed to refer to the team (shown without brackets on the
 // page, disclosed in the note above the reviews); the rest is verbatim.
 export const reviews = [
@@ -431,9 +496,30 @@ export const reviews = [
   { project: 'SwiftUI app work', date: 'Aug 2022', tags: ['ios'], text: 'Friendly and knowledgeable on swift. Easy to work with.' },
   { project: 'Kotlin and SQLite Android work', date: 'Aug 2022', tags: ['android'], text: 'Working with [o9Tech] was a pleasure. [They were] concise and precise and understood the assignments very well. I highly recommend [o9Tech].' },
   { project: 'Google Play app publishing', date: 'Jun 2022', tags: ['android'], text: 'Very smart very recommended' },
+  // From Shuja Ud Din's Upwork profile (checked 26 October 2026). Long dashes in the original
+  // are shown as [bracketed] commas or semicolons, because the site uses no em dashes.
+  { project: 'UI improvements and new features for an iOS and Android app', date: 'Sep 2026', tags: ['ios', 'android'], text: 'Probably my 10th time working with [o9Tech] to add features to my app and [they are] great to work with. Friendly, competent, patient and attentive' },
+  { project: 'Vimeo streaming in a SwiftUI fitness app', date: 'Sep 2026', tags: ['ios'], text: 'very efficient, communication was great!' },
+  { project: 'Paywall and permissions rebuild for an iOS and Android app', date: 'Jun 2026', tags: ['ios', 'android', 'cross'], text: 'I\'ve rehired [o9Tech] multiple times to add new features to my IOS and Android app; [they are] committed to doing high quality work, [are] accountable for [their] work and also responsive in a timely manner. I would continue to rehire [them] for future additional features and I plan on doing so soon. [o9Tech] recently did a complicated build for me that required a highly complex permission and paywall system rebuild for my app, one of the most technically demanding features in the project, involving intricate logic across free and premium user states, cancellation flows, and per user access management across both iOS and Android. [They] handled it thoroughly and delivered against a very detailed specification.' },
+  { project: 'ML Kit exercise detection in a Flutter app', date: 'Jun 2026', tags: ['cross', 'ai'], text: 'It was nice working with [them]' },
+  { project: 'New features for an iOS and Android app', date: 'Apr 2026', tags: ['ios', 'android'], text: 'I have hired [o9Tech] multiple times to add features to my app and I would definitely hire [them] again in the future.' },
+  { project: 'Solution architecture and technical spec review', date: 'Apr 2026', tags: ['web'], text: '[o9Tech was] extremely detail-oriented, solution-oriented, and highly committed to delivering quality. [They] approached every aspect of the work thoughtfully, ensured clarity in complex areas, and consistently focused on practical, effective solutions. [Their] professionalism and dedication made a significant difference in the overall outcome.' },
+  { project: 'React Native app from AI prototype to the App Store', date: 'Mar 2026', tags: ['cross', 'ios'], text: 'I would highly, highly recommend [o9Tech] for any development work. [They] took my app from an early AI prototype[,] with no database and multiple bugs[,] to a polished, fully functional product in the App Store within just a few days. From start to finish, communication was clear, fast, and professional. [They] understood the vision immediately and translated it into a high-quality product with minimal back-and-forth. The quality of [their] work was excellent, with strong attention to detail throughout. [They were] proactive, easy to work with, and genuinely cared about the success of the project. [Their] English is also excellent!!' },
+  { project: 'Legacy iOS and Android bug fixing', date: 'Mar 2026', tags: ['ios', 'android'], text: 'Working with [o9Tech] was a great experience. [They] tackled the mobile development tasks efficiently and delivered clean, well-structured solutions. Communication was smooth throughout the project[;] [they] understood the requirements quickly and didn\'t need much hand-holding. The legacy issues we had were resolved without any drama, and the end result was exactly what we needed. Would definitely hire again!' },
+  { project: 'TikTok App Events SDK in a Kotlin Multiplatform app', date: 'Feb 2026', tags: ['cross'], text: '[o9Tech is] great and very easy to work with - I would hire [them] again for future app features' },
+  { project: 'Golf app revamp for iOS and Android', date: 'Feb 2026', tags: ['cross'], text: '[o9Tech] did an amazing job. Highly recommend!' },
+  { project: 'iOS app with NFC, blockchain and Merkle trees', date: 'Jan 2026', tags: ['ios', 'blockchain'], text: '[o9Tech was] reliable, thoughtful, and easy to work with. [They] handled complex requirements carefully, communicated clearly, and [were] responsive throughout the engagement. [They] approached problems methodically, followed instructions well, and demonstrated good judgment when dealing with non-trivial technical constraints. I would be comfortable working with [them] again and recommend [them] for projects that require attention to detail, discretion, and a disciplined engineering mindset.' },
+  { project: 'Publishing an app on Google Play', date: 'Sep 2022', tags: ['android'], text: 'The freelancer completed the work very quickly, efficiently and in a short time. Everything was done correctly and clearly. We work with [them] not for the first time. And very happy with [their] work.' },
+  { project: 'Mobile app development', date: 'Aug 2021', tags: ['ios', 'android'], text: '[o9Tech was] great to work with. You should definitely work with [o9Tech] if you need a mobile app developer. What I appreciated most about [o9Tech] is how [they take] ownership of the project to make sure you get the best app possible.' },
+  { project: 'App reskin', date: 'Jul 2018', tags: ['ios'], text: 'great working with [o9Tech]. Highly recommended.' },
+  { project: 'Heyzap SDK in a mobile game', date: 'Jan 2015', tags: ['ios'], text: 'Integrated Heyzap for mobile game, thanks.' },
+  { project: 'Cocos2d game code changes', date: 'Dec 2014', tags: ['ios'], text: 'Very easy to work with. Will work with [o9Tech] again for sure!' },
+  { project: 'SDK additions to a mobile game', date: 'Aug 2014', tags: ['ios'], text: '[o9Tech] did an excellent job on this project and got it done on schedule.' },
+  { project: 'iPhone and iPad app reskins', date: 'Jun 2014', tags: ['ios'], text: 'I really enjoyed working with this provider.' },
 ];
 
-export const upworkStats = { jss: '100%', badge: 'Top Rated', jobs: 33, hours: 506 };
+// Both co-founders' Upwork profiles: Shuja is Top Rated Plus (31 jobs, 7,416 hours), Saif is Top Rated (33 jobs, 506 hours).
+export const upworkStats = { jss: '100%', badge: 'Top Rated Plus', jobs: 64, hours: 7922 };
 
 // Hue Pour, our paint mixing puzzle game. Facts come from the Hue Pour ASO brief only.
 // Flip HUE_POUR_LIVE to true on launch day, then rebuild: the greyed "Coming soon"
@@ -542,8 +628,7 @@ export const services = [
     tag: 'ai', icon: 'spark',
   },
   {
-    // New in October 2026. No portfolio project is tagged 'data' yet, so the page shows
-    // reviews tagged 'data' and hides "Related work" until there is real data work to list.
+    // New in October 2026. Related work and reviews are the ones tagged 'data' (DaBot so far).
     slug: 'data-engineering', page: 'service-data-engineering.html', title: 'Data Engineering', short: 'Data engineering',
     metaTitle: 'Data Engineering Services in Pakistan | o9Tech',
     metaDescription: 'o9Tech data engineers in Lahore, Pakistan build data pipelines, warehouses and dashboards on BigQuery, Snowflake and PostgreSQL, ready for analytics and AI.',

@@ -119,7 +119,7 @@ export function servicePage(s) {
   const has = (p, tags) => tags.some((t) => p.tags.includes(t));
   const tags = [s.tag, ...(s.alsoTags || [])];
   const related = projects.filter((p) => has(p, tags) && !has(p, s.excludeTags || []) && !p.archived).slice(0, 6);
-  const quotes = reviews.filter((r) => has(r, tags)).slice(0, 3);
+  const quotes = reviews.filter((r) => has(r, tags)).sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
   const url = pageUrl(s.page);
   const jsonld = ld({ '@context': 'https://schema.org', '@graph': [
     { '@type': 'Service', '@id': `${url}#service`, name: s.title, serviceType: s.title, description: s.metaDescription, url,
@@ -173,7 +173,7 @@ ${quotes.length ? `
         <figcaption class="review-meta">${stars(5)}<span><strong>${esc(r.project)}</strong><br>${esc(r.date)} · Upwork</span></figcaption>
       </figure>`).join('\n      ')}
     </div>
-    <p class="review-note" data-reveal>From real Upwork contracts delivered by our co-founder, Saif ur Rehman, with names and pronouns changed to refer to the o9Tech team. <a href="index.html#reviews">See all reviews</a>.</p>
+    <p class="review-note" data-reveal>From real Upwork contracts delivered by our co-founders, Saif ur Rehman and Shuja Ud Din, with names and pronouns changed to refer to the o9Tech team. <a href="index.html#reviews">See all reviews</a>.</p>
   </div>
 </section>` : ''}
 

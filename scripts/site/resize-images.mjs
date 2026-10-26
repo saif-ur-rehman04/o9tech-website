@@ -19,7 +19,7 @@ for (const file of walk(join(ROOT, 'assets/img/work'))) {
   if (!file.endsWith('.webp') || /-(192|640)\.webp$/.test(file)) continue;
   const rel = relative(ROOT, file);
   const { w, h } = imgSize(rel);
-  const target = h > w * 1.3 && w > 800 ? 640 : w === h && w >= 384 ? 192 : 0;
+  const target = h > w * 1.3 && w > 800 ? 640 : /\/icon\.webp$/.test(file) && w >= 384 ? 192 : 0;
   if (!target) continue;
   const out = file.replace(/\.webp$/, `-${target}.webp`);
   if (existsSync(out)) continue;
