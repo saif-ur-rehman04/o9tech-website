@@ -303,5 +303,5 @@ export function footer() {
 }
 
 // Brackets in data.mjs record which words we changed; the page shows the text without them
-// and the note above the reviews discloses the change.
+// (the owners chose not to show a note about it on the page).
 export const reviewHtml = (text) => esc(text).replace(/\[([^\]]+)\]/g, '$1');

@@ -236,7 +236,6 @@ ${nav()}
         <span class="eyebrow" data-reveal>Client reviews</span>
         <h2 id="reviews-title" class="h-section" data-reveal>Clients say it better than we can.</h2>
         <div class="review-badges" data-reveal>${badges.verified}${badges.topRated}</div>
-        <p class="review-note" data-reveal>Every review here comes from a real Upwork contract delivered by our co-founders, Saif ur Rehman and Shuja Ud Din. We changed names and pronouns so they refer to the o9Tech team. Everything else is word for word. See the profiles on Upwork: ${site.founders.map((f) => `<a href="${f.upwork}" target="_blank" rel="noopener">${esc(f.name)}</a>`).join(' and ')}.</p>
       </div>
       <div class="spotlight" data-spotlight data-reveal role="region" aria-roledescription="carousel" aria-label="Featured client reviews" tabindex="0">
         <div class="spotlight-track" aria-live="off">

@@ -47,4 +47,4 @@ Each entry in `services` has its own `metaTitle` (about 60 characters) and `meta
 
 ## Reviews
 
-Reviews are real Upwork feedback. In `data.mjs`, words in `[brackets]` mark where a name or pronoun was changed to refer to the team. The page shows them without brackets, and the note above the reviews discloses the change, so keep everything else word for word and keep that note.
+Reviews are real Upwork feedback. In `data.mjs`, words in `[brackets]` mark where a name or pronoun was changed to refer to the team. The page shows them without brackets. Keep everything else word for word.

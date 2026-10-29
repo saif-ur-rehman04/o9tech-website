@@ -173,7 +173,7 @@ ${quotes.length ? `
         <figcaption class="review-meta">${stars(5)}<span><strong>${esc(r.project)}</strong><br>${esc(r.date)} · Upwork</span></figcaption>
       </figure>`).join('\n      ')}
     </div>
-    <p class="review-note" data-reveal>From real Upwork contracts delivered by our co-founders, Saif ur Rehman and Shuja Ud Din, with names and pronouns changed to refer to the o9Tech team. <a href="index.html#reviews">See all reviews</a>.</p>
+    <p class="review-note" data-reveal><a href="index.html#reviews">See all reviews</a>.</p>
   </div>
 </section>` : ''}
 
