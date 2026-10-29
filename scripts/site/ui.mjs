@@ -269,7 +269,7 @@ export function footer() {
           <li><a href="index.html#reviews">Client reviews</a></li>
           <li><a href="index.html#process">How we work</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
-          ${site.founders.map((f) => `<li><a href="${f.upwork}" target="_blank" rel="noopener">${esc(f.name.split(' ')[0])} on Upwork</a></li>`).join('\n          ')}
+          <li><a href="${site.upwork}" target="_blank" rel="noopener">Hire us on Upwork</a></li>
         </ul>
       </div>
       <div>
